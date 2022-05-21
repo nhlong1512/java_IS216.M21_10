@@ -120,11 +120,19 @@ public class main {
         System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
         
         
-        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
-        hdmuavetbl.them(hd);
+//        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
+//        hdmuavetbl.them(hd);
         System.out.println("Thoi gian thuc la: " + getThoiGianThuc());
         for (HDMuaVeDTO ve : list_HD) {
             System.out.println("Sau khi them----" + ve);
         }
+        
+        CTHDMuaVeDTO cthd = new CTHDMuaVeDTO("HD015", "LVE02", 5);
+        cthdmuavetbl.them(cthd);
+        for (CTHDMuaVeDTO ve : list_CTHD) {
+            System.out.println("Sau khi them----" + ve);
+        }
+        
+        System.out.println("Mã vé tiếp theo là " + vetbl.getMaxMaVe());
     }
 }

@@ -4,7 +4,9 @@
  */
 package UITParking.DAO;
 
+import static UITParking.DAO.HDMuaVeDAO.pst;
 import UITParking.DTO.VeDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -114,5 +116,16 @@ public class VeDAO {
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
         }
+    }
+    public String getMaxMaVe() throws Exception {
+        String sql = "Select Max(MaVe) as MaxVe from C_VE";
+        pst = this.connection.getConnect().prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        String id = "";
+        if (rs.next()) {
+            String maxhd = rs.getString("MaxVe");
+            id = getID(maxhd);
+        }
+        return "VE" + id;
     }
 }

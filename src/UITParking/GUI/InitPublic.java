@@ -27,10 +27,6 @@ public class InitPublic {
         LocalDate today = LocalDate.now();
         String strToday = today.toString();
         return strToday;
-//        Date ngayBDDate = DateFormat.parse(ngayBD.getText());
-//            Date ngayKTDate = DateFormat.parse(ngayKT.getText());
-//            GiaiDau gd = new GiaiDau();
-//            countResult = gd.themGiaiDau(maGiaiText, tenGiaiText, ngayBDDate, ngayKTDate);
     }
     
     public static Date getDateThoiGianThuc() throws ParseException{
@@ -39,9 +35,5 @@ public class InitPublic {
         String strToday = today.toString();
         Date dateToday = DateFormat.parse(strToday);
         return dateToday;
-//        Date ngayBDDate = DateFormat.parse(ngayBD.getText());
-//            Date ngayKTDate = DateFormat.parse(ngayKT.getText());
-//            GiaiDau gd = new GiaiDau();
-//            countResult = gd.themGiaiDau(maGiaiText, tenGiaiText, ngayBDDate, ngayKTDate);
     }
 }

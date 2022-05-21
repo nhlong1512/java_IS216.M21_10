@@ -4,6 +4,7 @@
  */
 package UITParking.BUS;
 
+import UITParking.DAO.HDMuaVeDAO;
 import UITParking.DAO.VeDAO;
 import UITParking.DTO.VeDTO;
 import java.util.ArrayList;
@@ -27,6 +28,11 @@ public class VeBUS {
 
     public int getNumbVe() {
         return list_Ve.size();
+    }
+    
+    public String getMaxMaVe() throws Exception{
+        veDAO = new VeDAO();
+        return veDAO.getMaxMaVe();
     }
 
     public ArrayList<VeDTO> getList_Ve() {

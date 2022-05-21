@@ -4,10 +4,14 @@
  */
 package UITParking.GUI;
 
+import UITParking.BUS.CTHDMuaVeBUS;
 import UITParking.BUS.HDMuaVeBUS;
 import UITParking.BUS.KhachHangBUS;
+import UITParking.BUS.VeBUS;
+import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
+import UITParking.DTO.VeDTO;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
@@ -34,6 +38,8 @@ public class GioHang extends javax.swing.JFrame {
     KhachHangBUS khachhangtbl = new KhachHangBUS();
     KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
     HDMuaVeBUS hdmuavetbl = new HDMuaVeBUS();
+    CTHDMuaVeBUS cthdmuavetbl = new CTHDMuaVeBUS();
+    VeBUS vetbl = new VeBUS();
 
     public GioHang() throws Exception {
         initComponents();
@@ -696,12 +702,53 @@ public class GioHang extends javax.swing.JFrame {
                 System.out.println("Số lượng vé của LVE03 - Vé tuần - 25000đ là: " + slVe25000Dong);
                 System.out.println("Số lượng vé của LVE01 - Vé tháng - 95000đ là: " + slVe95000Dong);
                 System.out.println("Mã khách hàng hiện tại là: " + kh.getStrMaKH());
-                
+
                 //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
                 //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
-                HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), pTongTienThanhToan);
+                String maHD = hdmuavetbl.getMaxMaHD();
+                HDMuaVeDTO hd = new HDMuaVeDTO(maHD, kh.getStrMaKH(), getDateThoiGianThuc(), pTongTienThanhToan);
                 hdmuavetbl.them(hd);
-                
+
+                /**
+                 * Tạo CTHD mới Nếu số lượng của loại vé > 0 thì tạo CTHD mới
+                 */
+                if (slVe2000Dong > 0) {
+                    CTHDMuaVeDTO cthd = new CTHDMuaVeDTO(maHD, "LVE02", slVe2000Dong);
+                    cthdmuavetbl.them(cthd);
+                    for(int i = 0; i < slVe2000Dong; i++){
+                        String maVe = vetbl.getMaxMaVe();
+                        VeDTO ve = new VeDTO(maVe, "LVE02", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        vetbl.them(ve);
+                    }
+                }
+                if (slVe3000Dong > 0) {
+                    CTHDMuaVeDTO cthd = new CTHDMuaVeDTO(maHD, "LVE01", slVe3000Dong);
+                    cthdmuavetbl.them(cthd);
+                    for(int i = 0; i < slVe3000Dong; i++){
+                        String maVe = vetbl.getMaxMaVe();
+                        VeDTO ve = new VeDTO(maVe, "LVE01", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        vetbl.them(ve);
+                    }
+                }
+                if (slVe25000Dong > 0) {
+                    CTHDMuaVeDTO cthd = new CTHDMuaVeDTO(maHD, "LVE03", slVe25000Dong);
+                    cthdmuavetbl.them(cthd);
+                    for(int i = 0; i < slVe25000Dong; i++){
+                        String maVe = vetbl.getMaxMaVe();
+                        VeDTO ve = new VeDTO(maVe, "LVE03", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        vetbl.them(ve);
+                    }
+                }
+                if (slVe95000Dong > 0) {
+                    CTHDMuaVeDTO cthd = new CTHDMuaVeDTO(maHD, "LVE04", slVe95000Dong);
+                    cthdmuavetbl.them(cthd);
+                    for(int i = 0; i < slVe95000Dong; i++){
+                        String maVe = vetbl.getMaxMaVe();
+                        VeDTO ve = new VeDTO(maVe, "LVE04", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        vetbl.them(ve);
+                    }
+                }
+
                 /**
                  * Cập nhật tổng tiền về 0 Cập nhật số lượng vé, xóa các loại vé
                  * còn trong giỏ hàng

@@ -4,31 +4,30 @@
  */
 package UITParking.DTO;
 
+import java.util.Date;
+
 /**
  *
  * @author ADMIN
  */
 public class HDMuaVeDTO {
-    private String strMaHD, strMaKH, strNgayHD;
+    private String strMaHD, strMaKH;
+    private Date dateNgayHD;
     private long longTongTriGia;
 
     public HDMuaVeDTO() {
     }
 
-    public HDMuaVeDTO(String strMaHD, String strMaKH, String dateNgayHD, long longTongTriGia) {
+    public HDMuaVeDTO(String strMaHD, String strMaKH, Date dateNgayHD, long longTongTriGia) {
         this.strMaHD = strMaHD;
         this.strMaKH = strMaKH;
-        this.strNgayHD = strNgayHD;
+        this.dateNgayHD = dateNgayHD;
         this.longTongTriGia = longTongTriGia;
-    }
-
-    public HDMuaVeDTO(String maxMaHD, String nD014, String maY22, String maY220, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String toString() {
-        return "HDMuaVeDTO{" + "strMaHD=" + strMaHD + ", strMaKH=" + strMaKH + ", strNgayHD=" + strNgayHD + ", longTongTriGia=" + longTongTriGia + '}';
+        return "HDMuaVeDTO{" + "strMaHD=" + strMaHD + ", strMaKH=" + strMaKH + ", dateNgayHD=" + dateNgayHD + ", longTongTriGia=" + longTongTriGia + '}';
     }
 
     public String getStrMaHD() {
@@ -47,12 +46,12 @@ public class HDMuaVeDTO {
         this.strMaKH = strMaKH;
     }
 
-    public String getStrNgayHD() {
-        return strNgayHD;
+    public Date getDateNgayHD() {
+        return dateNgayHD;
     }
 
-    public void setStrNgayHD(String strNgayHD) {
-        this.strNgayHD = strNgayHD;
+    public void setDateNgayHD(Date dateNgayHD) {
+        this.dateNgayHD = dateNgayHD;
     }
 
     public long getLongTongTriGia() {
@@ -62,6 +61,5 @@ public class HDMuaVeDTO {
     public void setLongTongTriGia(long longTongTriGia) {
         this.longTongTriGia = longTongTriGia;
     }
-    
-    
+
 }

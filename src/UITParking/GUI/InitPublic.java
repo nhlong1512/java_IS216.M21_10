@@ -26,8 +26,6 @@ public class InitPublic {
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         LocalDate today = LocalDate.now();
         String strToday = today.toString();
-        Date dateToday = DateFormat.parse(strToday);
-        strToday = dateToday.toString();
         return strToday;
 //        Date ngayBDDate = DateFormat.parse(ngayBD.getText());
 //            Date ngayKTDate = DateFormat.parse(ngayKT.getText());

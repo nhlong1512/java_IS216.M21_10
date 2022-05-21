@@ -118,15 +118,13 @@ public class main {
         
         
         System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
-        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", "12-MAY-22", 50000);
         
+        
+        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
         hdmuavetbl.them(hd);
+        System.out.println("Thoi gian thuc la: " + getThoiGianThuc());
         for (HDMuaVeDTO ve : list_HD) {
             System.out.println("Sau khi them----" + ve);
         }
-        hdmuavetbl.getInfor("HD017");
-        
-        
-        System.out.println(getDateThoiGianThuc());
     }
 }

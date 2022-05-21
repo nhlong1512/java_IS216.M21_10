@@ -6,6 +6,7 @@ package UITParking.DAO;
 
 import UITParking.DTO.HDMuaVeDTO;
 import static UITParking.GUI.InitPublic.getID;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class HDMuaVeDAO {
             HDMuaVeDTO HDMuaVe = new HDMuaVeDTO();
             HDMuaVe.setStrMaHD(result.getString("MaHD"));
             HDMuaVe.setStrMaKH(result.getString("MaKH"));
-            HDMuaVe.setStrNgayHD(result.getString("NgayHD"));
+            HDMuaVe.setDateNgayHD(result.getDate("NgayHD"));
             HDMuaVe.setLongTongTriGia(result.getLong("TongTriGia"));
             HDMuaVes.add(HDMuaVe);
         }
@@ -63,7 +64,7 @@ public class HDMuaVeDAO {
 
             pst.setString(1, HDMuaVe.getStrMaHD());
             pst.setString(2, HDMuaVe.getStrMaKH());
-            pst.setString(3, HDMuaVe.getStrNgayHD());
+            pst.setDate(3, new java.sql.Date(HDMuaVe.getDateNgayHD().getTime()));
             pst.setLong(4, HDMuaVe.getLongTongTriGia());
 
             return pst.executeUpdate() > 0;
@@ -101,7 +102,7 @@ public class HDMuaVeDAO {
 
             pst.setString(4, HDMuaVe.getStrMaHD());
             pst.setString(1, HDMuaVe.getStrMaKH());
-            pst.setString(2, HDMuaVe.getStrNgayHD());
+            pst.setDate(2, new java.sql.Date(HDMuaVe.getDateNgayHD().getTime()));
             pst.setLong(3, HDMuaVe.getLongTongTriGia());
 
             return pst.executeUpdate() > 0;

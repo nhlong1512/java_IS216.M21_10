@@ -8,6 +8,7 @@ import UITParking.BUS.HDMuaVeBUS;
 import UITParking.BUS.KhachHangBUS;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
+import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
 import static UITParking.GUI.MuaVe.slVe2000Dong;
@@ -698,9 +699,8 @@ public class GioHang extends javax.swing.JFrame {
                 
                 //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
                 //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
-                HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), kh.getStrMaKH(), "15-MAY-22", pTongTienThanhToan);
+                HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), pTongTienThanhToan);
                 hdmuavetbl.them(hd);
-                
                 
                 /**
                  * Cập nhật tổng tiền về 0 Cập nhật số lượng vé, xóa các loại vé

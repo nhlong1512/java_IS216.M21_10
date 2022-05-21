@@ -98,7 +98,7 @@ public class HDMuaVeBUS {
         for (HDMuaVeDTO taikhoan : list_HD) {
             if (taikhoan.getStrMaHD().equals(hd.getStrMaHD())) {
                 taikhoan.setStrMaKH(hd.getStrMaKH());
-                taikhoan.setStrNgayHD(hd.getStrNgayHD());
+                taikhoan.setDateNgayHD(new java.sql.Date(hd.getDateNgayHD().getTime()));
                 taikhoan.setLongTongTriGia(hd.getLongTongTriGia());
                 return true;
             }

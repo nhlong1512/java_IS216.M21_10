@@ -1,0 +1,28 @@
+-- Tao bang KhachVangLai
+create table KhachVangLai(
+    MaTheKVL varchar2(5),
+    MaXe varchar2(5),
+    
+    CONSTRAINT PK_MaTheKVL PRIMARY KEY (MaTheKVL)
+);
+
+-- FK CUA KhachVangLai
+ALTER TABLE KhachVangLai ADD CONSTRAINT FK_KhachVL_MaXe FOREIGN KEY(MaXe) REFERENCES Xe(MaXe);
+
+
+--Insert KhachVangLai Table
+
+INSERT INTO KhachVangLai VALUES('VL001', 'XE017');
+INSERT INTO KhachVangLai VALUES('VL002', 'XE018');
+INSERT INTO KhachVangLai VALUES('VL003', 'XE019');
+INSERT INTO KhachVangLai VALUES('VL004', 'XE020');
+INSERT INTO KhachVangLai VALUES('VL005', 'XE021');
+INSERT INTO KhachVangLai VALUES('VL006', 'XE022');
+INSERT INTO KhachVangLai VALUES('VL007', 'XE023');
+INSERT INTO KhachVangLai VALUES('VL008', 'XE024');
+INSERT INTO KhachVangLai VALUES('VL009', 'XE025');
+INSERT INTO KhachVangLai VALUES('VL010', 'XE026');
+INSERT INTO KhachVangLai VALUES('VL011', 'XE027');
+INSERT INTO KhachVangLai VALUES('VL012', 'XE028');
+INSERT INTO KhachVangLai VALUES('VL013', 'XE029');
+

@@ -119,6 +119,6 @@ public class HDMuaVeDAO {
             String maxhd = rs.getString("MaxHD");
             id = getID(maxhd);
         }
-        return id;
+        return "HD" + id;
     }
 }

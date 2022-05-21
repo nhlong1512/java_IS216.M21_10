@@ -13,6 +13,8 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,9 +33,9 @@ public class main {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-//        NguoiDungDTO nd022 = new NguoiDungDTO("ND022", "huulong22@gmail.com", "longlong", "Nguyen Huu Long", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
-//        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-//        System.out.println(nguoidungtbl.getNumbND());
+        NguoiDungDTO nd022 = new NguoiDungDTO("ND022", "huulong22@gmail.com", "longlong", "Nguyen Huu Long", "Nam", "19-MAR-02", "28 Nguyen Thi Ly phuong 2", "TP. Quang Tri", "0775504619", "Khach hang");
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        System.out.println(nguoidungtbl.getNumbND());
 //        nguoidungtbl.them(nd022);
 //        System.out.println(nguoidungtbl.getInfor("ND015"));
 //        NguoiDungDTO nd015 = new NguoiDungDTO("ND015", "20521083@gmail.uit.edu.vn", "ttna0000", "Tran Thi Ngoc Anh", "Nu", "19-MAR-02", "28 Nguyen Thi Ly, phuong 2", "TP. Quang Tri", "0985766322", "Khach hang");
@@ -116,5 +118,15 @@ public class main {
         
         
         System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
+        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", "12-MAY-22", 50000);
+        
+        hdmuavetbl.them(hd);
+        for (HDMuaVeDTO ve : list_HD) {
+            System.out.println("Sau khi them----" + ve);
+        }
+        hdmuavetbl.getInfor("HD017");
+        
+        
+        System.out.println(getDateThoiGianThuc());
     }
 }

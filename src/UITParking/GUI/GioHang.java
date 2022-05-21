@@ -6,7 +6,9 @@ package UITParking.GUI;
 
 import UITParking.BUS.HDMuaVeBUS;
 import UITParking.BUS.KhachHangBUS;
+import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
+import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
 import static UITParking.GUI.MuaVe.slVe2000Dong;
 import static UITParking.GUI.MuaVe.slVe25000Dong;
@@ -692,13 +694,14 @@ public class GioHang extends javax.swing.JFrame {
                 System.out.println("Số lượng vé của LVE02 - Vé lượt xe đạp - 2000đ là: " + slVe2000Dong);
                 System.out.println("Số lượng vé của LVE03 - Vé tuần - 25000đ là: " + slVe25000Dong);
                 System.out.println("Số lượng vé của LVE01 - Vé tháng - 95000đ là: " + slVe95000Dong);
+                System.out.println("Mã khách hàng hiện tại là: " + kh.getStrMaKH());
                 
                 //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
                 //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
-//            String maxMaND = "Select Max(MaND) as MaxND from NguoiDung";
-//            ps1 = conn.prepareStatement(maxMaND);
-//            rs1 = ps1.executeQuery();
-
+                HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), kh.getStrMaKH(), "15-MAY-22", pTongTienThanhToan);
+                hdmuavetbl.them(hd);
+                
+                
                 /**
                  * Cập nhật tổng tiền về 0 Cập nhật số lượng vé, xóa các loại vé
                  * còn trong giỏ hàng

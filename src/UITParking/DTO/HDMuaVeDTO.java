@@ -15,11 +15,15 @@ public class HDMuaVeDTO {
     public HDMuaVeDTO() {
     }
 
-    public HDMuaVeDTO(String strMaHD, String strMaKH, String strNgayHD, long longTongTriGia) {
+    public HDMuaVeDTO(String strMaHD, String strMaKH, String dateNgayHD, long longTongTriGia) {
         this.strMaHD = strMaHD;
         this.strMaKH = strMaKH;
         this.strNgayHD = strNgayHD;
         this.longTongTriGia = longTongTriGia;
+    }
+
+    public HDMuaVeDTO(String maxMaHD, String nD014, String maY22, String maY220, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

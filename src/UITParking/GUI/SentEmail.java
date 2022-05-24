@@ -100,6 +100,7 @@ public class SentEmail extends javax.swing.JFrame {
         btnGetOTP.setText("Get OTP");
         btnGetOTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGetOTP.setBorderPainted(false);
+        btnGetOTP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGetOTP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGetOTPMouseClicked(evt);

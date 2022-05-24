@@ -98,7 +98,8 @@ public class signup extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(12, 33, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), java.awt.Color.lightGray));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_20px.png"))); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-button.png"))); // NOI18N
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -219,6 +220,7 @@ public class signup extends javax.swing.JFrame {
         btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
         btnSignUp.setText("SIGN UP");
         btnSignUp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSignUpMouseEntered(evt);
@@ -241,7 +243,7 @@ public class signup extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addContainerGap())
         );
@@ -252,7 +254,7 @@ public class signup extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(9, 9, 9)
                 .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -374,7 +376,9 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        System.exit(0);
+        login _login = new login();
+        _login.show();
+        dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
 

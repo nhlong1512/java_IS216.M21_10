@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import static UITParking.GUI.SentEmail.pEmailSentEmail;
 import UITParking.GUI.login;
+import java.awt.Color;
+import java.awt.Toolkit;
 /**
  *
  * @author @author Pham Hoang Ngoc Anh
@@ -24,6 +26,7 @@ public class modifypassword extends javax.swing.JFrame {
      */
     public modifypassword() {
         initComponents();
+        setIconImage();
     }
 
     /**
@@ -46,9 +49,10 @@ public class modifypassword extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UIT Parking");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 54, 204), 4, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-jBK7d2d1Gw9qgN.png"))); // NOI18N
@@ -78,9 +82,16 @@ public class modifypassword extends javax.swing.JFrame {
         btnSubmitModifiedPassword.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitModifiedPassword.setText("Submit");
         btnSubmitModifiedPassword.setBorder(null);
+        btnSubmitModifiedPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSubmitModifiedPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSubmitModifiedPasswordMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubmitModifiedPasswordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubmitModifiedPasswordMouseExited(evt);
             }
         });
         btnSubmitModifiedPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -90,27 +101,19 @@ public class modifypassword extends javax.swing.JFrame {
         });
         jPanel1.add(btnSubmitModifiedPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 200, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Close_26px.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-button.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 30, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 811, 351));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitModifiedPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordActionPerformed
@@ -146,6 +149,15 @@ public class modifypassword extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_btnSubmitModifiedPasswordMouseClicked
+
+    private void btnSubmitModifiedPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordMouseEntered
+       btnSubmitModifiedPassword.setBackground(new Color(80, 60, 244));
+
+    }//GEN-LAST:event_btnSubmitModifiedPasswordMouseEntered
+
+    private void btnSubmitModifiedPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordMouseExited
+        btnSubmitModifiedPassword.setBackground(new Color(12, 33, 250));
+    }//GEN-LAST:event_btnSubmitModifiedPasswordMouseExited
 
     /**
      * @param args the command line arguments
@@ -195,4 +207,9 @@ public class modifypassword extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtConfirmPasswordModified;
     private javax.swing.JPasswordField txtNewPasswordModified;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+
+    }
 }

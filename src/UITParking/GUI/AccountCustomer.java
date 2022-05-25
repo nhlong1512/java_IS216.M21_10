@@ -6,10 +6,12 @@ package UITParking.GUI;
 
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.InitPublic.getConvertYYYYMMDD;
 import static UITParking.GUI.login.pHoTen;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -50,6 +52,10 @@ public class AccountCustomer extends javax.swing.JFrame {
                 cbbGioiTinh.setSelectedItem("Nam");
             }
         }
+        if (nd.getDateNgSinh() != null) {
+            jdcNgaySinh.setDate(nd.getDateNgSinh());
+        }
+
     }
 
     /**
@@ -239,6 +245,8 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Số điện thoại");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 90, -1));
+
+        jdcNgaySinh.setDateFormatString("yyyy-MMM-dd");
         jPanel1.add(jdcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 240, 30));
 
         btnHuyAccount.setBackground(new java.awt.Color(51, 51, 255));
@@ -392,17 +400,15 @@ public class AccountCustomer extends javax.swing.JFrame {
         if (cbbGioiTinh.getSelectedItem().toString().equals("Nam")) {
             nd.setStrGioiTinh("Nam");
         }
-        if (nd.getDateNgSinh() == null) {
-            System.out.println("Long bi dien");
-        } else {
-            System.out.println("Long k bi dien");
+
+        if (jdcNgaySinh.getDate() != null) {
+            nd.setDateNgSinh(jdcNgaySinh.getDate());
         }
 
         System.out.println(nd);
 
         try {
             if (nd.getDateNgSinh() == null) {
-                System.out.println("Cap nhat k co ngay sinh");
                 nguoidungtbl.suaKhongCoNgaySinh(nd);
             } else {
                 nguoidungtbl.sua(nd);

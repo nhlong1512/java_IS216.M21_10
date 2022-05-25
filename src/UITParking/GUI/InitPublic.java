@@ -36,4 +36,15 @@ public class InitPublic {
         Date dateToday = DateFormat.parse(strToday);
         return dateToday;
     }
+    
+    public static Date getConvertYYYYMMDD(String data) throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date rs = DateFormat.parse(data);
+        return rs;
+    }
+    public static String getStringConvertYYYYMMDD(String data) throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date rs = DateFormat.parse(data);
+        return rs.toString();
+    }
 }

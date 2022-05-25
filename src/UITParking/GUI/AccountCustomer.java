@@ -4,9 +4,16 @@
  */
 package UITParking.GUI;
 
+import UITParking.BUS.NguoiDungBUS;
+import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.login.pHoTen;
+import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +24,32 @@ public class AccountCustomer extends javax.swing.JFrame {
     /**
      * Creates new form AccountCustomer
      */
-    public AccountCustomer() {
+    NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+    NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
+
+    public AccountCustomer() throws Exception {
         initComponents();
         setIconImage();
-        
-       
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
+        setAccount();
+    }
+
+    public void setAccount() {
+        txtHoTenAccount.setText(nd.getStrHoTen());
+        tfdHoTenAccount.setText(nd.getStrHoTen());
+        tfdEmailAccount.setText(nd.getStrEmail());
+        tfdDiachiAccount.setText(nd.getStrDiaChi());
+        tfdQueQuanAccount.setText(nd.getStrQueQuan());
+        tfdSDTAccount.setText(nd.getStrSDT());
+        if (nd.getStrGioiTinh() != null) {
+            if (nd.getStrGioiTinh().equals("Nu")) {
+                cbbGioiTinh.setSelectedItem("Nữ");
+            }
+            if (nd.getStrGioiTinh().equals("Nam")) {
+                cbbGioiTinh.setSelectedItem("Nam");
+            }
+        }
     }
 
     /**
@@ -36,26 +64,26 @@ public class AccountCustomer extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        labelHoTen = new javax.swing.JLabel();
-        bthThoat = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
+        txtHoTenAccount = new javax.swing.JLabel();
+        btnThoatAccount = new javax.swing.JButton();
+        btnHomeAccount = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfdQueQuanAccount = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tfdHoTenAccount = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tfdEmailAccount = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tfdSDTAccount = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tfdDiachiAccount = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbGioiTinh = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        btnHuy = new javax.swing.JButton();
-        btnCapNhat = new javax.swing.JButton();
+        jdcNgaySinh = new com.toedter.calendar.JDateChooser();
+        btnHuyAccount = new javax.swing.JButton();
+        btnCapNhatAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -68,24 +96,34 @@ public class AccountCustomer extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_male_user_120px.png"))); // NOI18N
 
-        labelHoTen.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
-        labelHoTen.setForeground(new java.awt.Color(255, 255, 255));
-        labelHoTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelHoTen.setText("Name");
+        txtHoTenAccount.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
+        txtHoTenAccount.setForeground(new java.awt.Color(255, 255, 255));
+        txtHoTenAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtHoTenAccount.setText("Name");
 
-        bthThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
-        bthThoat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bthThoat.addActionListener(new java.awt.event.ActionListener() {
+        btnThoatAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        btnThoatAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThoatAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThoatAccountMouseClicked(evt);
+            }
+        });
+        btnThoatAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bthThoatActionPerformed(evt);
+                btnThoatAccountActionPerformed(evt);
             }
         });
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
-        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
+        btnHomeAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
+        btnHomeAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHomeAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHomeAccountMouseClicked(evt);
+            }
+        });
+        btnHomeAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
+                btnHomeAccountActionPerformed(evt);
             }
         });
 
@@ -93,16 +131,16 @@ public class AccountCustomer extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtHoTenAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(64, 64, 64))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(bthThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThoatAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHomeAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -111,11 +149,11 @@ public class AccountCustomer extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtHoTenAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bthThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHomeAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThoatAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -129,119 +167,125 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel4.setText("Quê quán");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 70, -1));
 
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfdQueQuanAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdQueQuanAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfdQueQuanAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 240, 30));
+        jPanel1.add(tfdQueQuanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Họ tên");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 50, -1));
 
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tfdHoTenAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdHoTenAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tfdHoTenAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 240, 30));
+        jPanel1.add(tfdHoTenAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Email");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 50, -1));
 
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tfdEmailAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdEmailAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                tfdEmailAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 240, 30));
+        jPanel1.add(tfdEmailAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 240, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Ngày sinh");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 90, -1));
 
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        tfdSDTAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdSDTAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                tfdSDTAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 240, 30));
+        jPanel1.add(tfdSDTAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 240, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Địa chỉ");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 60, -1));
 
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        tfdDiachiAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdDiachiAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                tfdDiachiAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 240, 30));
+        jPanel1.add(tfdDiachiAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 240, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Giới tính");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 90, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cbbGioiTinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbbGioiTinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbbGioiTinhActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 240, 30));
+        jPanel1.add(cbbGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 240, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Số điện thoại");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 90, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 240, 30));
+        jPanel1.add(jdcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 240, 30));
 
-        btnHuy.setBackground(new java.awt.Color(51, 51, 255));
-        btnHuy.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
-        btnHuy.setForeground(new java.awt.Color(255, 255, 255));
-        btnHuy.setText("Hủy");
-        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnHuyAccount.setBackground(new java.awt.Color(51, 51, 255));
+        btnHuyAccount.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnHuyAccount.setForeground(new java.awt.Color(255, 255, 255));
+        btnHuyAccount.setText("Hủy");
+        btnHuyAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHuyAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHuyAccountMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHuyMouseEntered(evt);
+                btnHuyAccountMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHuyMouseExited(evt);
+                btnHuyAccountMouseExited(evt);
             }
         });
-        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+        btnHuyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuyActionPerformed(evt);
+                btnHuyAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 110, 40));
+        jPanel1.add(btnHuyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 110, 40));
 
-        btnCapNhat.setBackground(new java.awt.Color(51, 51, 255));
-        btnCapNhat.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
-        btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
-        btnCapNhat.setText("Cập nhật");
-        btnCapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCapNhatAccount.setBackground(new java.awt.Color(51, 51, 255));
+        btnCapNhatAccount.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnCapNhatAccount.setForeground(new java.awt.Color(255, 255, 255));
+        btnCapNhatAccount.setText("Cập nhật");
+        btnCapNhatAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCapNhatAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCapNhatAccountMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCapNhatMouseEntered(evt);
+                btnCapNhatAccountMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCapNhatMouseExited(evt);
+                btnCapNhatAccountMouseExited(evt);
             }
         });
-        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+        btnCapNhatAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCapNhatActionPerformed(evt);
+                btnCapNhatAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 110, 40));
+        jPanel1.add(btnCapNhatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 110, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 500));
 
@@ -249,63 +293,143 @@ public class AccountCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bthThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthThoatActionPerformed
+    private void btnThoatAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bthThoatActionPerformed
+    }//GEN-LAST:event_btnThoatAccountActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfdQueQuanAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdQueQuanAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfdQueQuanAccountActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tfdHoTenAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdHoTenAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tfdHoTenAccountActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tfdEmailAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdEmailAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tfdEmailAccountActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void tfdSDTAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdSDTAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_tfdSDTAccountActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void tfdDiachiAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdDiachiAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_tfdDiachiAccountActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGioiTinhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbbGioiTinhActionPerformed
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    private void btnHomeAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHomeActionPerformed
+    }//GEN-LAST:event_btnHomeAccountActionPerformed
 
-    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+    private void btnHuyAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHuyActionPerformed
+    }//GEN-LAST:event_btnHuyAccountActionPerformed
 
-    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+    private void btnCapNhatAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCapNhatActionPerformed
+    }//GEN-LAST:event_btnCapNhatAccountActionPerformed
 
-    private void btnCapNhatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseEntered
-        btnCapNhat.setBackground(new Color(80, 60, 244));
+    private void btnCapNhatAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseEntered
+        btnCapNhatAccount.setBackground(new Color(80, 60, 244));
 
-    }//GEN-LAST:event_btnCapNhatMouseEntered
+    }//GEN-LAST:event_btnCapNhatAccountMouseEntered
 
-    private void btnCapNhatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseExited
-        btnCapNhat.setBackground(new Color(12, 33, 250));
+    private void btnCapNhatAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseExited
+        btnCapNhatAccount.setBackground(new Color(12, 33, 250));
 
-    }//GEN-LAST:event_btnCapNhatMouseExited
+    }//GEN-LAST:event_btnCapNhatAccountMouseExited
 
-    private void btnHuyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseEntered
-        btnHuy.setBackground(new Color(80, 60, 244));
-    }//GEN-LAST:event_btnHuyMouseEntered
+    private void btnHuyAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyAccountMouseEntered
+        btnHuyAccount.setBackground(new Color(80, 60, 244));
+    }//GEN-LAST:event_btnHuyAccountMouseEntered
 
-    private void btnHuyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseExited
-        btnHuy.setBackground(new Color(12, 33, 250));
-    }//GEN-LAST:event_btnHuyMouseExited
+    private void btnHuyAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyAccountMouseExited
+        btnHuyAccount.setBackground(new Color(12, 33, 250));
+    }//GEN-LAST:event_btnHuyAccountMouseExited
+
+    private void btnThoatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatAccountMouseClicked
+        // TODO add your handling code here:
+        login _login = new login();
+        _login.show();
+        dispose();
+    }//GEN-LAST:event_btnThoatAccountMouseClicked
+
+    //event click button home
+    private void btnHomeAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeAccountMouseClicked
+        // TODO add your handling code here:
+        Homepage _homepage = null;
+        try {
+            _homepage = new Homepage();
+        } catch (Exception ex) {
+            Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepage.show();
+        dispose();
+    }//GEN-LAST:event_btnHomeAccountMouseClicked
+
+    //event click CapNhatAccount
+    private void btnCapNhatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseClicked
+        // TODO add your handling code here:
+        System.out.println(txtHoTenAccount.getText());
+        System.out.println(tfdEmailAccount.getText());
+        System.out.println(tfdDiachiAccount.getText());
+        System.out.println(tfdQueQuanAccount.getText());
+        System.out.println(tfdSDTAccount.getText());
+        System.out.println(cbbGioiTinh.getSelectedItem().toString());
+
+        nd.setStrHoTen(tfdHoTenAccount.getText());
+        nd.setStrEmail(tfdEmailAccount.getText());
+        nd.setStrDiaChi(tfdDiachiAccount.getText());
+        nd.setStrQueQuan(tfdQueQuanAccount.getText());
+        nd.setStrSDT(tfdSDTAccount.getText());
+        if (cbbGioiTinh.getSelectedItem().toString().equals("Nữ")) {
+            nd.setStrGioiTinh("Nu");
+        }
+        if (cbbGioiTinh.getSelectedItem().toString().equals("Nam")) {
+            nd.setStrGioiTinh("Nam");
+        }
+        if (nd.getDateNgSinh() == null) {
+            System.out.println("Long bi dien");
+        } else {
+            System.out.println("Long k bi dien");
+        }
+
+        System.out.println(nd);
+
+        try {
+            if (nd.getDateNgSinh() == null) {
+                System.out.println("Cap nhat k co ngay sinh");
+                nguoidungtbl.suaKhongCoNgaySinh(nd);
+            } else {
+                nguoidungtbl.sua(nd);
+            }
+            JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+            //Khi cập nhật thành công, giao diện sẽ trở về home
+//            Homepage _homepage = new Homepage();
+//            _homepage.show();
+//            dispose();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Cập nhật thất bại");
+        }
+
+
+    }//GEN-LAST:event_btnCapNhatAccountMouseClicked
+
+    //event click button Huy Account
+    private void btnHuyAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyAccountMouseClicked
+        // TODO add your handling code here:
+        /**
+         * Khi click vào button hủy thì sẽ tự reset về các giá trị ban đầu trong
+         * dtb tức là, nó sẽ render ra giao diện ban đầu Và setAccount() sẽ là
+         * hàm đóng vai trò chức năng đó.
+         */
+//        setAccount();
+    }//GEN-LAST:event_btnHuyAccountMouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,18 +461,21 @@ public class AccountCustomer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountCustomer().setVisible(true);
+                try {
+                    new AccountCustomer().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bthThoat;
-    private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnHuy;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnCapNhatAccount;
+    private javax.swing.JButton btnHomeAccount;
+    private javax.swing.JButton btnHuyAccount;
+    private javax.swing.JButton btnThoatAccount;
+    private javax.swing.JComboBox<String> cbbGioiTinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -360,12 +487,13 @@ public class AccountCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JLabel labelHoTen;
+    private com.toedter.calendar.JDateChooser jdcNgaySinh;
+    private javax.swing.JTextField tfdDiachiAccount;
+    private javax.swing.JTextField tfdEmailAccount;
+    private javax.swing.JTextField tfdHoTenAccount;
+    private javax.swing.JTextField tfdQueQuanAccount;
+    private javax.swing.JTextField tfdSDTAccount;
+    private javax.swing.JLabel txtHoTenAccount;
     // End of variables declaration//GEN-END:variables
 
     private void setIconImage() {

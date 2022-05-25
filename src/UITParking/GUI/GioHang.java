@@ -63,7 +63,6 @@ public class GioHang extends javax.swing.JFrame {
         setTongTienThanhToan();
         //Set tổng tiền từng loại vé
         setTongTienText();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 

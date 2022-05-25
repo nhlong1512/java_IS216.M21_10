@@ -95,7 +95,29 @@ public class NguoiDungBUS {
                 taikhoan.setStrMatKhau(nd.getStrMatKhau());
                 taikhoan.setStrHoTen(nd.getStrHoTen());
                 taikhoan.setStrGioiTinh(nd.getStrGioiTinh());
-                taikhoan.setStrNgSinh(nd.getStrNgSinh());
+                taikhoan.setDateNgSinh(new java.sql.Date(nd.getDateNgSinh().getTime()));
+                taikhoan.setStrDiaChi(nd.getStrDiaChi());
+                taikhoan.setStrQueQuan(nd.getStrQueQuan());
+                taikhoan.setStrSDT(nd.getStrSDT());
+                taikhoan.setStrVaiTro(nd.getStrVaiTro());
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    
+    public Boolean suaKhongCoNgaySinh(NguoiDungDTO nd) throws Exception {
+        ndDAO.sua(nd);
+
+        // duyệt từng phẩn tử
+        for (NguoiDungDTO taikhoan : list_ND) {
+            if (taikhoan.getStrMaND().equals(nd.getStrMaND())) {
+                taikhoan.setStrEmail(nd.getStrEmail());
+                taikhoan.setStrMatKhau(nd.getStrMatKhau());
+                taikhoan.setStrHoTen(nd.getStrHoTen());
+                taikhoan.setStrGioiTinh(nd.getStrGioiTinh());
                 taikhoan.setStrDiaChi(nd.getStrDiaChi());
                 taikhoan.setStrQueQuan(nd.getStrQueQuan());
                 taikhoan.setStrSDT(nd.getStrSDT());

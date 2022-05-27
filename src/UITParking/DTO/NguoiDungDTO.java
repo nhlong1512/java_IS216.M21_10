@@ -4,37 +4,31 @@
  */
 package UITParking.DTO;
 
+import java.util.Date;
+
 /**
  *
  * @author Tran Thi Ngoc Anh
  */
 public class NguoiDungDTO {
-    private String strMaND, strEmail, strMatKhau, strHoTen, strGioiTinh, strNgSinh,
+    private String strMaND, strEmail, strMatKhau, strHoTen, strGioiTinh,
             strDiaChi, strQueQuan, strSDT, strVaiTro;
-
+    private Date dateNgSinh;
+    
     public NguoiDungDTO() {
     }
 
-    public NguoiDungDTO(String strMaND, String strEmail, String strMatKhau, String strHoTen, String strGioiTinh, String strNgSinh, String strDiaChi, String strQueQuan, String strSDT, String strVaiTro) {
+    public NguoiDungDTO(String strMaND, String strEmail, String strMatKhau, String strHoTen, String strGioiTinh, String strDiaChi, String strQueQuan, String strSDT, String strVaiTro, Date dateNgSinh) {
         this.strMaND = strMaND;
         this.strEmail = strEmail;
         this.strMatKhau = strMatKhau;
         this.strHoTen = strHoTen;
         this.strGioiTinh = strGioiTinh;
-        this.strNgSinh = strNgSinh;
         this.strDiaChi = strDiaChi;
         this.strQueQuan = strQueQuan;
         this.strSDT = strSDT;
         this.strVaiTro = strVaiTro;
-    }
-
-    @Override
-    public String toString() {
-        return "NguoiDungDTO{" + "strMaND=" + strMaND + ", strEmail=" 
-                + strEmail + ", strMatKhau=" + strMatKhau + ", strHoTen=" 
-                + strHoTen + ", strGioiTinh=" + strGioiTinh + ", strNgSinh=" 
-                + strNgSinh + ", strDiaChi=" + strDiaChi + ", strQueQuan=" 
-                + strQueQuan + ", strSDT=" + strSDT + ", strVaiTro=" + strVaiTro + '}';
+        this.dateNgSinh = dateNgSinh;
     }
 
     public String getStrMaND() {
@@ -77,14 +71,6 @@ public class NguoiDungDTO {
         this.strGioiTinh = strGioiTinh;
     }
 
-    public String getStrNgSinh() {
-        return strNgSinh;
-    }
-
-    public void setStrNgSinh(String strNgSinh) {
-        this.strNgSinh = strNgSinh;
-    }
-
     public String getStrDiaChi() {
         return strDiaChi;
     }
@@ -115,6 +101,20 @@ public class NguoiDungDTO {
 
     public void setStrVaiTro(String strVaiTro) {
         this.strVaiTro = strVaiTro;
-    }  
+    }
+
+    public Date getDateNgSinh() {
+        return dateNgSinh;
+    }
+
+    public void setDateNgSinh(Date dateNgSinh) {
+        this.dateNgSinh = dateNgSinh;
+    }
+
+    @Override
+    public String toString() {
+        return "NguoiDungDTO{" + "strMaND=" + strMaND + ", strEmail=" + strEmail + ", strMatKhau=" + strMatKhau + ", strHoTen=" + strHoTen + ", strGioiTinh=" + strGioiTinh + ", strDiaChi=" + strDiaChi + ", strQueQuan=" + strQueQuan + ", strSDT=" + strSDT + ", strVaiTro=" + strVaiTro + ", dateNgSinh=" + dateNgSinh + '}';
+    }
+
     
 }

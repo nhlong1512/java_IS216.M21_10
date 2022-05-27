@@ -50,6 +50,7 @@ public class NapTien extends javax.swing.JFrame {
         btn10000Dong = new javax.swing.JToggleButton();
         btn20000Dong = new javax.swing.JToggleButton();
         btn50000Dong = new javax.swing.JToggleButton();
+        btnBackNapTien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -58,7 +59,7 @@ public class NapTien extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         jLabel1.setText("Số tiền cần nạp");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 310, 30));
 
@@ -89,12 +90,12 @@ public class NapTien extends javax.swing.JFrame {
                 btnNapTienActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 332, 41));
+        jPanel1.add(btnNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 220, 41));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel2.setBackground(new java.awt.Color(41, 58, 128));
 
-        jLabel2.setFont(new java.awt.Font("Cooper", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Cooper", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(243, 148, 34));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nạp tiền vào ví");
 
@@ -174,7 +175,16 @@ public class NapTien extends javax.swing.JFrame {
         });
         jPanel1.add(btn50000Dong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 332, 430));
+        btnBackNapTien.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnBackNapTien.setText("Quay lại");
+        btnBackNapTien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackNapTienMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnBackNapTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 100, 25));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 332, 460));
 
         pack();
         setLocationRelativeTo(null);
@@ -253,6 +263,18 @@ public class NapTien extends javax.swing.JFrame {
         txtfldNapTien.setText("100000");
     }//GEN-LAST:event_btn100000DongMouseClicked
 
+    private void btnBackNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackNapTienMouseClicked
+        // TODO add your handling code here:
+        Homepage _homepage = null;
+        try {
+            _homepage = new Homepage();
+        } catch (Exception ex) {
+            Logger.getLogger(NapTien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepage.show();
+        dispose();
+    }//GEN-LAST:event_btnBackNapTienMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +319,7 @@ public class NapTien extends javax.swing.JFrame {
     private javax.swing.JToggleButton btn10000Dong;
     private javax.swing.JToggleButton btn20000Dong;
     private javax.swing.JToggleButton btn50000Dong;
+    private javax.swing.JButton btnBackNapTien;
     private javax.swing.JButton btnNapTien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

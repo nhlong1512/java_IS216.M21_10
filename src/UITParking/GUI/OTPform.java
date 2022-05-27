@@ -94,6 +94,7 @@ public class OTPform extends javax.swing.JFrame {
         btnVerifyOTP.setText("Verify OTP");
         btnVerifyOTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVerifyOTP.setBorderPainted(false);
+        btnVerifyOTP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVerifyOTP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVerifyOTPMouseClicked(evt);

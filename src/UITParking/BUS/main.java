@@ -103,6 +103,7 @@ public class main {
 //            System.out.println("New----" + ve);
 //        }
 //        
+<<<<<<< HEAD
         KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
         System.out.println(khachvanglaitbl.getNumbKVL());
         ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
@@ -168,5 +169,46 @@ NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         System.out.println(xe);
         System.out.println(xe.getStrTenLoaiXe());
         System.out.println(xe.getStrBienSoXe());
+=======
+//        KhachVangLaiBUS khachvanglaitbl = new KhachVangLaiBUS();
+//        System.out.println(khachvanglaitbl.getNumbKVL());
+//        ArrayList<KhachVangLaiDTO> list_KVL = khachvanglaitbl.getlist_KVL();
+//        for (KhachVangLaiDTO ve : list_KVL) {
+//            System.out.println("New----" + ve);
+//        }
+//
+//        XeBUS xetbl = new XeBUS();
+//        System.out.println(xetbl.getNumbXE());
+//        ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
+//        for (XeDTO ve : list_XE) {
+//            System.out.println("New----" + ve);
+//        }
+//        
+//        
+//        System.out.println("Mã hóa đơn tiếp theo là " + hdmuavetbl.getMaxMaHD());
+//        
+//        
+////        HDMuaVeDTO hd = new HDMuaVeDTO(hdmuavetbl.getMaxMaHD(), "ND014", getDateThoiGianThuc(), 50000);
+////        hdmuavetbl.them(hd);
+//        System.out.println("Thoi gian thuc la: " + getThoiGianThuc());
+//        for (HDMuaVeDTO ve : list_HD) {
+//            System.out.println("Sau khi them----" + ve);
+//        }
+//        
+//        CTHDMuaVeDTO cthd = new CTHDMuaVeDTO("HD015", "LVE02", 5);
+//        cthdmuavetbl.them(cthd);
+//        for (CTHDMuaVeDTO ve : list_CTHD) {
+//            System.out.println("Sau khi them----" + ve);
+//        }
+//        
+//        System.out.println("Mã vé tiếp theo là " + vetbl.getMaxMaVe());
+        
+        KhachHangBUS list_KH = new KhachHangBUS();
+        ArrayList<KhachHangDTO> listItem = list_KH.getList_KH();
+        for(KhachHangDTO t : listItem){
+            System.out.println(t);
+        }
+        System.out.println(list_KH.getNumbKH());
+>>>>>>> cd30604382075de54c56a8af89ef2efcd235fd93
     }
 }

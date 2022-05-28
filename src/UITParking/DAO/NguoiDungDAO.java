@@ -178,7 +178,6 @@ public class NguoiDungDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
-<<<<<<< HEAD
 
     public Boolean suaManagement(NguoiDungDTO nd) throws Exception {
         String sql = "UPDATE NGUOIDUNG SET Email = ?, HoTen = ?, "
@@ -203,9 +202,6 @@ public class NguoiDungDAO {
         }
     }
 
-=======
-    
->>>>>>> cd30604382075de54c56a8af89ef2efcd235fd93
     public Boolean suaKhongCoNgaySinh(NguoiDungDTO nd) throws Exception {
         String sql = "UPDATE NGUOIDUNG SET Email = ?, MatKhau = ?, HoTen = ?, "
                 + "GIOITINH = ?, DIACHI = ?, QUEQUAN = ?, SDT = ?, "

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package UITParking.GUI;
+package UITParking.TEST2;
 
-import UITParking.DTO.DanhMucBean;
+import UITParking.TEST2.DanhMucBean;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.List;
@@ -33,8 +33,8 @@ public class ChuyenManHinhController {
 
     public void setView(JPanel jpnItem, JLabel jlbItem) throws Exception {
         kindSelected = "QLKH";
-        jpnItem.setBackground(Color.red);
-        jlbItem.setBackground(Color.red);
+        jpnItem.setBackground(new Color(153,255,204));
+        jlbItem.setBackground(new Color(153,255,204));
 
         root.removeAll();
         root.setLayout(new BorderLayout());
@@ -92,6 +92,10 @@ public class ChuyenManHinhController {
                 case "BCTK":
                     node = new BCTKJPanel();
                     break;
+                case "QLNV": 
+                    node = new QLNVJPanel();
+                case "QLKVL":
+                    node = new QLKVLJPanel();
                 default:
                     break;
             }
@@ -106,8 +110,8 @@ public class ChuyenManHinhController {
         @Override
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
-            jpnItem.setBackground(Color.red);
-            jlbItem.setBackground(Color.red);
+            jpnItem.setBackground(new Color(153,255,204));
+            jlbItem.setBackground(new Color(153,255,204));
 
         }
 
@@ -117,15 +121,15 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(Color.red);
-            jlbItem.setBackground(Color.red);
+            jpnItem.setBackground(new Color(153,255,204));
+            jlbItem.setBackground(new Color(153,255,204));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             if (!kindSelected.equalsIgnoreCase(kind)) {
-                jpnItem.setBackground(new Color(0, 153, 102));
-                jlbItem.setBackground(new Color(0, 153, 102));
+                jpnItem.setBackground(new Color(240,240,240));
+                jlbItem.setBackground(new Color(240,240,240));
 
             }
         }
@@ -133,11 +137,11 @@ public class ChuyenManHinhController {
         private void setChangeBackground(String kind) {
             for (DanhMucBean item : listItem) {
                 if (item.getKind().equalsIgnoreCase(kind)) {
-                    item.getJpn().setBackground(Color.red);
-                    item.getJlb().setBackground(Color.red);
+                    item.getJpn().setBackground(new Color(153,255,204));
+                    item.getJlb().setBackground(new Color(153,255,204));
                 } else {
-                    item.getJpn().setBackground(new Color(0, 153, 102));
-                    item.getJlb().setBackground(new Color(0, 153, 102));
+                    item.getJpn().setBackground(new Color(240,240,240));
+                    item.getJlb().setBackground(new Color(240,240,240));
 
                 }
             }

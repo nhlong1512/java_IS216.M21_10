@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.GUI;
+package UITParking.TEST2;
 
 /**
  *
  * @author ADMIN
  */
-public class QLHDJPanel extends javax.swing.JPanel {
+public class BCTKJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form QLHDJPanel
+     * Creates new form BCTKJPanel
      */
-    public QLHDJPanel() {
+    public BCTKJPanel() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -38,7 +38,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

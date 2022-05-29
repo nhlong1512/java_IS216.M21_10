@@ -85,15 +85,21 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tfdEmailAccount = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tfdSDTAccount = new javax.swing.JTextField();
+        tfBienSoXe = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfdDiachiAccount = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         cbbGioiTinh = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        labelBienSoXe = new javax.swing.JLabel();
         jdcNgaySinh = new com.toedter.calendar.JDateChooser();
         btnHuyAccount = new javax.swing.JButton();
         btnCapNhatAccount = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        tfdSDTAccount = new javax.swing.JTextField();
+        labelSoDu = new javax.swing.JLabel();
+        tfSoDu = new javax.swing.JTextField();
+        labelLoaiXe = new javax.swing.JLabel();
+        tfLoaiXe = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -143,15 +149,16 @@ public class AccountCustomer extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtHoTenAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(64, 64, 64))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnThoatAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnHomeAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnThoatAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHomeAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,14 +167,14 @@ public class AccountCustomer extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtHoTenAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHomeAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThoatAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                .addGap(27, 27, 27))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 560));
 
         jLabel3.setFont(new java.awt.Font("Cooper", 1, 36)); // NOI18N
         jLabel3.setText("ACCOUNT");
@@ -213,13 +220,13 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel7.setText("Ngày sinh");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 90, -1));
 
-        tfdSDTAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tfdSDTAccount.addActionListener(new java.awt.event.ActionListener() {
+        tfBienSoXe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfBienSoXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfdSDTAccountActionPerformed(evt);
+                tfBienSoXeActionPerformed(evt);
             }
         });
-        jPanel1.add(tfdSDTAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 240, 30));
+        jPanel1.add(tfBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 240, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Địa chỉ");
@@ -246,9 +253,9 @@ public class AccountCustomer extends javax.swing.JFrame {
         });
         jPanel1.add(cbbGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 240, 30));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Số điện thoại");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 90, -1));
+        labelBienSoXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelBienSoXe.setText("Biển số xe");
+        jPanel1.add(labelBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 90, -1));
 
         jdcNgaySinh.setDateFormatString("yyyy-MMM-dd");
         jPanel1.add(jdcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 240, 30));
@@ -274,7 +281,7 @@ public class AccountCustomer extends javax.swing.JFrame {
                 btnHuyAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHuyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 110, 40));
+        jPanel1.add(btnHuyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 110, 40));
 
         btnCapNhatAccount.setBackground(new java.awt.Color(51, 51, 255));
         btnCapNhatAccount.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
@@ -297,9 +304,45 @@ public class AccountCustomer extends javax.swing.JFrame {
                 btnCapNhatAccountActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCapNhatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 110, 40));
+        jPanel1.add(btnCapNhatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 110, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 500));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Số điện thoại");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 90, -1));
+
+        tfdSDTAccount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdSDTAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfdSDTAccountActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfdSDTAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 240, 30));
+
+        labelSoDu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelSoDu.setText("Số dư");
+        jPanel1.add(labelSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 90, -1));
+
+        tfSoDu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfSoDu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSoDuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 240, 30));
+
+        labelLoaiXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelLoaiXe.setText("Loại xe");
+        jPanel1.add(labelLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 90, -1));
+
+        tfLoaiXe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfLoaiXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLoaiXeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 240, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 560));
 
         pack();
         setLocationRelativeTo(null);
@@ -321,9 +364,9 @@ public class AccountCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfdEmailAccountActionPerformed
 
-    private void tfdSDTAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdSDTAccountActionPerformed
+    private void tfBienSoXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBienSoXeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfdSDTAccountActionPerformed
+    }//GEN-LAST:event_tfBienSoXeActionPerformed
 
     private void tfdDiachiAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdDiachiAccountActionPerformed
         // TODO add your handling code here:
@@ -441,6 +484,18 @@ public class AccountCustomer extends javax.swing.JFrame {
 //        setAccount();
     }//GEN-LAST:event_btnHuyAccountMouseClicked
 
+    private void tfdSDTAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdSDTAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfdSDTAccountActionPerformed
+
+    private void tfSoDuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSoDuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSoDuActionPerformed
+
+    private void tfLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoaiXeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLoaiXeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -487,7 +542,7 @@ public class AccountCustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnThoatAccount;
     private javax.swing.JComboBox<String> cbbGioiTinh;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -498,6 +553,12 @@ public class AccountCustomer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser jdcNgaySinh;
+    private javax.swing.JLabel labelBienSoXe;
+    private javax.swing.JLabel labelLoaiXe;
+    private javax.swing.JLabel labelSoDu;
+    private javax.swing.JTextField tfBienSoXe;
+    private javax.swing.JTextField tfLoaiXe;
+    private javax.swing.JTextField tfSoDu;
     private javax.swing.JTextField tfdDiachiAccount;
     private javax.swing.JTextField tfdEmailAccount;
     private javax.swing.JTextField tfdHoTenAccount;

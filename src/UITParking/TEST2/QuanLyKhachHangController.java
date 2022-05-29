@@ -6,6 +6,7 @@ package UITParking.TEST2;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.DTO.KhachHangDTO;
+import UITParking.GUI.ClassTableModel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;

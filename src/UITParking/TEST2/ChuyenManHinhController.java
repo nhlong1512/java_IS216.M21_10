@@ -33,8 +33,8 @@ public class ChuyenManHinhController {
 
     public void setView(JPanel jpnItem, JLabel jlbItem) throws Exception {
         kindSelected = "QLKH";
-        jpnItem.setBackground(new Color(153,255,204));
-        jlbItem.setBackground(new Color(153,255,204));
+        jpnItem.setBackground(new Color(153, 255, 204));
+        jlbItem.setBackground(new Color(153, 255, 204));
 
         root.removeAll();
         root.setLayout(new BorderLayout());
@@ -67,35 +67,49 @@ public class ChuyenManHinhController {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "QLKH":
-                {
+                case "QLKH": {
                     try {
                         node = new QLKHJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+
+                case "QLV":
+                    node = new QLVJPanel();
+                    break;
+                case "QLX":
+                {
+                    try {
+                        node = new QLXJPanel();
                     } catch (Exception ex) {
                         Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
                     break;
 
-                case "QLX":
-                    node = new QLXJPanel();
+                case "QLKVL":
+                    node = new QLKVLJPanel();
                     break;
-                case "QLV":
-                    node = new QLVJPanel();
-                    break;
-                case "QLHD": 
+                case "QLHD":
                     node = new QLHDJPanel();
                     break;
-                case "QLDT": 
-                    node = new QLDTJPanel();
+                case "QLNV": {
+                    try {
+                        node = new QLNVJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
+                }
                 case "BCTK":
                     node = new BCTKJPanel();
                     break;
-                case "QLNV": 
-                    node = new QLNVJPanel();
-                case "QLKVL":
-                    node = new QLKVLJPanel();
+                case "QLDT":
+                    node = new QLDTJPanel();
+                    break;
+
                 default:
                     break;
             }
@@ -110,8 +124,8 @@ public class ChuyenManHinhController {
         @Override
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
-            jpnItem.setBackground(new Color(153,255,204));
-            jlbItem.setBackground(new Color(153,255,204));
+            jpnItem.setBackground(new Color(153, 255, 204));
+            jlbItem.setBackground(new Color(153, 255, 204));
 
         }
 
@@ -121,15 +135,15 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(new Color(153,255,204));
-            jlbItem.setBackground(new Color(153,255,204));
+            jpnItem.setBackground(new Color(153, 255, 204));
+            jlbItem.setBackground(new Color(153, 255, 204));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             if (!kindSelected.equalsIgnoreCase(kind)) {
-                jpnItem.setBackground(new Color(240,240,240));
-                jlbItem.setBackground(new Color(240,240,240));
+                jpnItem.setBackground(new Color(240, 240, 240));
+                jlbItem.setBackground(new Color(240, 240, 240));
 
             }
         }
@@ -137,11 +151,11 @@ public class ChuyenManHinhController {
         private void setChangeBackground(String kind) {
             for (DanhMucBean item : listItem) {
                 if (item.getKind().equalsIgnoreCase(kind)) {
-                    item.getJpn().setBackground(new Color(153,255,204));
-                    item.getJlb().setBackground(new Color(153,255,204));
+                    item.getJpn().setBackground(new Color(153, 255, 204));
+                    item.getJlb().setBackground(new Color(153, 255, 204));
                 } else {
-                    item.getJpn().setBackground(new Color(240,240,240));
-                    item.getJlb().setBackground(new Color(240,240,240));
+                    item.getJpn().setBackground(new Color(240, 240, 240));
+                    item.getJlb().setBackground(new Color(240, 240, 240));
 
                 }
             }

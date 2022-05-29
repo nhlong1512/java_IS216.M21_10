@@ -154,19 +154,22 @@ public class main {
 //        for (NguoiDungDTO nd : list_ND) {
 //            System.out.println("New----" + nd);
 //        }
-NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
+        NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         System.out.println(nguoidungtbl.getNumbND());
         ArrayList<NguoiDungDTO> list_ND = nguoidungtbl.getList_ND();
         for (NguoiDungDTO ve : list_ND) {
             System.out.println("New----" + ve);
         }
-        
-        System.out.println(nguoidungtbl.getInfor("ND009").getStrMatKhau());
-        KhachHangDTO kh = khachhangtbl.getInfor("ND003");
-        System.out.println(kh);
-        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
-        System.out.println(xe);
-        System.out.println(xe.getStrTenLoaiXe());
-        System.out.println(xe.getStrBienSoXe());
+
+//        System.out.println(nguoidungtbl.getInfor("ND009").getStrMatKhau());
+//        KhachHangDTO kh = khachhangtbl.getInfor("ND003");
+//        System.out.println(kh);
+//        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+//        System.out.println(xe);
+//        System.out.println(xe.getStrTenLoaiXe());
+//        System.out.println(xe.getStrBienSoXe());
+        System.out.println(nguoidungtbl.getInforEmail("20521569@gm.uit.edu.vn").getStrEmail());
+//        System.out.println(xetbl.getInfor("XE010").getStrBienSoXe());
+//        System.out.println(xetbl.getInforBienSoXe("49A-865.47"));
     }
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * @author ADMIN
  */
 public class XeBUS {
+
     private ArrayList<XeDTO> list_XE;
     /**
      * Xử lý các lệnh trong SQL
@@ -41,11 +42,23 @@ public class XeBUS {
 
     public XeDTO getInfor(String strMaXe) {
         for (XeDTO xe : list_XE) {
-            if (xe.getStrMaXe().equals(strMaXe)) {
+            if (xe.getStrMaXe() != null) {
+                if (xe.getStrMaXe().equals(strMaXe)) {
+                    return xe;
+                }
+            }
+
+        }
+
+        return null;
+    }
+
+    public XeDTO getInforBienSoXe(String strBienSoXe) {
+        for (XeDTO xe : list_XE) {
+            if (xe.getStrBienSoXe().equals(strBienSoXe)) {
                 return xe;
             }
         }
-
         return null;
     }
 

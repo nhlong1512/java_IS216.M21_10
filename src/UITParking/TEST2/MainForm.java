@@ -28,16 +28,13 @@ public class MainForm extends javax.swing.JFrame {
 
         ArrayList<DanhMucBean> listItem = new ArrayList<>();
         listItem.add(new DanhMucBean("QLKH", jpnQLKH, jlbQLKH));
-        listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
+        listItem.add(new DanhMucBean("QLNV", jpnQLNV, jlbQLNV));
         listItem.add(new DanhMucBean("QLX", jpnQLX, jlbQLX));
         listItem.add(new DanhMucBean("QLKVL", jpnQLKVL, jlbQLKVL));
         listItem.add(new DanhMucBean("QLHD", jpnQLHD, jlbQLHD));
-        listItem.add(new DanhMucBean("QLNV", jpnQLNV, jlbQLNV));
+        listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
         listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
         listItem.add(new DanhMucBean("QLDT", jpnDT, jlbDT));
-        
-        
-        
         controller.setEvent(listItem);
     }
 
@@ -52,8 +49,8 @@ public class MainForm extends javax.swing.JFrame {
 
         jpnRoot = new javax.swing.JPanel();
         jpnMenu = new javax.swing.JPanel();
-        jpnQLV = new javax.swing.JPanel();
-        jlbQLV = new javax.swing.JLabel();
+        jpnQLNV = new javax.swing.JPanel();
+        jlbQLNV = new javax.swing.JLabel();
         jpnQLX = new javax.swing.JPanel();
         jlbQLX = new javax.swing.JLabel();
         jpnQLKH = new javax.swing.JPanel();
@@ -62,8 +59,8 @@ public class MainForm extends javax.swing.JFrame {
         jlbQLKVL = new javax.swing.JLabel();
         jpnQLHD = new javax.swing.JPanel();
         jlbQLHD = new javax.swing.JLabel();
-        jpnQLNV = new javax.swing.JPanel();
-        jlbQLNV = new javax.swing.JLabel();
+        jpnQLV = new javax.swing.JPanel();
+        jlbQLV = new javax.swing.JLabel();
         jpnBCTK = new javax.swing.JPanel();
         jlbBCTK = new javax.swing.JLabel();
         jpnDT = new javax.swing.JPanel();
@@ -79,23 +76,23 @@ public class MainForm extends javax.swing.JFrame {
         jpnMenu.setBackground(new java.awt.Color(204, 255, 204));
         jpnMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jpnQLV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLV.setPreferredSize(new java.awt.Dimension(120, 66));
+        jpnQLNV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jpnQLNV.setPreferredSize(new java.awt.Dimension(120, 66));
 
-        jlbQLV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLV.setText("QL VÉ");
+        jlbQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLNV.setText("QL NHÂN VIÊN");
 
-        javax.swing.GroupLayout jpnQLVLayout = new javax.swing.GroupLayout(jpnQLV);
-        jpnQLV.setLayout(jpnQLVLayout);
-        jpnQLVLayout.setHorizontalGroup(
-            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+        javax.swing.GroupLayout jpnQLNVLayout = new javax.swing.GroupLayout(jpnQLNV);
+        jpnQLNV.setLayout(jpnQLNVLayout);
+        jpnQLNVLayout.setHorizontalGroup(
+            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
         );
-        jpnQLVLayout.setVerticalGroup(
-            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLVLayout.createSequentialGroup()
+        jpnQLNVLayout.setVerticalGroup(
+            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLNVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -179,23 +176,23 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpnQLNV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLNV.setPreferredSize(new java.awt.Dimension(120, 66));
+        jpnQLV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jpnQLV.setPreferredSize(new java.awt.Dimension(120, 66));
 
-        jlbQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLNV.setText("QL NHÂN VIÊN");
+        jlbQLV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLV.setText("QL VÉ");
 
-        javax.swing.GroupLayout jpnQLNVLayout = new javax.swing.GroupLayout(jpnQLNV);
-        jpnQLNV.setLayout(jpnQLNVLayout);
-        jpnQLNVLayout.setHorizontalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+        javax.swing.GroupLayout jpnQLVLayout = new javax.swing.GroupLayout(jpnQLV);
+        jpnQLV.setLayout(jpnQLVLayout);
+        jpnQLVLayout.setHorizontalGroup(
+            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
         );
-        jpnQLNVLayout.setVerticalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLNVLayout.createSequentialGroup()
+        jpnQLVLayout.setVerticalGroup(
+            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -267,7 +264,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jpnQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jpnQLX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -275,7 +272,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jpnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -293,11 +290,11 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jpnDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnQLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnQLX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
 

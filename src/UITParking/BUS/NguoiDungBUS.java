@@ -46,6 +46,15 @@ public class NguoiDungBUS {
 
         return null;
     }
+    
+    public NguoiDungDTO getInforEmail(String strEmail) {
+        for (NguoiDungDTO nd : list_ND) {
+            if (nd.getStrEmail().equals(strEmail)) {
+                return nd;
+            }
+        }
+        return null;
+    }
 
     /**
      * thêm 1 người dùng vào danh sách và database

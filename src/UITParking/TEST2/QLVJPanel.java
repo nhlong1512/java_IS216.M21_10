@@ -198,6 +198,12 @@ public class QLVJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã Vé");
 
+        txtMaVe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtMaVeCaretUpdate(evt);
+            }
+        });
+
         jLabel3.setText("Mã KH");
 
         jLabel7.setText("Tên Loại Vé");
@@ -419,32 +425,7 @@ public class QLVJPanel extends javax.swing.JPanel {
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
-//        if (txtMaVe.getText().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Mã khách hàng phải được nhập để tìm kiếm");
-//            return;
-//        }
-//
-//        try {
-//            NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
-//            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaVe.getText());
-//
-//            if (nd != null) {
-//                txtMaVe.setText(nd.getStrMaND());
-//                txtMaKH.setText(nd.getStrEmail());
-//                txtMaLoaiVe.setText(nd.getStrHoTen());
-//                txtDiaChi.setText(nd.getStrDiaChi());
-//                txtQueQuan.setText(nd.getStrQueQuan());
-//                txtTrangThai.setText(nd.getStrSDT());
-//                rdbNam.setSelected(nd.getStrGioiTinh().equals("Nam"));
-//                rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Khách hàng không tìm thấy");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-//            e.printStackTrace();
-//        }
+
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
@@ -605,6 +586,10 @@ public class QLVJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         updateRender();
     }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
+
+    private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaVeCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

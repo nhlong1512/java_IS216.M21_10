@@ -171,6 +171,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaVe">
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtMaVeCaretUpdate"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -291,7 +294,6 @@
                 <StringItem index="3" value="V&#xe9; th&#xe1;ng"/>
               </StringArray>
             </Property>
-            <Property name="selectedItem" type="java.lang.Object" value="V&#xe9; l&#x1b0;&#x1ee3;t xe m&#xe1;y"/>
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbbTenLoaiVeItemStateChanged"/>

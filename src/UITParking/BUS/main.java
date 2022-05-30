@@ -172,5 +172,11 @@ public class main {
 //        System.out.println(xetbl.getInfor("XE010").getStrBienSoXe());
 //        System.out.println(xetbl.getInforBienSoXe("49A-865.47"));
         System.out.println(xetbl.getInfor(""));
+        
+        VeBUS vetbl = new VeBUS();
+        ArrayList<VeDTO> list_VE = vetbl.getList_Ve();
+        for(VeDTO ve : list_VE){
+            System.out.println("New----" + ve);
+        }
     }
 }

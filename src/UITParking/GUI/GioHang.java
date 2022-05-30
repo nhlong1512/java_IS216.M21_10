@@ -901,7 +901,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe2000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE02", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE02", kh.getStrMaKH(),  null, null, "Chưa kích hoạt");
                         vetbl.them(ve);
                     }
                 }
@@ -910,7 +910,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe3000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE01", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE01", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
                         vetbl.them(ve);
                     }
                 }
@@ -919,7 +919,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe25000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE03", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE03", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
                         vetbl.them(ve);
                     }
                 }
@@ -928,7 +928,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe95000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE04", kh.getStrMaKH(), "", "", "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE04", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
                         vetbl.them(ve);
                     }
                 }

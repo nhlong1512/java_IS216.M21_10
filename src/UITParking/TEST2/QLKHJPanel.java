@@ -506,6 +506,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             if (jdcNgaySinh.getDate() != null) {
                 //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+            }else{
+                nd.setDateNgSinh(null);
             }
             nd.setStrVaiTro("Khach hang");
             nd.setStrMatKhau(txtMatKhau.getText());
@@ -540,7 +542,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             sb.append("Mã khách hàng không tồn tại.");
         }
         if (xetbl.getInfor(txtMaXe.getText()) == null) {
-            sb.append("Mã xe đã tồn tại.");
+            sb.append("Mã xe không tồn tại.");
         }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
@@ -564,8 +566,9 @@ public class QLKHJPanel extends javax.swing.JPanel {
             xe.setStrBienSoXe(txtBienSoXe.getText());
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
-                //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+            }else{
+                nd.setDateNgSinh(null);
             }
             nd.setStrMatKhau(txtMatKhau.getText());
             nd.setStrVaiTro("Khach hang");

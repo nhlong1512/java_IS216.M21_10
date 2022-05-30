@@ -101,7 +101,12 @@ public class NguoiDungDAO {
             pst.setString(3, nd.getStrMatKhau());
             pst.setString(4, nd.getStrHoTen());
             pst.setString(5, nd.getStrGioiTinh());
-            pst.setDate(6, new java.sql.Date(nd.getDateNgSinh().getTime()));
+            if (nd.getDateNgSinh() != null) {
+                pst.setDate(6, new java.sql.Date(nd.getDateNgSinh().getTime()));
+
+            } else {
+                pst.setDate(6, null);
+            }
             pst.setString(7, nd.getStrDiaChi());
             pst.setString(8, nd.getStrQueQuan());
             pst.setString(9, nd.getStrSDT());
@@ -167,7 +172,12 @@ public class NguoiDungDAO {
             pst.setString(2, nd.getStrMatKhau());
             pst.setString(3, nd.getStrHoTen());
             pst.setString(4, nd.getStrGioiTinh());
-            pst.setDate(5, new java.sql.Date(nd.getDateNgSinh().getTime()));
+            if (nd.getDateNgSinh() != null) {
+                pst.setDate(5, new java.sql.Date(nd.getDateNgSinh().getTime()));
+
+            } else {
+                pst.setDate(5, null);
+            }
             pst.setString(6, nd.getStrDiaChi());
             pst.setString(7, nd.getStrQueQuan());
             pst.setString(8, nd.getStrSDT());

@@ -4,28 +4,33 @@
  */
 package UITParking.DTO;
 
+import java.util.Date;
+
 /**
  *
  * @author ADMIN
  */
 public class VeDTO {
-    private String strMaVe, strMaLoaiVe, strMaKH, strNgayKichHoat, strNgayHetHan, strTrangThai;
+    private String strMaVe, strMaLoaiVe, strMaKH;
+    private Date dateNgayKichHoat;
+    private Date dateNgayHetHan;
+    private String strTrangThai;
 
     public VeDTO() {
     }
 
-    public VeDTO(String strMaVe, String strMaLoaiVe, String strMaKH, String strNgayKichHoat, String strNgayHetHan, String strTrangThai) {
+    @Override
+    public String toString() {
+        return "VeDTO{" + "strMaVe=" + strMaVe + ", strMaLoaiVe=" + strMaLoaiVe + ", strMaKH=" + strMaKH + ", dateNgayKichHoat=" + dateNgayKichHoat + ", dateNgayHetHan=" + dateNgayHetHan + ", strTrangThai=" + strTrangThai + '}';
+    }
+
+    public VeDTO(String strMaVe, String strMaLoaiVe, String strMaKH, Date dateNgayKichHoat, Date dateNgayHetHan, String strTrangThai) {
         this.strMaVe = strMaVe;
         this.strMaLoaiVe = strMaLoaiVe;
         this.strMaKH = strMaKH;
-        this.strNgayKichHoat = strNgayKichHoat;
-        this.strNgayHetHan = strNgayHetHan;
+        this.dateNgayKichHoat = dateNgayKichHoat;
+        this.dateNgayHetHan = dateNgayHetHan;
         this.strTrangThai = strTrangThai;
-    }
-
-    @Override
-    public String toString() {
-        return "VeDTO{" + "strMaVe=" + strMaVe + ", strMaLoaiVe=" + strMaLoaiVe + ", strMaKH=" + strMaKH + ", strNgayKichHoat=" + strNgayKichHoat + ", strNgayHetHan=" + strNgayHetHan + ", strTrangThai=" + strTrangThai + '}';
     }
 
     public String getStrMaVe() {
@@ -52,20 +57,20 @@ public class VeDTO {
         this.strMaKH = strMaKH;
     }
 
-    public String getStrNgayKichHoat() {
-        return strNgayKichHoat;
+    public Date getDateNgayKichHoat() {
+        return dateNgayKichHoat;
     }
 
-    public void setStrNgayKichHoat(String strNgayKichHoat) {
-        this.strNgayKichHoat = strNgayKichHoat;
+    public void setDateNgayKichHoat(Date dateNgayKichHoat) {
+        this.dateNgayKichHoat = dateNgayKichHoat;
     }
 
-    public String getStrNgayHetHan() {
-        return strNgayHetHan;
+    public Date getDateNgayHetHan() {
+        return dateNgayHetHan;
     }
 
-    public void setStrNgayHetHan(String strNgayHetHan) {
-        this.strNgayHetHan = strNgayHetHan;
+    public void setDateNgayHetHan(Date dateNgayHetHan) {
+        this.dateNgayHetHan = dateNgayHetHan;
     }
 
     public String getStrTrangThai() {
@@ -75,6 +80,7 @@ public class VeDTO {
     public void setStrTrangThai(String strTrangThai) {
         this.strTrangThai = strTrangThai;
     }
+
     
-    
+
 }

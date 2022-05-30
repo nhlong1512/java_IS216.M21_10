@@ -14,42 +14,43 @@ import java.util.ArrayList;
  * @author ADMIN
  */
 public class VeBUS {
+
     private ArrayList<VeDTO> list_Ve;
     /**
      * Xử lý các lệnh trong SQL
      */
     private VeDAO veDAO;
-
+    
     public VeBUS() throws Exception {
         list_Ve = new ArrayList<>();
         veDAO = new VeDAO();
         list_Ve = veDAO.docDB();
     }
-
+    
     public int getNumbVe() {
         return list_Ve.size();
     }
     
-    public String getMaxMaVe() throws Exception{
+    public String getMaxMaVe() throws Exception {
         veDAO = new VeDAO();
         return veDAO.getMaxMaVe();
     }
-
+    
     public ArrayList<VeDTO> getList_Ve() {
         return list_Ve;
     }
-
+    
     public void setList_Ve(ArrayList<VeDTO> list_Ve) {
         this.list_Ve = list_Ve;
     }
-
+    
     public VeDTO getInfor(String strMaVe) {
         for (VeDTO ve : list_Ve) {
             if (ve.getStrMaVe().equals(strMaVe)) {
                 return ve;
             }
         }
-
+        
         return null;
     }
 
@@ -81,7 +82,7 @@ public class VeBUS {
                 }
             }
         }
-
+        
         return false;
     }
 
@@ -99,14 +100,24 @@ public class VeBUS {
             if (taikhoan.getStrMaVe().equals(ve.getStrMaVe())) {
                 taikhoan.setStrMaLoaiVe(ve.getStrMaLoaiVe());
                 taikhoan.setStrMaKH(ve.getStrMaKH());
-                taikhoan.setStrNgayKichHoat(ve.getStrNgayKichHoat());
-                taikhoan.setStrNgayHetHan(ve.getStrNgayHetHan());
+                if (ve.getDateNgayKichHoat() != null) {
+                    taikhoan.setDateNgayKichHoat(new java.sql.Date(ve.getDateNgayKichHoat().getTime()));
+                    
+                } else {
+                    taikhoan.setDateNgayKichHoat(null);
+                }
+                if (ve.getDateNgayHetHan() != null) {
+                    taikhoan.setDateNgayHetHan(new java.sql.Date(ve.getDateNgayHetHan().getTime()));
+                    
+                } else {
+                    taikhoan.setDateNgayHetHan(null);
+                }
                 taikhoan.setStrTrangThai(ve.getStrTrangThai());
                 return true;
             }
-
+            
         }
-
+        
         return false;
     }
 }

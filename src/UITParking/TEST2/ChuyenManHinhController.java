@@ -77,8 +77,15 @@ public class ChuyenManHinhController {
                 }
 
                 case "QLV":
-                    node = new QLVJPanel();
+                {
+                    try {
+                        node = new QLVJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case "QLX":
                 {
                     try {

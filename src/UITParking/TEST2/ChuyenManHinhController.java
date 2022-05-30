@@ -90,8 +90,15 @@ public class ChuyenManHinhController {
                     break;
 
                 case "QLKVL":
-                    node = new QLKVLJPanel();
+                {
+                    try {
+                        node = new QLKVLJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case "QLHD":
                     node = new QLHDJPanel();
                     break;

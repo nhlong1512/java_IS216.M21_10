@@ -171,5 +171,6 @@ public class main {
         System.out.println(nguoidungtbl.getInforEmail("20521569@gm.uit.edu.vn").getStrEmail());
 //        System.out.println(xetbl.getInfor("XE010").getStrBienSoXe());
 //        System.out.println(xetbl.getInforBienSoXe("49A-865.47"));
+        System.out.println(xetbl.getInfor(""));
     }
 }

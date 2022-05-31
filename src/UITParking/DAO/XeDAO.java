@@ -6,6 +6,7 @@ package UITParking.DAO;
 
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -98,5 +99,17 @@ public class XeDAO {
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
         }
+    }
+    
+    public String getMaxMaXe() throws Exception {
+        String sql = "Select Max(MaXe) as MaxXe from XE";
+        pst = this.connection.getConnect().prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        String id = "";
+        if (rs.next()) {
+            String maxhd = rs.getString("MaxXe");
+            id = getID(maxhd);
+        }
+        return "XE" + id;
     }
 }

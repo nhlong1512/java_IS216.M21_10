@@ -51,9 +51,9 @@ public class QLKHJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        //Disable chuc nang cua Xoa va Sua khach hang
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
     }
 
     public void resetRender() {
@@ -80,13 +80,21 @@ public class QLKHJPanel extends javax.swing.JPanel {
         int index = 1;
         for (KhachHangDTO kh : list_KH) {
             //Lấy ra xe và biển số xe của khách hàng
-
+            Boolean xeIsExists = false;
+            String tenLoaiXe = "", bienSoXe = "";
             NguoiDungDTO nd = nguoidungtbl.getInfor(kh.getStrMaKH());
-            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+            if (kh.getStrMaXe() != null) {
+                XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+                xeIsExists = true;
+                tenLoaiXe = xe.getStrTenLoaiXe();
+                bienSoXe = xe.getStrBienSoXe();
+            } else {
+                xeIsExists = false;
+            }
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(), xe.getStrBienSoXe(), kh.getLongSoDu()});
+                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), tenLoaiXe, bienSoXe, kh.getLongSoDu()});
             index++;
         }
 
@@ -138,7 +146,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(), 
+                nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(),
                 xe.getStrBienSoXe(), kh.getLongSoDu(), nd.getStrMatKhau()});
             index++;
         }
@@ -471,14 +479,14 @@ public class QLKHJPanel extends javax.swing.JPanel {
         if (khachhangtbl.getInfor(txtMaKH.getText()) != null) {
             sb.append("Mã khách hàng đã tồn tại.");
         }
-        if(nguoidungtbl.getInforEmail(txtEmail.getText()) != null){
+        if (nguoidungtbl.getInforEmail(txtEmail.getText()) != null) {
             sb.append("Email khách hàng đã tồn tại");
         }
-        
+
         if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại");
         }
-        if(txtMaXe.getText().length() > 5){
+        if (txtMaXe.getText().length() > 5) {
             sb.append("Mã xe tối đa chỉ có 5 kí tự");
         }
 
@@ -504,9 +512,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             xe.setStrBienSoXe(txtBienSoXe.getText());
             xe.setStrTenLoaiXe(txtLoaiXe.getText());
             if (jdcNgaySinh.getDate() != null) {
-                //                nd.setDateNgSinh(jdcNgaySinh.getDate());
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
-            }else{
+            } else {
                 nd.setDateNgSinh(null);
             }
             nd.setStrVaiTro("Khach hang");
@@ -514,7 +521,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
             nguoidungtbl.them(nd);
             xetbl.them(xe);
             khachhangtbl.them(kh);
-            
 
             //Cập nhật lại Table
             capNhatLaiTable();
@@ -528,102 +534,102 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaKH.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
-            txtMaKH.setBackground(Color.red);
-        } else {
-            txtMaKH.setBackground(Color.white);
-        }
-        if (nguoidungtbl.getInfor(txtMaKH.getText()) == null) {
-            sb.append("Mã khách hàng không tồn tại.");
-        }
-        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
-            sb.append("Mã khách hàng không tồn tại.");
-        }
-        if (xetbl.getInfor(txtMaXe.getText()) == null) {
-            sb.append("Mã xe không tồn tại.");
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-        try {
-            NguoiDungDTO nd = new NguoiDungDTO();
-            KhachHangDTO kh = new KhachHangDTO();
-            XeDTO xe = new XeDTO();
-            nd.setStrMaND(txtMaKH.getText());
-            nd.setStrEmail(txtEmail.getText());
-            nd.setStrHoTen(txtHoTen.getText());
-            nd.setStrDiaChi(txtDiaChi.getText());
-            nd.setStrQueQuan(txtQueQuan.getText());
-            nd.setStrSDT(txtSDT.getText());
-            nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
-            kh.setStrMaKH(txtMaKH.getText());
-            kh.setStrMaXe(txtMaXe.getText());
-            kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
-            xe.setStrMaXe(txtMaXe.getText());
-            xe.setStrBienSoXe(txtBienSoXe.getText());
-            xe.setStrTenLoaiXe(txtLoaiXe.getText());
-            if (jdcNgaySinh.getDate() != null) {
-                nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
-            }else{
-                nd.setDateNgSinh(null);
-            }
-            nd.setStrMatKhau(txtMatKhau.getText());
-            nd.setStrVaiTro("Khach hang");
-            nguoidungtbl.sua(nd);
-            xetbl.sua(xe);
-            khachhangtbl.sua(kh);
-            
-            //Cập nhật lại Table
-            capNhatLaiTable();
-
-            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaKH.getText().equals("")) {
+//            sb.append("Mã khách hàng không được để trống.");
+//            txtMaKH.setBackground(Color.red);
+//        } else {
+//            txtMaKH.setBackground(Color.white);
+//        }
+//        if (nguoidungtbl.getInfor(txtMaKH.getText()) == null) {
+//            sb.append("Mã khách hàng không tồn tại.");
+//        }
+//        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
+//            sb.append("Mã khách hàng không tồn tại.");
+//        }
+//        if (xetbl.getInfor(txtMaXe.getText()) == null) {
+//            sb.append("Mã xe không tồn tại.");
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//        try {
+//            NguoiDungDTO nd = new NguoiDungDTO();
+//            KhachHangDTO kh = new KhachHangDTO();
+//            XeDTO xe = new XeDTO();
+//            nd.setStrMaND(txtMaKH.getText());
+//            nd.setStrEmail(txtEmail.getText());
+//            nd.setStrHoTen(txtHoTen.getText());
+//            nd.setStrDiaChi(txtDiaChi.getText());
+//            nd.setStrQueQuan(txtQueQuan.getText());
+//            nd.setStrSDT(txtSDT.getText());
+//            nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
+//            kh.setStrMaKH(txtMaKH.getText());
+//            kh.setStrMaXe(txtMaXe.getText());
+//            kh.setLongSoDu(Integer.parseInt(txtSoDu.getText()));
+//            xe.setStrMaXe(txtMaXe.getText());
+//            xe.setStrBienSoXe(txtBienSoXe.getText());
+//            xe.setStrTenLoaiXe(txtLoaiXe.getText());
+//            if (jdcNgaySinh.getDate() != null) {
+//                nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
+//            }else{
+//                nd.setDateNgSinh(null);
+//            }
+//            nd.setStrMatKhau(txtMatKhau.getText());
+//            nd.setStrVaiTro("Khach hang");
+//            nguoidungtbl.sua(nd);
+//            xetbl.sua(xe);
+//            khachhangtbl.sua(kh);
+//            
+//            //Cập nhật lại Table
+//            capNhatLaiTable();
+//
+//            JOptionPane.showMessageDialog(this, "Khách hàng đã được cập nhật vào CSDL");
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnCapNhatMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaKH.getText().equals("")) {
-            sb.append("Mã khách hàng không được để trống.");
-            txtMaKH.setBackground(Color.red);
-        } else {
-            txtMaKH.setBackground(Color.white);
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-
-        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
-            return;
-        }
-        try {
-            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
-            KhachHangDTO kh = khachhangtbl.getInfor(txtMaKH.getText());
-            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
-            nguoidungtbl.xoa(nd);
-            khachhangtbl.xoa(kh);
-            xetbl.xoa(xe);
-
-            JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
-
-            //Reset lại render
-            resetRender();
-
-            //Cập nhật lại bảng
-            capNhatLaiTable();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaKH.getText().equals("")) {
+//            sb.append("Mã khách hàng không được để trống.");
+//            txtMaKH.setBackground(Color.red);
+//        } else {
+//            txtMaKH.setBackground(Color.white);
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//
+//        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+//        try {
+//            NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKH.getText());
+//            KhachHangDTO kh = khachhangtbl.getInfor(txtMaKH.getText());
+//            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
+//            nguoidungtbl.xoa(nd);
+//            khachhangtbl.xoa(kh);
+//            xetbl.xoa(xe);
+//
+//            JOptionPane.showMessageDialog(this, "Khách hàng đã xóa khỏi CSDL");
+//
+//            //Reset lại render
+//            resetRender();
+//
+//            //Cập nhật lại bảng
+//            capNhatLaiTable();
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
@@ -658,13 +664,13 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void tblKhachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblKhachHang.getSelectedRow();
         if (selectedRow >= 0) {
 
             KhachHangDTO kh = list_KH.get(selectedRow);
             NguoiDungDTO nd = nguoidungtbl.getInfor(kh.getStrMaKH());
 
-            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
             txtMaKH.setText(nd.getStrMaND());
             txtEmail.setText(nd.getStrEmail());
             txtHoTen.setText(nd.getStrHoTen());
@@ -675,8 +681,12 @@ public class QLKHJPanel extends javax.swing.JPanel {
             rdbNu.setSelected(nd.getStrGioiTinh().equals("Nu"));
             txtMaXe.setText(kh.getStrMaXe());
             txtSoDu.setText(String.valueOf(kh.getLongSoDu()));
-            txtLoaiXe.setText(xe.getStrTenLoaiXe());
-            txtBienSoXe.setText(xe.getStrBienSoXe());
+            if (kh.getStrMaXe() != null) {
+                XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+                txtLoaiXe.setText(xe.getStrTenLoaiXe());
+                txtBienSoXe.setText(xe.getStrBienSoXe());
+            }
+
             txtMatKhau.setText(nd.getStrMatKhau());
 
             if (nd.getDateNgSinh() != null) {

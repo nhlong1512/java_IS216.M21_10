@@ -178,5 +178,6 @@ public class main {
         for(VeDTO ve : list_VE){
             System.out.println("New----" + ve);
         }
+        System.out.println(xetbl.getMaxMaXe()); 
     }
 }

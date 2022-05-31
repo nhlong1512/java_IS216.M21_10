@@ -7,43 +7,44 @@ package UITParking.BUS;
 import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.NguoiDungDTO;
 import java.util.ArrayList;
+
 /**
  *
  * @author Tran Thi Ngoc Anh
  */
 public class NguoiDungBUS {
-
+    
     private ArrayList<NguoiDungDTO> list_ND;
     /**
      * Xử lý các lệnh trong SQL
      */
     private NguoiDungDAO ndDAO;
-
+    
     public NguoiDungBUS() throws Exception {
         list_ND = new ArrayList<>();
         ndDAO = new NguoiDungDAO();
         list_ND = ndDAO.docDB();
     }
-
+    
     public int getNumbND() {
         return list_ND.size();
     }
-
+    
     public ArrayList<NguoiDungDTO> getList_ND() {
         return list_ND;
     }
-
+    
     public void setList_ND(ArrayList<NguoiDungDTO> list_ND) {
         this.list_ND = list_ND;
     }
-
+    
     public NguoiDungDTO getInfor(String strMaND) {
         for (NguoiDungDTO nd : list_ND) {
             if (nd.getStrMaND().equals(strMaND)) {
                 return nd;
             }
         }
-
+        
         return null;
     }
     
@@ -91,7 +92,7 @@ public class NguoiDungBUS {
                 }
             }
         }
-
+        
         return false;
     }
 
@@ -111,16 +112,20 @@ public class NguoiDungBUS {
                 taikhoan.setStrMatKhau(nd.getStrMatKhau());
                 taikhoan.setStrHoTen(nd.getStrHoTen());
                 taikhoan.setStrGioiTinh(nd.getStrGioiTinh());
-                taikhoan.setDateNgSinh(new java.sql.Date(nd.getDateNgSinh().getTime()));
+                if (nd.getDateNgSinh() != null) {
+                    taikhoan.setDateNgSinh(new java.sql.Date(nd.getDateNgSinh().getTime()));
+                } else {
+                    taikhoan.setDateNgSinh(null);
+                }
                 taikhoan.setStrDiaChi(nd.getStrDiaChi());
                 taikhoan.setStrQueQuan(nd.getStrQueQuan());
                 taikhoan.setStrSDT(nd.getStrSDT());
                 taikhoan.setStrVaiTro(nd.getStrVaiTro());
                 return true;
             }
-
+            
         }
-
+        
         return false;
     }
     
@@ -140,9 +145,9 @@ public class NguoiDungBUS {
                 taikhoan.setDateNgSinh(taikhoan.getDateNgSinh());
                 return true;
             }
-
+            
         }
-
+        
         return false;
     }
     
@@ -162,13 +167,13 @@ public class NguoiDungBUS {
                 taikhoan.setStrVaiTro(nd.getStrVaiTro());
                 return true;
             }
-
+            
         }
-
+        
         return false;
     }
     
-    public NguoiDungDTO findById(String MaND) throws Exception{
+    public NguoiDungDTO findById(String MaND) throws Exception {
         return ndDAO.findById(MaND);
     }
 }

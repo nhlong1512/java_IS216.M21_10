@@ -49,6 +49,16 @@ public class CTHDMuaVeBUS {
 
         return null;
     }
+    
+    public CTHDMuaVeDTO getInforMaHD(String strMaHD) {
+        for (CTHDMuaVeDTO cthd : list_CTHD) {
+            if (cthd.getStrMaHD().equals(strMaHD)) {
+                return cthd;
+            }
+        }
+
+        return null;
+    }
 
     /**
      * thêm 1 người dùng vào danh sách và database
@@ -74,6 +84,21 @@ public class CTHDMuaVeBUS {
             for (CTHDMuaVeDTO taikhoan : list_CTHD) {
                 if (taikhoan.getStrMaHD().equals(cthd.getStrMaHD())
                         && taikhoan.getStrMaLoaiVe().equals(cthd.getStrMaLoaiVe())) {
+                    list_CTHD.remove(taikhoan);
+                    break;
+                }
+            }
+        }
+
+        return false;
+    }
+    
+    public Boolean xoaMaHD(CTHDMuaVeDTO cthd) throws Exception {
+        if (cthdDAO.xoa(cthd)) {
+
+            // duyệt từng phẩn tử
+            for (CTHDMuaVeDTO taikhoan : list_CTHD) {
+                if (taikhoan.getStrMaHD().equals(cthd.getStrMaHD())) {
                     list_CTHD.remove(taikhoan);
                     break;
                 }

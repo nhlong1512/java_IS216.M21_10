@@ -422,6 +422,7 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void tblXetblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblXetblNhanVienMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblXe.getSelectedRow();
         if (selectedRow >= 0) {
 

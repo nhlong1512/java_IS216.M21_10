@@ -6,6 +6,7 @@ package UITParking.DAO;
 
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -105,5 +106,17 @@ public class KhachHangDAO {
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
         }
+    }
+    
+    public String getMaxMaKH() throws Exception {
+        String sql = "Select Max(MaKH) as MaxKhachHang from KHACHHANG";
+        pst = this.connection.getConnect().prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        String id = "";
+        if (rs.next()) {
+            String maxhd = rs.getString("MaxKhachHang");
+            id = getID(maxhd);
+        }
+        return "ND" + id;
     }
 }

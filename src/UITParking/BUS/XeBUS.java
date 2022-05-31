@@ -31,6 +31,11 @@ public class XeBUS {
     public int getNumbXE() {
         return list_XE.size();
     }
+    
+    public String getMaxMaXe() throws Exception {
+        xeDAO = new XeDAO();
+        return xeDAO.getMaxMaXe();
+    }
 
     public ArrayList<XeDTO> getlist_XE() {
         return list_XE;

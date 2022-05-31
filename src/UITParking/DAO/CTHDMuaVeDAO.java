@@ -87,6 +87,19 @@ public class CTHDMuaVeDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
+    
+    public Boolean xoaMaHD(CTHDMuaVeDTO CTHDMuaVe) throws Exception {
+        String sql = "DELETE FROM CHITIETHOADONMUAVE WHERE MaHD = ?";
+        try {
+            pst = this.connection.getConnect().prepareStatement(sql);
+
+            pst.setString(1, CTHDMuaVe.getStrMaHD());
+
+            return pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new ArithmeticException(ex.getMessage());
+        }
+    }
 
     /**
      * @param nd truyền vào dữ liệu người dùng mới Sửa thông tin đăng nhập hoặc

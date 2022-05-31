@@ -30,6 +30,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ADMIN
@@ -55,12 +56,13 @@ public class QLHDJPanel extends javax.swing.JPanel {
     private DefaultTableModel model1;
     private String[] columnHeaders1 = new String[]{"STT", "Mã Hóa Đơn", "Mã Khách Hàng",
         "Ngày Hóa Đơn", "Tổng Trị Giá"};
-    
+
     private DefaultTableModel model2;
     private String[] columnHeaders2 = new String[]{"STT", "Mã Hóa Đơn", "Mã Loại Vé",
         "Số Lượng Vé"};
 
     private TableRowSorter<TableModel> rowSorter = null;
+    public static String tempMaHD;
 
     public QLHDJPanel() throws Exception {
         initComponents();
@@ -68,9 +70,12 @@ public class QLHDJPanel extends javax.swing.JPanel {
         hoTroTimKiem1();
         initTable2();
         hoTroTimKiem2();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        btnXoaHoaDon.setEnabled(false);
+        btnXoaChiTiet.setEnabled(false);
+        btnCapNhatHoaDon.setEnabled(false);
+        btnCapNhatChiTiet.setEnabled(false);
+        btnLuuHoaDon.setEnabled(false);
+        btnLuuChiTiet.setEnabled(false);
     }
 
     public void resetRender1() {
@@ -79,7 +84,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         txtTongTriGiaMuaVe.setText("");
         jdcNgayHDMuaVe.setDate(null);
     }
-    
+
     public void resetRender2() {
         txtMaHDChiTiet.setText("");
         txtMaLoaiVeChiTiet.setText("");
@@ -94,14 +99,14 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
-            hd.getDateNgayHD(), hd.getLongTongTriGia()});
+                hd.getDateNgayHD(), hd.getLongTongTriGia()});
             index++;
         }
 
         tblHoaDonMuaVe.setModel(model1);
 
     }
-    
+
     public void initTable2() throws Exception {
         model2 = new DefaultTableModel();
         model2.setColumnIdentifiers(columnHeaders2);
@@ -110,7 +115,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model2.addRow(new Object[]{index, cthd.getStrMaHD(), cthd.getStrMaLoaiVe(),
-            cthd.getLongSoLuongVe()});
+                cthd.getLongSoLuongVe()});
             index++;
         }
 
@@ -148,7 +153,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
             }
         });
     }
-    
+
     public void hoTroTimKiem2() {
 
         rowSorter = new TableRowSorter<>(tblChiTietHoaDon.getModel());
@@ -188,12 +193,12 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
-            hd.getDateNgayHD(), hd.getLongTongTriGia()});
+                hd.getDateNgayHD(), hd.getLongTongTriGia()});
             index++;
         }
         model1.fireTableDataChanged();
     }
-    
+
     public void capNhatLaiTable2() {
         model2.setRowCount(0);
         int index = 1;
@@ -201,7 +206,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model1.addRow(new Object[]{index, cthd.getStrMaHD(), cthd.getStrMaLoaiVe(),
-            cthd.getLongSoLuongVe()});
+                cthd.getLongSoLuongVe()});
             index++;
         }
         model2.fireTableDataChanged();
@@ -630,19 +635,20 @@ public class QLHDJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaVe3CaretUpdate
 
     private void btnTimKiemHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemHoaDonMouseClicked
-     
+
     }//GEN-LAST:event_btnTimKiemHoaDonMouseClicked
 
+    //Hóa đơn đã tạo thì không được xóa
     private void btnXoaHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaHoaDonMouseClicked
-        
+//        
     }//GEN-LAST:event_btnXoaHoaDonMouseClicked
 
     private void btnCapNhatHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatHoaDonMouseClicked
-        
+
     }//GEN-LAST:event_btnCapNhatHoaDonMouseClicked
 
     private void btnLuuHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuHoaDonMouseClicked
-        
+
     }//GEN-LAST:event_btnLuuHoaDonMouseClicked
 
     private void txtTongTriGiaMuaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTongTriGiaMuaVeCaretUpdate
@@ -695,6 +701,12 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
     private void tblHoaDonMuaVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMuaVeMousePressed
         // TODO add your handling code here:
+        //Khi đổi pressed thì sẽ reset các trường của chi tiết hóa đơn
+        //Gọi hàm resetRender2()
+        resetRender1();
+        resetRender2();
+        
+        //
         int selectedRow = tblHoaDonMuaVe.getSelectedRow();
         if (selectedRow >= 0) {
 
@@ -702,16 +714,20 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             txtMaHDMuaVe.setText(hd.getStrMaHD());
             txtMaKHMuaVe.setText(hd.getStrMaKH());
-            
-            if (hd.getDateNgayHD()!= null) {
+
+            if (hd.getDateNgayHD() != null) {
                 jdcNgayHDMuaVe.setDate(hd.getDateNgayHD());
             }
             txtTongTriGiaMuaVe.setText(String.valueOf(hd.getLongTongTriGia()));
+            //Bấm vào hóa đơn, hiện ra chi tiết hóa đơn đối với loại vé đó.
+            tempMaHD = hd.getStrMaHD();
+            txtTimKiemChiTiet.setText(tempMaHD);
         }
     }//GEN-LAST:event_tblHoaDonMuaVeMousePressed
 
     private void tblChiTietHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonMousePressed
         // TODO add your handling code here:
+        resetRender2();
         int selectedRow = tblChiTietHoaDon.getSelectedRow();
         if (selectedRow >= 0) {
 

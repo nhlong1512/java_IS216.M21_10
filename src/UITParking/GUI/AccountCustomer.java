@@ -4,8 +4,12 @@
  */
 package UITParking.GUI;
 
+import UITParking.BUS.KhachHangBUS;
 import UITParking.BUS.NguoiDungBUS;
+import UITParking.BUS.XeBUS;
+import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
+import UITParking.DTO.XeDTO;
 import static UITParking.GUI.InitPublic.getConvertYYYYMMDD;
 import static UITParking.GUI.login.pHoTen;
 import static UITParking.GUI.login.pMaND;
@@ -28,7 +32,9 @@ public class AccountCustomer extends javax.swing.JFrame {
      */
     NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
     NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
-    
+    KhachHangBUS khachhangtbl = new KhachHangBUS();
+    XeBUS xetbl = new XeBUS();
+    KhachHangDTO kh = khachhangtbl.getInfor(nd.getStrMaND());
 
     public AccountCustomer() throws Exception {
         initComponents();
@@ -36,6 +42,8 @@ public class AccountCustomer extends javax.swing.JFrame {
         NguoiDungBUS nguoidungtbl = new NguoiDungBUS();
         NguoiDungDTO nd = nguoidungtbl.getInfor(pMaND);
         setAccount();
+        //Không cho sửa Số dư
+        tfdSoDu.setEnabled(false);
     }
 
     public void setAccount() {
@@ -45,6 +53,20 @@ public class AccountCustomer extends javax.swing.JFrame {
         tfdDiachiAccount.setText(nd.getStrDiaChi());
         tfdQueQuanAccount.setText(nd.getStrQueQuan());
         tfdSDTAccount.setText(nd.getStrSDT());
+        tfdSoDu.setText(String.valueOf(kh.getLongSoDu()));
+        if (kh.getStrMaXe() != null) {
+            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+            if (xe.getStrTenLoaiXe() != null) {
+                if (xe.getStrTenLoaiXe().equals("Xe dap")) {
+                    cbbLoaiXe.setSelectedItem("Xe đạp");
+                }
+                if (xe.getStrTenLoaiXe().equals("Xe may")) {
+                    cbbLoaiXe.setSelectedItem("Xe máy");
+                }
+            }
+            tfdBienSoXe.setText(xe.getStrBienSoXe());
+        }
+
         if (nd.getStrGioiTinh() != null) {
             if (nd.getStrGioiTinh().equals("Nu")) {
                 cbbGioiTinh.setSelectedItem("Nữ");
@@ -58,9 +80,10 @@ public class AccountCustomer extends javax.swing.JFrame {
         }
 
     }
-    
-    
-    
+
+    public void render() {
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +108,11 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tfdEmailAccount = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tfBienSoXe = new javax.swing.JTextField();
+        tfdBienSoXe = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfdDiachiAccount = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        cbbGioiTinh = new javax.swing.JComboBox<>();
+        cbbLoaiXe = new javax.swing.JComboBox<>();
         labelBienSoXe = new javax.swing.JLabel();
         jdcNgaySinh = new com.toedter.calendar.JDateChooser();
         btnHuyAccount = new javax.swing.JButton();
@@ -97,9 +120,9 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         tfdSDTAccount = new javax.swing.JTextField();
         labelSoDu = new javax.swing.JLabel();
-        tfSoDu = new javax.swing.JTextField();
+        tfdSoDu = new javax.swing.JTextField();
         labelLoaiXe = new javax.swing.JLabel();
-        tfLoaiXe = new javax.swing.JTextField();
+        cbbGioiTinh = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UIT Parking");
@@ -220,13 +243,13 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel7.setText("Ngày sinh");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 90, -1));
 
-        tfBienSoXe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tfBienSoXe.addActionListener(new java.awt.event.ActionListener() {
+        tfdBienSoXe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdBienSoXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfBienSoXeActionPerformed(evt);
+                tfdBienSoXeActionPerformed(evt);
             }
         });
-        jPanel1.add(tfBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 240, 30));
+        jPanel1.add(tfdBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 240, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Địa chỉ");
@@ -244,14 +267,19 @@ public class AccountCustomer extends javax.swing.JFrame {
         jLabel9.setText("Giới tính");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 90, -1));
 
-        cbbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
-        cbbGioiTinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cbbGioiTinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbGioiTinhActionPerformed(evt);
+        cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe máy", "Xe đạp" }));
+        cbbLoaiXe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiXeItemStateChanged(evt);
             }
         });
-        jPanel1.add(cbbGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 240, 30));
+        cbbLoaiXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbLoaiXeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 240, 30));
 
         labelBienSoXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelBienSoXe.setText("Biển số xe");
@@ -322,25 +350,26 @@ public class AccountCustomer extends javax.swing.JFrame {
         labelSoDu.setText("Số dư");
         jPanel1.add(labelSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 90, -1));
 
-        tfSoDu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tfSoDu.addActionListener(new java.awt.event.ActionListener() {
+        tfdSoDu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tfdSoDu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfSoDuActionPerformed(evt);
+                tfdSoDuActionPerformed(evt);
             }
         });
-        jPanel1.add(tfSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 240, 30));
+        jPanel1.add(tfdSoDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 240, 30));
 
         labelLoaiXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelLoaiXe.setText("Loại xe");
         jPanel1.add(labelLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 90, -1));
 
-        tfLoaiXe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tfLoaiXe.addActionListener(new java.awt.event.ActionListener() {
+        cbbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cbbGioiTinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbbGioiTinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLoaiXeActionPerformed(evt);
+                cbbGioiTinhActionPerformed(evt);
             }
         });
-        jPanel1.add(tfLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 240, 30));
+        jPanel1.add(cbbGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 240, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 560));
 
@@ -364,17 +393,17 @@ public class AccountCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfdEmailAccountActionPerformed
 
-    private void tfBienSoXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBienSoXeActionPerformed
+    private void tfdBienSoXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdBienSoXeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfBienSoXeActionPerformed
+    }//GEN-LAST:event_tfdBienSoXeActionPerformed
 
     private void tfdDiachiAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdDiachiAccountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfdDiachiAccountActionPerformed
 
-    private void cbbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGioiTinhActionPerformed
+    private void cbbLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbLoaiXeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbbGioiTinhActionPerformed
+    }//GEN-LAST:event_cbbLoaiXeActionPerformed
 
     private void btnHomeAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeAccountActionPerformed
         // TODO add your handling code here:
@@ -429,12 +458,6 @@ public class AccountCustomer extends javax.swing.JFrame {
     //event click CapNhatAccount
     private void btnCapNhatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseClicked
         // TODO add your handling code here:
-        System.out.println(txtHoTenAccount.getText());
-        System.out.println(tfdEmailAccount.getText());
-        System.out.println(tfdDiachiAccount.getText());
-        System.out.println(tfdQueQuanAccount.getText());
-        System.out.println(tfdSDTAccount.getText());
-        System.out.println(cbbGioiTinh.getSelectedItem().toString());
 
         nd.setStrHoTen(tfdHoTenAccount.getText());
         nd.setStrEmail(tfdEmailAccount.getText());
@@ -448,11 +471,59 @@ public class AccountCustomer extends javax.swing.JFrame {
             nd.setStrGioiTinh("Nam");
         }
 
+        //Nếu là xe đạp hoặc xe máy có biển số thì thêm trường xe vào bảng XE
+        if ((cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")
+            || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe().equals("")) {
+            XeDTO xe = new XeDTO();
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+            }
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                xe.setStrTenLoaiXe("Xe may");
+            }
+            xe.setStrBienSoXe(tfdBienSoXe.getText());
+            String maxMaXe = null;
+            try {
+                maxMaXe = xetbl.getMaxMaXe();
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            xe.setStrMaXe(maxMaXe);
+            try {
+                xetbl.them(xe);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Cập nhật mã xe cho bảng khách hàng.
+            kh.setStrMaXe(maxMaXe);
+            try {
+                khachhangtbl.sua(kh);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        //Nếu khách hàng đã có xe rồi
+        if(!kh.getStrMaXe().equals("")){
+            XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+            }
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                xe.setStrTenLoaiXe("Xe may");
+            }
+            xe.setStrBienSoXe(tfdBienSoXe.getText());
+            try {
+                xetbl.sua(xe);
+            } catch (Exception ex) {
+                Logger.getLogger(AccountCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         if (jdcNgaySinh.getDate() != null) {
             nd.setDateNgSinh(jdcNgaySinh.getDate());
         }
-
-        System.out.println(nd);
 
         try {
             if (nd.getDateNgSinh() == null) {
@@ -488,13 +559,25 @@ public class AccountCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfdSDTAccountActionPerformed
 
-    private void tfSoDuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSoDuActionPerformed
+    private void tfdSoDuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdSoDuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfSoDuActionPerformed
+    }//GEN-LAST:event_tfdSoDuActionPerformed
 
-    private void tfLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoaiXeActionPerformed
+    private void cbbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGioiTinhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfLoaiXeActionPerformed
+    }//GEN-LAST:event_cbbGioiTinhActionPerformed
+
+    //Nếu là xe đạp thì sẽ không cho nhập biển số
+    private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
+        // TODO add your handling code here:
+        if(cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")){
+            tfdBienSoXe.setText("");
+            tfdBienSoXe.setEnabled(false);
+            
+        }else{
+            tfdBienSoXe.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbbLoaiXeItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -541,6 +624,7 @@ public class AccountCustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnHuyAccount;
     private javax.swing.JButton btnThoatAccount;
     private javax.swing.JComboBox<String> cbbGioiTinh;
+    private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
@@ -556,14 +640,13 @@ public class AccountCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel labelBienSoXe;
     private javax.swing.JLabel labelLoaiXe;
     private javax.swing.JLabel labelSoDu;
-    private javax.swing.JTextField tfBienSoXe;
-    private javax.swing.JTextField tfLoaiXe;
-    private javax.swing.JTextField tfSoDu;
+    private javax.swing.JTextField tfdBienSoXe;
     private javax.swing.JTextField tfdDiachiAccount;
     private javax.swing.JTextField tfdEmailAccount;
     private javax.swing.JTextField tfdHoTenAccount;
     private javax.swing.JTextField tfdQueQuanAccount;
     private javax.swing.JTextField tfdSDTAccount;
+    private javax.swing.JTextField tfdSoDu;
     private javax.swing.JLabel txtHoTenAccount;
     // End of variables declaration//GEN-END:variables
 

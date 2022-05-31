@@ -438,31 +438,12 @@ public class QLKVLJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoabtnXoaMouseClicked
 
     private void btnTimKiembtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiembtnTimKiemMouseClicked
-        // TODO add your handling code here:
-//        if (txtMaTheKVL.getText().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Mã xe phải được nhập để tìm kiếm");
-//            return;
-//        }
-//
-//        try {
-//            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
-//
-//            if (xe != null) {
-//                txtMaTheKVL.setText(xe.getStrMaXe());
-//                txtMaXe.setText(xe.getStrTenLoaiXe());
-//                txtTenLoaiXe.setText(xe.getStrBienSoXe());
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Xe không tìm thấy");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-//            e.printStackTrace();
-//        }
+       
     }//GEN-LAST:event_btnTimKiembtnTimKiemMouseClicked
 
     private void tblKhachVangLaitblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachVangLaitblNhanVienMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblKhachVangLai.getSelectedRow();
         if (selectedRow >= 0) {
 

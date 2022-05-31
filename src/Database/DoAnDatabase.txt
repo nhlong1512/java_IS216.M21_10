@@ -16,17 +16,17 @@ create table NguoiDung (
     Email varchar2(32) not null,
     MatKhau varchar2(64) not null,
     HoTen varchar2(50),
-    GioiTinh varchar2(3),
+    GioiTinh varchar2(5),
     NgSinh Date,
     DiaChi varchar2(256),
     QueQuan varchar2(256),
     SDT varchar2(10),
-    VaiTro varchar2(10),
+    VaiTro varchar2(20),
 
     CONSTRAINT PK_MaND PRIMARY KEY (MaND)
 --   
---    CONSTRAINT check_GioiTinh CHECK (GioiTinh = 'Nam' or GioiTinh = 'Nu'),
---    CONSTRAINT check_VaiTro CHECK (VaiTro ='Khach hang' or VaiTro = 'Nhan vien')
+--    CONSTRAINT check_GioiTinh CHECK (GioiTinh = 'Nam' or GioiTinh = 'Nữ'),
+--    CONSTRAINT check_VaiTro CHECK (VaiTro ='Khách hàng' or VaiTro = 'Nhân Viên')
 );
 
 
@@ -45,7 +45,7 @@ create table NhanVien  (
     ViTriNhanVien varchar2(30),
     
     CONSTRAINT PK_MaNV PRIMARY KEY (MaNV)
---    CONSTRAINT check_ViTriNhanVien CHECK (ViTriNhanVien in ('Quan ly', 'Bao ve'))
+--    CONSTRAINT check_ViTriNhanVien CHECK (ViTriNhanVien in ('Quản lý', 'Bảo vệ'))
 );
 
 
@@ -57,13 +57,13 @@ create table KhachHang (
     
     CONSTRAINT PK_MaKH PRIMARY KEY (MAKH)
 );
---So du phai lon hon hoac bang kh�ng 0
+--So du phai lon hon hoac bang không 0
 create or replace trigger SoDu_trigger
 before insert or update on KhachHang 
 for each row
 begin
     if (:new.SoDu < 0) then
-        raise_application_error(-20001, 'So du phai lon hon hoac bang kh�ng 0');
+        raise_application_error(-20001, 'So du phai lon hon hoac bang không 0');
     end if;
 end;
 --da chay
@@ -78,13 +78,13 @@ create table LoaiVe(
 );
 
 
---Gia ve phai lon hon hoac bang kh�ng 0
+--Gia ve phai lon hon hoac bang không 0
 create or replace trigger GiaVe_trigger
 before insert or update on LoaiVe
 for each row
 begin
     if (:new.GiaVe < 0) then
-        raise_application_error(-20002, 'Gia ve phai lon hon hoac bang kh�ng 0');
+        raise_application_error(-20002, 'Gia ve phai lon hon hoac bang không 0');
     end if;
 end;
 -- da chay
@@ -95,7 +95,7 @@ create table c_Ve(
     MaKH varchar2(5),
     NgayKichHoat Date,
     NgayHetHan Date,
-    TrangThai Varchar(30),
+    TrangThai Varchar(50),
     
     CONSTRAINT PK_MaVe PRIMARY KEY (MaVe) 
 );
@@ -167,7 +167,7 @@ before insert or update on ChiTietHoaDonMuaVe
 for each row
 begin
     if (:new.SoLuongVe < 0) then
-        raise_application_error(-20004, 'So luong ve phai lon hon hoac bang kh�ng 0');
+        raise_application_error(-20004, 'So luong ve phai lon hon hoac bang không 0');
     end if;
 end;
 --da chay
@@ -210,106 +210,106 @@ alter session set nls_date_format = 'dd/MON/yyyy hh24:mi:ss';
 
 INSERT INTO NguoiDung VALUES('ND001','20521122@gm.uit.edu.vn', 'nguyenvana123',
 'Nguyen Van A', 'Nam',TO_DATE('31/03/2002', 'dd/mm/yyyy'),
-'123 Quang Trung, p.10, Q.Go Vap', 'TP.HCM', '0123456789','Khach hang');
+'123 Quang Trung, p.10, Q.Go Vap', 'TP.HCM', '0123456789','Khách hàng');
 
 INSERT INTO NguoiDung VALUES('ND002','20520945@gm.uit.edu.vn', 'trantiendung012',
 'Tran Tien Dung', 'Nam',TO_DATE('1/05/2002', 'dd/mm/yyyy'),
-'966 Le Van Sy, p.3', 'TP. Ho Chi Minh', '0983563214', 'Khach hang');
+'966 Le Van Sy, p.3', 'TP. Ho Chi Minh', '0983563214', 'Khách hàng');
 
 
 
 INSERT INTO NguoiDung VALUES ('ND003','21520089@gm.uit.edu.vn', 'ntnga11',
-'Nguyen Thi Nga', 'Nu', TO_DATE('6/07/2003', 'dd/mm/yyyy'),
-'202 Nguyen Van Troi, p.6','TP. Da Lat', '0988746532','Khach hang');
+'Nguyen Thi Nga', 'Nữ', TO_DATE('6/07/2003', 'dd/mm/yyyy'),
+'202 Nguyen Van Troi, p.6','TP. Da Lat', '0988746532','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND004','20520089@gm.uit.edu.vn', 'vnu000',
 'Tran The Son', 'Nam', TO_DATE('10/03/2002', 'dd/mm/yyyy'),
-'43 Nguyen Van Linh, Phuoc Hiep, Ba Ria','TP. Ba Ria - Vung Tau', '0566744325','Khach hang');
+'43 Nguyen Van Linh, Phuoc Hiep, Ba Ria','TP. Ba Ria - Vung Tau', '0566744325','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND005','20526793@gm.uit.edu.vn', 'pro178',
-'Nguyen Thi Thanh Truc', 'Nu', TO_DATE('06/09/2002', 'dd/mm/yyyy'),
-'983 Tran Phu, phuong 2','TP. Bao Loc', '0963412776','Khach hang');
+'Nguyen Thi Thanh Truc', 'Nữ', TO_DATE('06/09/2002', 'dd/mm/yyyy'),
+'983 Tran Phu, phuong 2','TP. Bao Loc', '0963412776','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND006','20520881@gm.uit.edu.vn', 'phna1111',
-'Pham Hoang Ngoc Anh', 'Nu', TO_DATE('04/06/2002', 'dd/mm/yyyy'),
-'993 Nguyen Kiem, phuong 3, Q.Go Vap','TP. Ho Chi Minh', '0939508991','Khach hang');
+'Pham Hoang Ngoc Anh', 'Nữ', TO_DATE('04/06/2002', 'dd/mm/yyyy'),
+'993 Nguyen Kiem, phuong 3, Q.Go Vap','TP. Ho Chi Minh', '0939508991','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND007','20520811@gm.uit.edu.vn', 'nhoklokchok000',
 'Tran Trong Tin', 'Nam', TO_DATE('11/01/2001', 'dd/mm/yyyy'),
-'456 Nguyen Trai, phuong 6','TP. Ben Tre', '0377895602','Khach hang');
+'456 Nguyen Trai, phuong 6','TP. Ben Tre', '0377895602','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND008','20521982@gm.uit.edu.vn', 'twg90',
-'Le Nu Thu Giang', 'Nu', TO_DATE('13/10/2002', 'dd/mm/yyyy'),
-'42 Ky Con, phuong 2','TP. Bao Loc', '0976832461','Khach hang');
+'Le Nu Thu Giang', 'Nữ', TO_DATE('13/10/2002', 'dd/mm/yyyy'),
+'42 Ky Con, phuong 2','TP. Bao Loc', '0976832461','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND009','20539872@gm.uit.edu.vn', 'bhik901',
-'Pham Thi Thuy Uyen', 'Nu', TO_DATE('13/05/2002', 'dd/mm/yyyy'),
-'48 Nguyen Thi Minh Khai','TP. Bao Loc', '0754396821','Khach hang');
+'Pham Thi Thuy Uyen', 'Nữ', TO_DATE('13/05/2002', 'dd/mm/yyyy'),
+'48 Nguyen Thi Minh Khai','TP. Bao Loc', '0754396821','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND010','20521569@gm.uit.edu.vn', 'ngsek105',
 'Nguyen Huu Long', 'Nam', TO_DATE('21/05/2002', 'dd/mm/yyyy'),
-'12/4 TA20, quan 12','TP Quang Tri', '0365399621','Khach hang');
+'12/4 TA20, quan 12','TP Quang Tri', '0365399621','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND011','nguyenvanbao@gmail.com', 'nvb890',
 'Nguyen Van Bao', 'Nam', TO_DATE('19/7/1975', 'dd/mm/yyyy'),
-'122 Binh Hung Hoa, phuong 3, Q. Binh Tan','TP. Ho Chi Minh','0766983421','Nhan vien');
+'122 Binh Hung Hoa, phuong 3, Q. Binh Tan','TP. Ho Chi Minh','0766983421','Nhân Viên');
 
 INSERT INTO NguoiDung VALUES ('ND012','tranvanminh@gmail.com', 'tvm901',
 'Tran Van Minh', 'Nam', TO_DATE('08/09/1979', 'dd/mm/yyyy'),
-'58 Vo Thi Sau, phuong 1','TP. Vinh Long','0896578432','Nhan vien');
+'58 Vo Thi Sau, phuong 1','TP. Vinh Long','0896578432','Nhân Viên');
 
 INSERT INTO NguoiDung VALUES ('ND013','nguyenquangtrung@gmail.com', 'nqt901',
 'Nguyen Quang Trung', 'Nam', TO_DATE('07/04/1990', 'dd/mm/yyyy'),
-'1 Phan Boi Chay, phuong 1','TP. Vinh Long','0768939450','Nhan vien');
+'1 Phan Boi Chay, phuong 1','TP. Vinh Long','0768939450','Nhân Viên');
 
 INSERT INTO NguoiDung VALUES ('ND014','nguyentuankiet@gmail.com', 'nVE645',
 'Nguyen Tuan Kiet', 'Nam', TO_DATE('09/08/1989', 'dd/mm/yyyy'),
-'10 Le Minh, An Dong','TP. Hue','0768939450','Khach hang');
+'10 Le Minh, An Dong','TP. Hue','0768939450','Khách hàng');
 
 INSERT INTO NguoiDung VALUES ('ND015','20521083@gmail.uit.edu.vn', 'ttna0000',
-'Tran Thi Ngoc Anh', 'Nu', TO_DATE('19/03/2002', 'dd/mm/yyyy'),
-'28 Nguyen Thi Ly, phuong 2','TP. Quang Tri','0985766322','Khach hang');
+'Tran Thi Ngoc Anh', 'Nữ', TO_DATE('19/03/2002', 'dd/mm/yyyy'),
+'28 Nguyen Thi Ly, phuong 2','TP. Quang Tri','0985766322','Khách hàng');
 
 --INSERT Xe TABLE
 
-INSERT INTO Xe VALUES('XE001','59A-789.90', 'Xe may');
-INSERT INTO Xe VALUES('XE002','59A-545.87', 'Xe may');
-INSERT INTO Xe VALUES('XE003', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE004','49A-669.45', 'Xe may');
-INSERT INTO Xe VALUES('XE005','49A-780.90', 'Xe may');
-INSERT INTO Xe VALUES('XE006','72A-115.34', 'Xe may');
-INSERT INTO Xe VALUES('XE007','72A-765.42', 'Xe may');
-INSERT INTO Xe VALUES('XE008', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE009', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE010',NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE011','75A-222.56', 'Xe may');
-INSERT INTO Xe VALUES('XE012','49A-865.47', 'Xe may');
-INSERT INTO Xe VALUES('XE013','58A-423.60', 'Xe may');
-INSERT INTO Xe VALUES('XE014','51A-455.88', 'Xe may');
-INSERT INTO Xe VALUES('XE015','66A-429.06', 'Xe may');
-INSERT INTO Xe VALUES('XE016','62P-789.91', 'Xe may');
-INSERT INTO Xe VALUES('XE017','70A-142.87', 'Xe may');
-INSERT INTO Xe VALUES('XE018', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE019','47A-996.45', 'Xe may');
-INSERT INTO Xe VALUES('XE020','49A-970.90', 'Xe may');
-INSERT INTO Xe VALUES('XE021','71A-113.34', 'Xe may');
-INSERT INTO Xe VALUES('XE022','83A-657.92', 'Xe may');
-INSERT INTO Xe VALUES('XE023', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE024', NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE025',NULL , 'Xe dap');
-INSERT INTO Xe VALUES('XE026','72A-442.15', 'Xe may');
-INSERT INTO Xe VALUES('XE027','49A-888.55', 'Xe may');
-INSERT INTO Xe VALUES('XE028','62A-333.60', 'Xe may');
-INSERT INTO Xe VALUES('XE029','59A-444.77', 'Xe may');
-INSERT INTO Xe VALUES('XE030','66A-666.44', 'Xe may');
+INSERT INTO Xe VALUES('XE001','59A-789.90', 'Xe máy');
+INSERT INTO Xe VALUES('XE002','59A-545.87', 'Xe máy');
+INSERT INTO Xe VALUES('XE003', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE004','49A-669.45', 'Xe máy');
+INSERT INTO Xe VALUES('XE005','49A-780.90', 'Xe máy');
+INSERT INTO Xe VALUES('XE006','72A-115.34', 'Xe máy');
+INSERT INTO Xe VALUES('XE007','72A-765.42', 'Xe máy');
+INSERT INTO Xe VALUES('XE008', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE009', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE010',NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE011','75A-222.56', 'Xe máy');
+INSERT INTO Xe VALUES('XE012','49A-865.47', 'Xe máy');
+INSERT INTO Xe VALUES('XE013','58A-423.60', 'Xe máy');
+INSERT INTO Xe VALUES('XE014','51A-455.88', 'Xe máy');
+INSERT INTO Xe VALUES('XE015','66A-429.06', 'Xe máy');
+INSERT INTO Xe VALUES('XE016','62P-789.91', 'Xe máy');
+INSERT INTO Xe VALUES('XE017','70A-142.87', 'Xe máy');
+INSERT INTO Xe VALUES('XE018', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE019','47A-996.45', 'Xe máy');
+INSERT INTO Xe VALUES('XE020','49A-970.90', 'Xe máy');
+INSERT INTO Xe VALUES('XE021','71A-113.34', 'Xe máy');
+INSERT INTO Xe VALUES('XE022','83A-657.92', 'Xe máy');
+INSERT INTO Xe VALUES('XE023', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE024', NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE025',NULL , 'Xe đạp');
+INSERT INTO Xe VALUES('XE026','72A-442.15', 'Xe máy');
+INSERT INTO Xe VALUES('XE027','49A-888.55', 'Xe máy');
+INSERT INTO Xe VALUES('XE028','62A-333.60', 'Xe máy');
+INSERT INTO Xe VALUES('XE029','59A-444.77', 'Xe máy');
+INSERT INTO Xe VALUES('XE030','66A-666.44', 'Xe máy');
 
 
 
 --INSERT NhanVien TABLE
 
-INSERT INTO NhanVien  VALUES ('ND011', 'Bao ve');
-INSERT INTO NhanVien  VALUES ('ND012', 'Quan ly');
-INSERT INTO NhanVien  VALUES ('ND013', 'Bao ve');
+INSERT INTO NhanVien  VALUES ('ND011', 'Bảo vệ');
+INSERT INTO NhanVien  VALUES ('ND012', 'Quản lý');
+INSERT INTO NhanVien  VALUES ('ND013', 'Bảo vệ');
 
 --INSERT KHACHHANG TABLE
 
@@ -328,38 +328,38 @@ insert into KhachHang values ('ND015','XE015',99000);
 
 -- Insert LoaiVe Table
 
-INSERT INTO LoaiVe VALUES ('LVE01', 'Ve luot xe may', 3000);
-INSERT INTO LoaiVe VALUES ('LVE02', 'Ve luot xe dap', 2000);
-INSERT INTO LoaiVe VALUES ('LVE03', 'V� tuan', 25000);
-INSERT INTO LoaiVe VALUES ('LVE04', 'Ve thang', 95000);
+INSERT INTO LoaiVe VALUES ('LVE01', 'Vé lượt xe máy', 3000);
+INSERT INTO LoaiVe VALUES ('LVE02', 'Vé lượt xe đạp', 2000);
+INSERT INTO LoaiVe VALUES ('LVE03', 'Vé tuần', 25000);
+INSERT INTO LoaiVe VALUES ('LVE04', 'Vé tháng', 95000);
 
 
 --INSERT Ve TABLE
 
 INSERT INTO c_Ve VALUES ('VE001', 'LVE03','ND001',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE002', 'LVE04','ND002',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE003', 'LVE03','ND003',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE004', 'LVE04','ND004',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE005', 'LVE03','ND005',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE006', 'LVE03','ND006',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE007', 'LVE04','ND007',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE008', 'LVE03','ND008',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE009', 'LVE04','ND009',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE010', 'LVE03','ND010',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'Đang sử dụng');
 INSERT INTO c_Ve VALUES ('VE014', 'LVE04','ND014',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),0);
-INSERT INTO c_Ve VALUES ('VE015', 'LVE04','ND015',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
+INSERT INTO c_Ve VALUES ('VE015', 'LVE04','ND015',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),    
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'Đang sử dụng');
 
 --Insert KhachVangLai Table
 
@@ -425,9 +425,9 @@ INSERT INTO ChiTietHoaDonMuaVe VALUES('HD004', 'LVE02', 1);
 INSERT INTO ChiTietHoaDonMuaVe VALUES('HD005', 'LVE01', 2);
 INSERT INTO ChiTietHoaDonMuaVe VALUES('HD006', 'LVE04', 1);
 INSERT INTO ChiTietHoaDonMuaVe VALUES('HD007', 'LVE04', 1);
-INSERT INTO ChiTietHoaDonMuaVe VALUES('HD008', 'LVE03', 1);
-INSERT INTO ChiTietHoaDonMuaVe VALUES('HD009', 'LVE02', 2);
-INSERT INTO ChiTietHoaDonMuaVe VALUES('HD010', 'LVE04', 1);
+INSERT INTO ChiTietHoaDonMuaVe VALUES('HD008', 'LVE03', 2);
+INSERT INTO ChiTietHoaDonMuaVe VALUES('HD009', 'LVE02', 1);
+INSERT INTO ChiTietHoaDonMuaVe VALUES('HD010', 'LVE04', 2);
 INSERT INTO ChiTietHoaDonMuaVe VALUES('HD014', 'LVE04', 1);
 INSERT INTO ChiTietHoaDonMuaVe VALUES('HD015', 'LVE04', 1);
 
@@ -507,5 +507,3 @@ end;
   
 drop function SoLuongXeRa_TheoNgay;
 
-
-select * from c_Ve;

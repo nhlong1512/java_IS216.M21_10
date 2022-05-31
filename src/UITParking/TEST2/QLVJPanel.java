@@ -402,6 +402,7 @@ public class QLVJPanel extends javax.swing.JPanel {
 
     private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblVe.getSelectedRow();
         if (selectedRow >= 0) {
 

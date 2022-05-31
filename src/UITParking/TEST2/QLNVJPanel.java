@@ -398,6 +398,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private void tblNhanVientblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVientblNhanVienMousePressed
         // TODO add your handling code here:
+        resetRender();
         int selectedRow = tblNhanVien.getSelectedRow();
         if (selectedRow >= 0) {
 

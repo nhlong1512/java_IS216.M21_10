@@ -6,7 +6,12 @@ package UITParking.GUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -37,6 +42,24 @@ public class InitPublic {
         return dateToday;
     }
     
+    public static Date getDateThoiGianVeTuan() throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //Cộng 7 ngày
+        LocalDate today = LocalDate.now().plusDays(7);
+        String strToday = today.toString();
+        Date dateToday = DateFormat.parse(strToday);
+        return dateToday;
+    }
+    
+    public static Date getDateThoiGianVeThang() throws ParseException{
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //Cộng 7 ngày
+        LocalDate today = LocalDate.now().plusMonths(1);
+        String strToday = today.toString();
+        Date dateToday = DateFormat.parse(strToday);
+        return dateToday;
+    }
+    
     public static Date getConvertYYYYMMDD(String data) throws ParseException{
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date rs = DateFormat.parse(data);
@@ -46,5 +69,17 @@ public class InitPublic {
         SimpleDateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date rs = DateFormat.parse(data);
         return rs.toString();
+    }
+    
+    public static LocalDate getConvertStringToLocalDate(String data){
+        LocalDate localDate = LocalDate.parse(data,DateTimeFormatter.ISO_LOCAL_DATE);
+        return localDate;
+    }
+    
+    
+    public LocalDate convertDatetoLocalDate(Date now){
+        Instant instant = Instant.ofEpochMilli(now.getTime());
+        LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        return localDate;
     }
 }

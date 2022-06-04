@@ -944,6 +944,10 @@ public class GioHang extends javax.swing.JFrame {
                 xoaSLVe();
                 //Set số lượng các loại vé về 0
                 setSLVe0();
+                slVeGioHang = 0;
+                Homepage _homepage = new Homepage();
+                _homepage.show();
+                dispose();
 
             } catch (Exception ex) {
                 Logger.getLogger(GioHang.class.getName()).log(Level.SEVERE, null, ex);

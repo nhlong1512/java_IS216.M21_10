@@ -67,7 +67,7 @@ public class Homepage extends javax.swing.JFrame {
         dashboardview = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnThongTinVe = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         btnNapTien = new javax.swing.JButton();
@@ -219,11 +219,16 @@ public class Homepage extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-xf51WsVg2aATLx.png"))); // NOI18N
 
-        jButton4.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
-        jButton4.setText("Thông tin vé");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnThongTinVe.setFont(new java.awt.Font("Cooper", 1, 14)); // NOI18N
+        btnThongTinVe.setText("Thông tin vé");
+        btnThongTinVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongTinVeMouseClicked(evt);
+            }
+        });
+        btnThongTinVe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnThongTinVeActionPerformed(evt);
             }
         });
 
@@ -236,7 +241,7 @@ public class Homepage extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jButton4)
+                .addComponent(btnThongTinVe)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -245,7 +250,7 @@ public class Homepage extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongTinVe, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -433,9 +438,9 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMuaVeActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnThongTinVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinVeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnThongTinVeActionPerformed
 
     private void btnNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNapTienActionPerformed
         // TODO add your handling code here:
@@ -497,6 +502,19 @@ public class Homepage extends javax.swing.JFrame {
         _accountCustomer.show();
         dispose();
     }//GEN-LAST:event_btnAccountCustomerMouseClicked
+
+    private void btnThongTinVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongTinVeMouseClicked
+        ThongTinVe _thongTinVe = null;
+        try {
+            // TODO add your handling code here:
+            _thongTinVe = new ThongTinVe();
+        } catch (Exception ex) {
+            Logger.getLogger(Homepage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _thongTinVe.show();
+        dispose();
+        
+    }//GEN-LAST:event_btnThongTinVeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -562,9 +580,9 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMuaVe;
     private javax.swing.JButton btnNapTien;
+    private javax.swing.JButton btnThongTinVe;
     private javax.swing.JPanel dashboardview;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

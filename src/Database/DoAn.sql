@@ -330,36 +330,36 @@ insert into KhachHang values ('ND015','XE015',99000);
 
 INSERT INTO LoaiVe VALUES ('LVE01', 'Ve luot xe may', 3000);
 INSERT INTO LoaiVe VALUES ('LVE02', 'Ve luot xe dap', 2000);
-INSERT INTO LoaiVe VALUES ('LVE03', 'Vé tuan', 25000);
+INSERT INTO LoaiVe VALUES ('LVE03', 'Ve tuan', 25000);
 INSERT INTO LoaiVe VALUES ('LVE04', 'Ve thang', 95000);
 
 
 --INSERT Ve TABLE
 
 INSERT INTO c_Ve VALUES ('VE001', 'LVE03','ND001',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE002', 'LVE04','ND002',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE003', 'LVE03','ND003',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE004', 'LVE04','ND004',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE005', 'LVE03','ND005',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE006', 'LVE03','ND006',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE007', 'LVE04','ND007',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE008', 'LVE03','ND008',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE009', 'LVE04','ND009',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE010', 'LVE03','ND010',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+7),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE014', 'LVE04','ND014',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),0);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 INSERT INTO c_Ve VALUES ('VE015', 'LVE04','ND015',to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')),
-to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),1);
+to_char(to_date(Sysdate,'dd/mm/yyyy hh24:mi:ss')+30),'?ang s? d?ng');
 
 --Insert KhachVangLai Table
 

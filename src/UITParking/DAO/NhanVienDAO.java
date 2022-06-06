@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class NhanVienDAO {
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("hr", "hr", "Ngocanh");;
+    public static SQLConnection connection = new SQLConnection("hr", "hr", "orcl");;
     public static PreparedStatement pst = null;
 
     /**

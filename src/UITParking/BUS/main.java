@@ -7,6 +7,7 @@ package UITParking.BUS;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DAO.NguoiDungDAO;
 import UITParking.DTO.CTHDMuaVeDTO;
+import UITParking.DTO.CTRaVaoDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.KhachVangLaiDTO;
@@ -179,5 +180,13 @@ public class main {
             System.out.println("New----" + ve);
         }
         System.out.println(xetbl.getMaxMaXe()); 
+        
+        
+        CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
+        ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
+        for(CTRaVaoDTO ctrv : list_CTRV){
+            System.out.println("New----" + ctrv);
+        }
+        System.out.println(ctrvtbl.getInfor("DT020"));
     }
 }

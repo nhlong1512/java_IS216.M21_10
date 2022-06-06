@@ -7,6 +7,7 @@ package UITParking.GUI;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.NguoiDungDTO;
 import static UITParking.GUI.login.pMaND;
+import UITParking.TEST2.MainForm;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -27,6 +28,8 @@ import javax.swing.JPanel;
  * @author Pham Hoang Ngoc Anh
  */
 public class HomepageAdmin extends javax.swing.JFrame {
+
+    public static String kindSelectedPublic = "";
 
     /**
      * Creates new form HomepageAdmin
@@ -52,22 +55,22 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        panelRound2 = new Admin.PanelRound();
+        panelAdminQLKH = new Admin.PanelRound();
         jLabel2 = new javax.swing.JLabel();
         label_QLKH = new javax.swing.JLabel();
-        panelRound3 = new Admin.PanelRound();
+        panelAdminQLV = new Admin.PanelRound();
         jLabel4 = new javax.swing.JLabel();
         label_QLVE = new javax.swing.JLabel();
-        panelRound4 = new Admin.PanelRound();
+        panelAdminQLNV = new Admin.PanelRound();
         jLabel6 = new javax.swing.JLabel();
         label_QLNV = new javax.swing.JLabel();
-        panelRound5 = new Admin.PanelRound();
+        panelAdminQLHD = new Admin.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         label_QLHD = new javax.swing.JLabel();
-        panelRound6 = new Admin.PanelRound();
+        panelAdminQLDT = new Admin.PanelRound();
         jLabel10 = new javax.swing.JLabel();
         label_QLDT = new javax.swing.JLabel();
-        panelRound7 = new Admin.PanelRound();
+        panelAdminBCTK = new Admin.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         label_BCTK = new javax.swing.JLabel();
         panelRound1 = new Admin.PanelRound();
@@ -78,6 +81,14 @@ public class HomepageAdmin extends javax.swing.JFrame {
         txtChucVuNhanVien = new javax.swing.JLabel();
         txtHoTenNhanVien = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        label_DangXuat = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        panelAdminQLKVL = new Admin.PanelRound();
+        jLabel7 = new javax.swing.JLabel();
+        label_QLKVL = new javax.swing.JLabel();
+        panelAdminQLX = new Admin.PanelRound();
+        jLabel11 = new javax.swing.JLabel();
+        label_QLXE = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,13 +97,19 @@ public class HomepageAdmin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setRoundBottomLeft(50);
-        panelRound2.setRoundBottomRight(50);
-        panelRound2.setRoundTopLeft(50);
-        panelRound2.setRoundTopRight(50);
+        panelAdminQLKH.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLKH.setRoundBottomLeft(50);
+        panelAdminQLKH.setRoundBottomRight(50);
+        panelAdminQLKH.setRoundTopLeft(50);
+        panelAdminQLKH.setRoundTopRight(50);
+        panelAdminQLKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLKHMouseClicked(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/qlkh.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLKH.setBackground(new java.awt.Color(51, 51, 51));
         label_QLKH.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
@@ -101,6 +118,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLKH.setText("Quản lý khách hàng");
         label_QLKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLKHMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLKHMouseEntered(evt);
             }
@@ -109,23 +129,23 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLKHLayout = new javax.swing.GroupLayout(panelAdminQLKH);
+        panelAdminQLKH.setLayout(panelAdminQLKHLayout);
+        panelAdminQLKHLayout.setHorizontalGroup(
+            panelAdminQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLKHLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAdminQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_QLKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelRound2Layout.createSequentialGroup()
+                    .addGroup(panelAdminQLKHLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
+        panelAdminQLKHLayout.setVerticalGroup(
+            panelAdminQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLKHLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -133,15 +153,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 180, 200));
+        jPanel2.add(panelAdminQLKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 180, 200));
 
-        panelRound3.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound3.setRoundBottomLeft(50);
-        panelRound3.setRoundBottomRight(50);
-        panelRound3.setRoundTopLeft(50);
-        panelRound3.setRoundTopRight(50);
+        panelAdminQLV.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLV.setRoundBottomLeft(50);
+        panelAdminQLV.setRoundBottomRight(50);
+        panelAdminQLV.setRoundTopLeft(50);
+        panelAdminQLV.setRoundTopRight(50);
+        panelAdminQLV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLVMouseClicked(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vé.png"))); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLVE.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLVE.setForeground(new java.awt.Color(0, 0, 102));
@@ -149,6 +175,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLVE.setText("Quản lý vé");
         label_QLVE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLVEMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLVEMouseEntered(evt);
             }
@@ -157,22 +186,22 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
-        panelRound3.setLayout(panelRound3Layout);
-        panelRound3Layout.setHorizontalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLVLayout = new javax.swing.GroupLayout(panelAdminQLV);
+        panelAdminQLV.setLayout(panelAdminQLVLayout);
+        panelAdminQLVLayout.setHorizontalGroup(
+            panelAdminQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLVLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label_QLVE, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(panelRound3Layout.createSequentialGroup()
+            .addGroup(panelAdminQLVLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelRound3Layout.setVerticalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound3Layout.createSequentialGroup()
+        panelAdminQLVLayout.setVerticalGroup(
+            panelAdminQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLVLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -180,15 +209,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 180, 200));
+        jPanel2.add(panelAdminQLV, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 180, 200));
 
-        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound4.setRoundBottomLeft(50);
-        panelRound4.setRoundBottomRight(50);
-        panelRound4.setRoundTopLeft(50);
-        panelRound4.setRoundTopRight(50);
+        panelAdminQLNV.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLNV.setRoundBottomLeft(50);
+        panelAdminQLNV.setRoundBottomRight(50);
+        panelAdminQLNV.setRoundTopLeft(50);
+        panelAdminQLNV.setRoundTopRight(50);
+        panelAdminQLNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLNVMouseClicked(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ttstaff.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLNV.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLNV.setForeground(new java.awt.Color(0, 0, 102));
@@ -196,6 +231,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLNV.setText("Quản lý nhân viên");
         label_QLNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLNVMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLNVMouseEntered(evt);
             }
@@ -204,22 +242,22 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
-        panelRound4.setLayout(panelRound4Layout);
-        panelRound4Layout.setHorizontalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLNVLayout = new javax.swing.GroupLayout(panelAdminQLNV);
+        panelAdminQLNV.setLayout(panelAdminQLNVLayout);
+        panelAdminQLNVLayout.setHorizontalGroup(
+            panelAdminQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLNVLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label_QLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdminQLNVLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
-        panelRound4Layout.setVerticalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
+        panelAdminQLNVLayout.setVerticalGroup(
+            panelAdminQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLNVLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -227,15 +265,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 180, 200));
+        jPanel2.add(panelAdminQLNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 180, 200));
 
-        panelRound5.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound5.setRoundBottomLeft(50);
-        panelRound5.setRoundBottomRight(50);
-        panelRound5.setRoundTopLeft(50);
-        panelRound5.setRoundTopRight(50);
+        panelAdminQLHD.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLHD.setRoundBottomLeft(50);
+        panelAdminQLHD.setRoundBottomRight(50);
+        panelAdminQLHD.setRoundTopLeft(50);
+        panelAdminQLHD.setRoundTopRight(50);
+        panelAdminQLHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLHDMouseClicked(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLHD.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLHD.setForeground(new java.awt.Color(0, 0, 102));
@@ -243,6 +287,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLHD.setText("Quản lý hóa đơn");
         label_QLHD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLHDMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 label_QLHDMouseEntered(evt);
             }
@@ -251,23 +298,23 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
-        panelRound5.setLayout(panelRound5Layout);
-        panelRound5Layout.setHorizontalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLHDLayout = new javax.swing.GroupLayout(panelAdminQLHD);
+        panelAdminQLHD.setLayout(panelAdminQLHDLayout);
+        panelAdminQLHDLayout.setHorizontalGroup(
+            panelAdminQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLHDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAdminQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_QLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelRound5Layout.createSequentialGroup()
+                    .addGroup(panelAdminQLHDLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelRound5Layout.setVerticalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
+        panelAdminQLHDLayout.setVerticalGroup(
+            panelAdminQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLHDLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -275,15 +322,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 180, 200));
+        jPanel2.add(panelAdminQLHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 180, 200));
 
-        panelRound6.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound6.setRoundBottomLeft(50);
-        panelRound6.setRoundBottomRight(50);
-        panelRound6.setRoundTopLeft(50);
-        panelRound6.setRoundTopRight(50);
+        panelAdminQLDT.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLDT.setRoundBottomLeft(50);
+        panelAdminQLDT.setRoundBottomRight(50);
+        panelAdminQLDT.setRoundTopLeft(50);
+        panelAdminQLDT.setRoundTopRight(50);
+        panelAdminQLDT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLDTMouseClicked(evt);
+            }
+        });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doanhthu.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLDT.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLDT.setForeground(new java.awt.Color(0, 0, 102));
@@ -299,23 +352,23 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound6Layout = new javax.swing.GroupLayout(panelRound6);
-        panelRound6.setLayout(panelRound6Layout);
-        panelRound6Layout.setHorizontalGroup(
-            panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound6Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLDTLayout = new javax.swing.GroupLayout(panelAdminQLDT);
+        panelAdminQLDT.setLayout(panelAdminQLDTLayout);
+        panelAdminQLDTLayout.setHorizontalGroup(
+            panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLDTLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_QLDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelRound6Layout.createSequentialGroup()
+                    .addGroup(panelAdminQLDTLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelRound6Layout.setVerticalGroup(
-            panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound6Layout.createSequentialGroup()
+        panelAdminQLDTLayout.setVerticalGroup(
+            panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLDTLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,15 +376,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 200));
+        jPanel2.add(panelAdminQLDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 200));
 
-        panelRound7.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound7.setRoundBottomLeft(50);
-        panelRound7.setRoundBottomRight(50);
-        panelRound7.setRoundTopLeft(50);
-        panelRound7.setRoundTopRight(50);
+        panelAdminBCTK.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminBCTK.setRoundBottomLeft(50);
+        panelAdminBCTK.setRoundBottomRight(50);
+        panelAdminBCTK.setRoundTopLeft(50);
+        panelAdminBCTK.setRoundTopRight(50);
+        panelAdminBCTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminBCTKMouseClicked(evt);
+            }
+        });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/báo cáo.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_BCTK.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_BCTK.setForeground(new java.awt.Color(0, 0, 102));
@@ -347,22 +406,22 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
-        panelRound7.setLayout(panelRound7Layout);
-        panelRound7Layout.setHorizontalGroup(
-            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound7Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminBCTKLayout = new javax.swing.GroupLayout(panelAdminBCTK);
+        panelAdminBCTK.setLayout(panelAdminBCTKLayout);
+        panelAdminBCTKLayout.setHorizontalGroup(
+            panelAdminBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminBCTKLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label_BCTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(panelRound7Layout.createSequentialGroup()
+            .addGroup(panelAdminBCTKLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        panelRound7Layout.setVerticalGroup(
-            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound7Layout.createSequentialGroup()
+        panelAdminBCTKLayout.setVerticalGroup(
+            panelAdminBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminBCTKLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -370,7 +429,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 180, 200));
+        jPanel2.add(panelAdminBCTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 180, 200));
 
         panelRound1.setBackground(new java.awt.Color(249, 249, 249));
         panelRound1.setRoundBottomLeft(50);
@@ -404,6 +463,25 @@ public class HomepageAdmin extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 102));
         jLabel14.setText("Họ tên: ");
 
+        label_DangXuat.setFont(new java.awt.Font("Cooper", 0, 20)); // NOI18N
+        label_DangXuat.setForeground(new java.awt.Color(0, 0, 102));
+        label_DangXuat.setText("Đăng xuất");
+        label_DangXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        label_DangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_DangXuatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                label_DangXuatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                label_DangXuatMouseExited(evt);
+            }
+        });
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
@@ -417,16 +495,19 @@ public class HomepageAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNhanVienId)
+                    .addComponent(txtHoTenNhanVien))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(txtHoTenNhanVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(txtNhanVienId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(27, 27, 27)
-                        .addComponent(txtChucVuNhanVien)))
-                .addGap(29, 29, 29))
+                        .addComponent(txtChucVuNhanVien))
+                    .addGroup(panelRound1Layout.createSequentialGroup()
+                        .addComponent(label_DangXuat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel15)))
+                .addGap(149, 149, 149))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,17 +521,135 @@ public class HomepageAdmin extends javax.swing.JFrame {
                             .addComponent(txtNhanVienId)
                             .addComponent(txtChucVuNhanVien)
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(txtHoTenNhanVien))))
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRound1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel14)
+                                    .addComponent(txtHoTenNhanVien)
+                                    .addComponent(label_DangXuat)))
+                            .addGroup(panelRound1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 740, 80));
+        jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 980, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-8w5X3LDa5bx3o2Ag.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelAdminQLKVL.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLKVL.setRoundBottomLeft(50);
+        panelAdminQLKVL.setRoundBottomRight(50);
+        panelAdminQLKVL.setRoundTopLeft(50);
+        panelAdminQLKVL.setRoundTopRight(50);
+        panelAdminQLKVL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLKVLMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/imgonline-com-ua-resize-CzYCHQERVknJOb.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        label_QLKVL.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        label_QLKVL.setForeground(new java.awt.Color(0, 0, 102));
+        label_QLKVL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_QLKVL.setText("Quản lý khách vãng lai");
+        label_QLKVL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        label_QLKVL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLKVLMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                label_QLKVLMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                label_QLKVLMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAdminQLKVLLayout = new javax.swing.GroupLayout(panelAdminQLKVL);
+        panelAdminQLKVL.setLayout(panelAdminQLKVLLayout);
+        panelAdminQLKVLLayout.setHorizontalGroup(
+            panelAdminQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLKVLLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_QLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelAdminQLKVLLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelAdminQLKVLLayout.setVerticalGroup(
+            panelAdminQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLKVLLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_QLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panelAdminQLKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 110, 190, 200));
+
+        panelAdminQLX.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLX.setRoundBottomLeft(50);
+        panelAdminQLX.setRoundBottomRight(50);
+        panelAdminQLX.setRoundTopLeft(50);
+        panelAdminQLX.setRoundTopRight(50);
+        panelAdminQLX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelAdminQLXMouseClicked(evt);
+            }
+        });
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/xe.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        label_QLXE.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        label_QLXE.setForeground(new java.awt.Color(0, 0, 102));
+        label_QLXE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_QLXE.setText("Quản lý xe");
+        label_QLXE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        label_QLXE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_QLXEMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                label_QLXEMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                label_QLXEMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAdminQLXLayout = new javax.swing.GroupLayout(panelAdminQLX);
+        panelAdminQLX.setLayout(panelAdminQLXLayout);
+        panelAdminQLXLayout.setHorizontalGroup(
+            panelAdminQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLXLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_QLXE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelAdminQLXLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        panelAdminQLXLayout.setVerticalGroup(
+            panelAdminQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLXLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_QLXE, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panelAdminQLX, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 190, 200));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/wepik--202255-22401.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -460,7 +659,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -522,6 +721,233 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_BCTK.setForeground(new Color(0, 0, 102));
     }//GEN-LAST:event_label_BCTKMouseExited
 
+    private void label_QLKVLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKVLMouseEntered
+        label_QLKVL.setForeground(new Color(191, 207, 255));
+
+    }//GEN-LAST:event_label_QLKVLMouseEntered
+
+    private void label_QLKVLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKVLMouseExited
+        label_QLKVL.setForeground(new Color(0, 0, 102));
+
+    }//GEN-LAST:event_label_QLKVLMouseExited
+
+    private void label_QLXEMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXEMouseEntered
+        label_QLXE.setForeground(new Color(191, 207, 255));
+
+    }//GEN-LAST:event_label_QLXEMouseEntered
+
+    private void label_QLXEMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXEMouseExited
+        label_QLXE.setForeground(new Color(0, 0, 102));
+    }//GEN-LAST:event_label_QLXEMouseExited
+
+    private void label_DangXuatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_DangXuatMouseEntered
+        label_DangXuat.setForeground(new Color(191, 207, 255));
+
+    }//GEN-LAST:event_label_DangXuatMouseEntered
+
+    private void label_DangXuatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_DangXuatMouseExited
+        label_DangXuat.setForeground(new Color(0, 0, 102));
+    }//GEN-LAST:event_label_DangXuatMouseExited
+
+    private void panelAdminQLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLKHMouseClicked
+        // TODO add your handling code here:
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+            kindSelectedPublic = "QLKH";
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLKHMouseClicked
+
+    private void label_QLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKHMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLKH";
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLKHMouseClicked
+
+    private void panelAdminQLNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLNVMouseClicked
+        kindSelectedPublic = "QLNV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLNVMouseClicked
+
+    private void panelAdminQLVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLVMouseClicked
+        kindSelectedPublic = "QLV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLVMouseClicked
+
+    private void panelAdminQLKVLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLKVLMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLKVL";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLKVLMouseClicked
+
+    private void panelAdminQLHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLHDMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLHD";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLHDMouseClicked
+
+    private void panelAdminQLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLDTMouseClicked
+        // TODO add your handling code here:            
+//        kindSelectedPublic = "QLDT";
+//
+//        MainForm _mainForm = null;
+//        try {
+//            _mainForm = new MainForm();
+//        } catch (Exception ex) {
+//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        _mainForm.show();
+//        dispose();
+    }//GEN-LAST:event_panelAdminQLDTMouseClicked
+
+    private void panelAdminBCTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminBCTKMouseClicked
+        // TODO add your handling code here:
+//        kindSelectedPublic = "BCTK";
+//        MainForm _mainForm = null;
+//        try {
+//            _mainForm = new MainForm();
+//
+//        } catch (Exception ex) {
+//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        _mainForm.show();
+//        dispose();
+    }//GEN-LAST:event_panelAdminBCTKMouseClicked
+
+    private void panelAdminQLXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLX";
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLXMouseClicked
+
+    private void label_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_DangXuatMouseClicked
+        // TODO add your handling code here:
+        login _login = new login();
+        _login.show();
+        dispose();
+    }//GEN-LAST:event_label_DangXuatMouseClicked
+
+    private void label_QLNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLNVMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLNV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLNVMouseClicked
+
+    private void label_QLVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLVEMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLVEMouseClicked
+
+    private void label_QLKVLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKVLMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLKVL";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLKVLMouseClicked
+
+    private void label_QLHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLHDMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLHD";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLHDMouseClicked
+
+    private void label_QLXEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXEMouseClicked
+        // TODO add your handling code here:
+        kindSelectedPublic = "QLX";
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_label_QLXEMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -564,29 +990,37 @@ public class HomepageAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label_BCTK;
+    private javax.swing.JLabel label_DangXuat;
     private javax.swing.JLabel label_QLDT;
     private javax.swing.JLabel label_QLHD;
     private javax.swing.JLabel label_QLKH;
+    private javax.swing.JLabel label_QLKVL;
     private javax.swing.JLabel label_QLNV;
     private javax.swing.JLabel label_QLVE;
+    private javax.swing.JLabel label_QLXE;
+    private Admin.PanelRound panelAdminBCTK;
+    private Admin.PanelRound panelAdminQLDT;
+    private Admin.PanelRound panelAdminQLHD;
+    private Admin.PanelRound panelAdminQLKH;
+    private Admin.PanelRound panelAdminQLKVL;
+    private Admin.PanelRound panelAdminQLNV;
+    private Admin.PanelRound panelAdminQLV;
+    private Admin.PanelRound panelAdminQLX;
     private Admin.PanelRound panelRound1;
-    private Admin.PanelRound panelRound2;
-    private Admin.PanelRound panelRound3;
-    private Admin.PanelRound panelRound4;
-    private Admin.PanelRound panelRound5;
-    private Admin.PanelRound panelRound6;
-    private Admin.PanelRound panelRound7;
     private javax.swing.JLabel txtChucVuNhanVien;
     private javax.swing.JLabel txtHoTenNhanVien;
     private javax.swing.JLabel txtNhanVienId;

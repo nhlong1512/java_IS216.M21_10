@@ -28,7 +28,7 @@ public class SQLConnectUnit {
 
     // hàm khởi tạo kết nối mặc định
     public SQLConnectUnit() {
-        connect = new SQLConnection("hr", "hr", "orcl");
+        connect = new SQLConnection("hr", "hr", "Ngocanh");
     }
 
     // hàm khởi tạo cơ bản

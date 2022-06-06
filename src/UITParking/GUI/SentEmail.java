@@ -218,7 +218,7 @@ public class SentEmail extends javax.swing.JFrame {
     private void btnGetOTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGetOTPMouseClicked
         // TODO add your handling code here:
         try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Ngocanh", "hr", "hr");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtEmailModified.getText());

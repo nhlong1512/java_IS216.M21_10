@@ -207,6 +207,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã khách hàng");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 22));
+
+        txtMaKH.setEditable(false);
         jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 20, 200, -1));
 
         jLabel3.setText("Email");

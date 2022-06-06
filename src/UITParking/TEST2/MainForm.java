@@ -4,6 +4,8 @@
  */
 package UITParking.TEST2;
 
+import UITParking.GUI.HomepageAdmin;
+import static UITParking.GUI.HomepageAdmin.kindSelectedPublic;
 import UITParking.TEST2.DanhMucBean;
 import UITParking.TEST2.ChuyenManHinhController;
 import java.awt.Toolkit;
@@ -24,9 +26,59 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setIconimage();
-        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
-        controller.setView(jpnQLKH, jlbQLKH);
+        controllerFirst();
 
+    }
+
+    public void controllerFirst() throws Exception {
+        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
+//        if(kindSelectedPublic.equals("QLKH")){
+//            
+//            controller.setView(jpnQLKH, jlbQLKH);
+//        }
+        switch (kindSelectedPublic) {
+            case "QLNV": {
+                controller.setView(jpnQLNV, jlbQLNV);
+            }
+            break;
+            case "QLV": {
+                controller.setView(jpnQLV, jlbQLV);
+            }
+            break;
+            case "QLKH": {
+                controller.setView(jpnQLKH, jlbQLKH);
+
+            }
+            break;
+
+            case "QLX": {
+                controller.setView(jpnQLX, jlbQLX);
+            }
+            break;
+
+            case "QLKVL": {
+                controller.setView(jpnQLKVL, jlbQLKVL);
+            }
+            break;
+
+            case "QLHD": {
+                controller.setView(jpnQLHD, jlbQLHD);
+            }
+            break;
+
+            case "BCTK": {
+                controller.setView(jpnBCTK, jlbBCTK);
+            }
+            break;
+            case "QLDT": {
+                controller.setView(jpnDT, jlbDT);
+            }
+            break;
+
+            default:
+                controller.setView(jpnQLKH, jlbQLKH);
+                break;
+        }
         ArrayList<DanhMucBean> listItem = new ArrayList<>();
         listItem.add(new DanhMucBean("QLKH", jpnQLKH, jlbQLKH));
         listItem.add(new DanhMucBean("QLNV", jpnQLNV, jlbQLNV));
@@ -34,9 +86,11 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("QLKVL", jpnQLKVL, jlbQLKVL));
         listItem.add(new DanhMucBean("QLHD", jpnQLHD, jlbQLHD));
         listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
-        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
-        listItem.add(new DanhMucBean("QLDT", jpnDT, jlbDT));
+//        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
+//        listItem.add(new DanhMucBean("QLDT", jpnDT, jlbDT));
         controller.setEvent(listItem);
+        jpnBCTK.setVisible(false);
+        jpnDT.setVisible(false);
     }
 
     /**
@@ -50,23 +104,31 @@ public class MainForm extends javax.swing.JFrame {
 
         jpnRoot = new javax.swing.JPanel();
         jpnMenu = new javax.swing.JPanel();
-        jpnQLNV = new javax.swing.JPanel();
-        jlbQLNV = new javax.swing.JLabel();
-        jpnQLX = new javax.swing.JPanel();
-        jlbQLX = new javax.swing.JLabel();
-        jpnQLKH = new javax.swing.JPanel();
-        jlbQLKH = new javax.swing.JLabel();
-        jpnQLKVL = new javax.swing.JPanel();
-        jlbQLKVL = new javax.swing.JLabel();
-        jpnQLHD = new javax.swing.JPanel();
-        jlbQLHD = new javax.swing.JLabel();
-        jpnQLV = new javax.swing.JPanel();
-        jlbQLV = new javax.swing.JLabel();
-        jpnBCTK = new javax.swing.JPanel();
+        jpnBCTK = new Admin.PanelRound();
         jlbBCTK = new javax.swing.JLabel();
-        jpnDT = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jpnDT = new Admin.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
         jlbDT = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jpnQLV = new Admin.PanelRound();
+        jLabel5 = new javax.swing.JLabel();
+        jlbQLV = new javax.swing.JLabel();
+        jpnQLHD = new Admin.PanelRound();
+        jLabel6 = new javax.swing.JLabel();
+        jlbQLHD = new javax.swing.JLabel();
+        jpnQLKH = new Admin.PanelRound();
+        jLabel8 = new javax.swing.JLabel();
+        jlbQLKH = new javax.swing.JLabel();
+        jpnQLX = new Admin.PanelRound();
+        jLabel10 = new javax.swing.JLabel();
+        jlbQLX = new javax.swing.JLabel();
+        jpnQLKVL = new Admin.PanelRound();
+        jLabel7 = new javax.swing.JLabel();
+        jlbQLKVL = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        jpnQLNV = new Admin.PanelRound();
+        jLabel9 = new javax.swing.JLabel();
+        jlbQLNV = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,168 +136,49 @@ public class MainForm extends javax.swing.JFrame {
 
         jpnRoot.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpnMenu.setBackground(new java.awt.Color(14, 24, 95));
+        jpnMenu.setBackground(new java.awt.Color(159, 180, 255));
         jpnMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jpnQLNV.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLNV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLNV.setPreferredSize(new java.awt.Dimension(120, 66));
+        jpnBCTK.setBackground(new java.awt.Color(255, 255, 255));
+        jpnBCTK.setRoundBottomLeft(25);
+        jpnBCTK.setRoundBottomRight(25);
+        jpnBCTK.setRoundTopLeft(25);
+        jpnBCTK.setRoundTopRight(25);
 
-        jlbQLNV.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLNV.setText("Quản lý nhân viên");
-
-        javax.swing.GroupLayout jpnQLNVLayout = new javax.swing.GroupLayout(jpnQLNV);
-        jpnQLNV.setLayout(jpnQLNVLayout);
-        jpnQLNVLayout.setHorizontalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-        );
-        jpnQLNVLayout.setVerticalGroup(
-            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLNVLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnQLX.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLX.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLX.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbQLX.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLX.setText("Quản lý xe");
-
-        javax.swing.GroupLayout jpnQLXLayout = new javax.swing.GroupLayout(jpnQLX);
-        jpnQLX.setLayout(jpnQLXLayout);
-        jpnQLXLayout.setHorizontalGroup(
-            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLX, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-        );
-        jpnQLXLayout.setVerticalGroup(
-            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLXLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLX, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnQLKH.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLKH.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLKH.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbQLKH.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLKH.setText("Quản lý khách hàng");
-
-        javax.swing.GroupLayout jpnQLKHLayout = new javax.swing.GroupLayout(jpnQLKH);
-        jpnQLKH.setLayout(jpnQLKHLayout);
-        jpnQLKHLayout.setHorizontalGroup(
-            jpnQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLKH, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-        );
-        jpnQLKHLayout.setVerticalGroup(
-            jpnQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLKHLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLKH, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnQLKVL.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLKVL.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLKVL.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbQLKVL.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLKVL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLKVL.setText("Quản lý khách vãng lai");
-
-        javax.swing.GroupLayout jpnQLKVLLayout = new javax.swing.GroupLayout(jpnQLKVL);
-        jpnQLKVL.setLayout(jpnQLKVLLayout);
-        jpnQLKVLLayout.setHorizontalGroup(
-            jpnQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
-        jpnQLKVLLayout.setVerticalGroup(
-            jpnQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLKVLLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnQLHD.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLHD.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLHD.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbQLHD.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLHD.setText("Quản lý hóa đơn");
-
-        javax.swing.GroupLayout jpnQLHDLayout = new javax.swing.GroupLayout(jpnQLHD);
-        jpnQLHD.setLayout(jpnQLHDLayout);
-        jpnQLHDLayout.setHorizontalGroup(
-            jpnQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-        );
-        jpnQLHDLayout.setVerticalGroup(
-            jpnQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLHDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnQLV.setBackground(new java.awt.Color(243, 148, 34));
-        jpnQLV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnQLV.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbQLV.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jlbQLV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbQLV.setText("Quản lý vé");
-
-        javax.swing.GroupLayout jpnQLVLayout = new javax.swing.GroupLayout(jpnQLV);
-        jpnQLV.setLayout(jpnQLVLayout);
-        jpnQLVLayout.setHorizontalGroup(
-            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-        );
-        jpnQLVLayout.setVerticalGroup(
-            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLVLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpnBCTK.setBackground(new java.awt.Color(243, 148, 34));
-        jpnBCTK.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnBCTK.setPreferredSize(new java.awt.Dimension(120, 66));
-
-        jlbBCTK.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jlbBCTK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlbBCTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbBCTK.setText("Báo cáo thống kê");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/analysis.png"))); // NOI18N
 
         javax.swing.GroupLayout jpnBCTKLayout = new javax.swing.GroupLayout(jpnBCTK);
         jpnBCTK.setLayout(jpnBCTKLayout);
         jpnBCTKLayout.setHorizontalGroup(
             jpnBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+            .addComponent(jlbBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(jpnBCTKLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnBCTKLayout.setVerticalGroup(
             jpnBCTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnBCTKLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jpnBCTKLayout.createSequentialGroup()
+                .addComponent(jlbBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnDT.setBackground(new java.awt.Color(243, 148, 34));
-        jpnDT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpnDT.setPreferredSize(new java.awt.Dimension(120, 66));
+        jpnDT.setBackground(new java.awt.Color(255, 255, 255));
+        jpnDT.setRoundBottomLeft(25);
+        jpnDT.setRoundBottomRight(25);
+        jpnDT.setRoundTopLeft(25);
+        jpnDT.setRoundTopRight(25);
 
-        jlbDT.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/growth.png"))); // NOI18N
+
+        jlbDT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlbDT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbDT.setText("Doanh thu theo ngày");
 
@@ -243,63 +186,271 @@ public class MainForm extends javax.swing.JFrame {
         jpnDT.setLayout(jpnDTLayout);
         jpnDTLayout.setHorizontalGroup(
             jpnDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbDT, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+            .addGroup(jpnDTLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jlbDT, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
         );
         jpnDTLayout.setVerticalGroup(
             jpnDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnDTLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbDT, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jpnDTLayout.createSequentialGroup()
+                .addComponent(jlbDT, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(243, 148, 34));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Đăng xuất");
+        jpnQLV.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLV.setRoundBottomLeft(25);
+        jpnQLV.setRoundBottomRight(25);
+        jpnQLV.setRoundTopLeft(25);
+        jpnQLV.setRoundTopRight(25);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/income.png"))); // NOI18N
+
+        jlbQLV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLV.setText("Quản lý vé");
+
+        javax.swing.GroupLayout jpnQLVLayout = new javax.swing.GroupLayout(jpnQLV);
+        jpnQLV.setLayout(jpnQLVLayout);
+        jpnQLVLayout.setHorizontalGroup(
+            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpnQLVLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel5)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        jpnQLVLayout.setVerticalGroup(
+            jpnQLVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLVLayout.createSequentialGroup()
+                .addComponent(jlbQLV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnQLHD.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLHD.setRoundBottomLeft(25);
+        jpnQLHD.setRoundBottomRight(25);
+        jpnQLHD.setRoundTopLeft(25);
+        jpnQLHD.setRoundTopRight(25);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/billicon.png"))); // NOI18N
+
+        jlbQLHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLHD.setText("Quản lý hóa đơn");
+
+        javax.swing.GroupLayout jpnQLHDLayout = new javax.swing.GroupLayout(jpnQLHD);
+        jpnQLHD.setLayout(jpnQLHDLayout);
+        jpnQLHDLayout.setHorizontalGroup(
+            jpnQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLHDLayout.createSequentialGroup()
+                .addComponent(jlbQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jpnQLHDLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel6)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        jpnQLHDLayout.setVerticalGroup(
+            jpnQLHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLHDLayout.createSequentialGroup()
+                .addComponent(jlbQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnQLKH.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLKH.setRoundBottomLeft(25);
+        jpnQLKH.setRoundBottomRight(25);
+        jpnQLKH.setRoundTopLeft(25);
+        jpnQLKH.setRoundTopRight(25);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer-feedback.png"))); // NOI18N
+
+        jlbQLKH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLKH.setText("Quản lý khách hàng");
+
+        javax.swing.GroupLayout jpnQLKHLayout = new javax.swing.GroupLayout(jpnQLKH);
+        jpnQLKH.setLayout(jpnQLKHLayout);
+        jpnQLKHLayout.setHorizontalGroup(
+            jpnQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQLKHLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(52, 52, 52))
+        );
+        jpnQLKHLayout.setVerticalGroup(
+            jpnQLKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLKHLayout.createSequentialGroup()
+                .addComponent(jlbQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnQLX.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLX.setRoundBottomLeft(25);
+        jpnQLX.setRoundBottomRight(25);
+        jpnQLX.setRoundTopLeft(25);
+        jpnQLX.setRoundTopRight(25);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/parkingicon.png"))); // NOI18N
+
+        jlbQLX.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLX.setText("Quản lý xe");
+
+        javax.swing.GroupLayout jpnQLXLayout = new javax.swing.GroupLayout(jpnQLX);
+        jpnQLX.setLayout(jpnQLXLayout);
+        jpnQLXLayout.setHorizontalGroup(
+            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel10)
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addComponent(jlbQLX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpnQLXLayout.setVerticalGroup(
+            jpnQLXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbQLX)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnQLKVL.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLKVL.setRoundBottomLeft(25);
+        jpnQLKVL.setRoundBottomRight(25);
+        jpnQLKVL.setRoundTopLeft(25);
+        jpnQLKVL.setRoundTopRight(25);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/segment.png"))); // NOI18N
+
+        jlbQLKVL.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLKVL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLKVL.setText("Quản lý khách vãng lai");
+
+        javax.swing.GroupLayout jpnQLKVLLayout = new javax.swing.GroupLayout(jpnQLKVL);
+        jpnQLKVL.setLayout(jpnQLKVLLayout);
+        jpnQLKVLLayout.setHorizontalGroup(
+            jpnQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLKVLLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jlbQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+        );
+        jpnQLKVLLayout.setVerticalGroup(
+            jpnQLKVLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLKVLLayout.createSequentialGroup()
+                .addComponent(jlbQLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/log-out.png"))); // NOI18N
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+        });
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jpnQLNV.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLNV.setRoundBottomLeft(25);
+        jpnQLNV.setRoundBottomRight(25);
+        jpnQLNV.setRoundTopLeft(25);
+        jpnQLNV.setRoundTopRight(25);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/staff.png"))); // NOI18N
+
+        jlbQLNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLNV.setText("Quản lý nhân viên");
+
+        javax.swing.GroupLayout jpnQLNVLayout = new javax.swing.GroupLayout(jpnQLNV);
+        jpnQLNV.setLayout(jpnQLNVLayout);
+        jpnQLNVLayout.setHorizontalGroup(
+            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addGroup(jpnQLNVLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpnQLNVLayout.setVerticalGroup(
+            jpnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLNVLayout.createSequentialGroup()
+                .addComponent(jlbQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
         jpnMenuLayout.setHorizontalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnMenuLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(8, 8, 8)
                 .addComponent(jpnQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(8, 8, 8)
                 .addComponent(jpnQLX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
+                .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jpnQLKVL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jpnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jpnDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(8, 8, 8)
+                .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jpnMenuLayout.setVerticalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnMenuLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnMenuLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jpnQLKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpnDT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpnBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jpnMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jpnQLX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnRoot.add(jpnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 90));
+        jpnRoot.add(jpnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 120));
 
         jpnView.setBackground(new java.awt.Color(255, 255, 255));
         jpnView.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -309,14 +460,14 @@ public class MainForm extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1216, Short.MAX_VALUE)
+            .addGap(0, 1456, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
 
-        jpnRoot.add(jpnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1220, 530));
+        jpnRoot.add(jpnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1460, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,6 +482,22 @@ public class MainForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        // TODO add your handling code here:
+        HomepageAdmin _homepageAdmin = null;
+        try {
+            _homepageAdmin = new HomepageAdmin();
+        } catch (Exception ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _homepageAdmin.show();
+        dispose();
+    }//GEN-LAST:event_btnBackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -372,7 +539,15 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jlbBCTK;
     private javax.swing.JLabel jlbDT;
     private javax.swing.JLabel jlbQLHD;
@@ -381,21 +556,21 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jlbQLNV;
     private javax.swing.JLabel jlbQLV;
     private javax.swing.JLabel jlbQLX;
-    private javax.swing.JPanel jpnBCTK;
-    private javax.swing.JPanel jpnDT;
+    private Admin.PanelRound jpnBCTK;
+    private Admin.PanelRound jpnDT;
     private javax.swing.JPanel jpnMenu;
-    private javax.swing.JPanel jpnQLHD;
-    private javax.swing.JPanel jpnQLKH;
-    private javax.swing.JPanel jpnQLKVL;
-    private javax.swing.JPanel jpnQLNV;
-    private javax.swing.JPanel jpnQLV;
-    private javax.swing.JPanel jpnQLX;
+    private Admin.PanelRound jpnQLHD;
+    private Admin.PanelRound jpnQLKH;
+    private Admin.PanelRound jpnQLKVL;
+    private Admin.PanelRound jpnQLNV;
+    private Admin.PanelRound jpnQLV;
+    private Admin.PanelRound jpnQLX;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
     // End of variables declaration//GEN-END:variables
 
     private void setIconimage() {
-                setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
 
     }
 }

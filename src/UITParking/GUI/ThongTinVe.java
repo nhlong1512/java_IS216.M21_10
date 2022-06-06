@@ -20,6 +20,7 @@ import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -76,18 +77,19 @@ public class ThongTinVe extends javax.swing.JFrame {
         initTable();
         hoTroTimKiem();
         setLocationRelativeTo(null);
-        txtMaLoaiVe.setEditable(false);
+//        txtMaLoaiVe.setEditable(false);
         capNhatTrangThai();
+        setIconImage();
     }
 
     public void resetRender() {
-        txtMaVe.setText("");
-        txtMaLoaiVe.setText("");
-        txtMaKH.setText("");
-        txtTrangThai.setText("");
-        txtMaLoaiVe.setText("");
-        jdcNgayKichHoat.setDate(null);
-        jdcNgayHetHan.setDate(null);
+//        txtMaVe.setText("");
+//        txtMaLoaiVe.setText("");
+//        txtMaKH.setText("");
+//        txtTrangThai.setText("");
+//        txtMaLoaiVe.setText("");
+//        jdcNgayKichHoat.setDate(null);
+//        jdcNgayHetHan.setDate(null);
 
     }
 
@@ -210,78 +212,76 @@ public class ThongTinVe extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtMaVe = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMaKH = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtTrangThai = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
-        btnTimKiem = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
+        btnTimKiem = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        btnKichHoat = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVe = new javax.swing.JTable();
-        jdcNgayKichHoat = new com.toedter.calendar.JDateChooser();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtMaLoaiVe = new javax.swing.JTextField();
-        jdcNgayHetHan = new com.toedter.calendar.JDateChooser();
-        cbbTenLoaiVe = new javax.swing.JComboBox<>();
-        btnKichHoat = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UIT Parking");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(107, 122, 161));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Mã vé");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 64, 22));
-
-        txtMaVe.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtMaVeCaretUpdate(evt);
-            }
-        });
-        jPanel1.add(txtMaVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 190, -1));
-
-        jLabel3.setText("Mã khách hàng");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 90, 20));
-        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 190, -1));
-
-        jLabel7.setText("Tên loại vé");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 82, 20));
-
-        jLabel8.setText("Ngày kích hoạt");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 87, 19));
-
-        txtTrangThai.addActionListener(new java.awt.event.ActionListener() {
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTrangThaiActionPerformed(evt);
+                txtTimKiemActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, -1));
+        jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 30));
 
-        jLabel9.setText("Trạng thái");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 66, 21));
-
-        btnBack.setText("Back");
-        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBackMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
-
+        btnTimKiem.setBackground(new java.awt.Color(52, 79, 115));
+        btnTimKiem.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnTimKiem.setForeground(new java.awt.Color(255, 255, 255));
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.setBorder(null);
+        btnTimKiem.setBorderPainted(false);
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTimKiemMouseClicked(evt);
             }
         });
-        jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
-        jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 144, -1));
+        jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, 30));
+
+        btnBack.setBackground(new java.awt.Color(52, 79, 115));
+        btnBack.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Quay lại");
+        btnBack.setBorder(null);
+        btnBack.setBorderPainted(false);
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+        });
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 80, 30));
+
+        btnKichHoat.setBackground(new java.awt.Color(52, 79, 115));
+        btnKichHoat.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        btnKichHoat.setForeground(new java.awt.Color(255, 255, 255));
+        btnKichHoat.setText("Kích Hoạt");
+        btnKichHoat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKichHoatMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Cooper", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(52, 79, 115));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("THÔNG TIN VÉ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 870, 60));
 
         tblVe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -294,6 +294,7 @@ public class ThongTinVe extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblVe.setFillsViewportHeight(true);
         tblVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblVeMousePressed(evt);
@@ -301,38 +302,16 @@ public class ThongTinVe extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVe);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 926, 247));
-        jPanel1.add(jdcNgayKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 200, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 790, 180));
 
-        jLabel11.setText("Ngày hết hạn");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, -1, 19));
-
-        jLabel13.setText("Mã Loại Vé");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 19, 70, 20));
-        jPanel1.add(txtMaLoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 20, 180, -1));
-        jPanel1.add(jdcNgayHetHan, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 60, 180, -1));
-
-        cbbTenLoaiVe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vé lượt xe máy", "Vé lượt xe đạp", "Vé tuần", "Vé tháng" }));
-        cbbTenLoaiVe.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbbTenLoaiVeItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(cbbTenLoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 200, -1));
-
-        btnKichHoat.setText("Kích Hoạt");
-        btnKichHoat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnKichHoatMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnKichHoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/wepik--202255-22401.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,15 +319,8 @@ public class ThongTinVe extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtMaVeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMaVeCaretUpdate
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaVeCaretUpdate
-
-    private void txtTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrangThaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTrangThaiActionPerformed
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         Homepage _homepage = null;
@@ -365,63 +337,13 @@ public class ThongTinVe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
-    private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-//        resetRender();
-        int selectedRow = tblVe.getSelectedRow();
-        if (selectedRow >= 0) {
+    }//GEN-LAST:event_btnBackActionPerformed
 
-            VeDTO ve = list_Ve.get(selectedRow);
-            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-
-            System.out.println(lv.getStrTenLoaiVe());
-            System.out.println(ve.getDateNgayHetHan());
-            System.out.println(ve.getDateNgayHetHan());
-            System.out.println(ve.getStrTrangThai());
-
-            /**
-             * Lấy dữ liệu của mã vé getValueAt trong table sẽ có dạng tham số
-             * đầu là index dòng trong table muốn lấy tham số thứ 2 là index cột
-             * muốn lấy Cách lấy này như tọa độ, nó sẽ tham chiếu đến trục hoành
-             * và trục tung của bảng.
-             */
-            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 1));
-            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 2));
-
-            /**
-             *
-             * Nếu tên loại vé là vé lượt xe máy hoặc vé lượt xe đạp thì sẽ
-             * disable button kích hoạt
-             */
-            if (tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may")
-                    || tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")) {
-                btnKichHoat.setEnabled(false);
-                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
-                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
-            }
-            if (tblVe.getValueAt(selectedRow, 2).equals("Ve tuan")
-                    || tblVe.getValueAt(selectedRow, 2).equals("Ve thang")) {
-                btnKichHoat.setEnabled(true);
-                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
-                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
-                trangThaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 5);
-                /**
-                 * Nếu trạng thái đang sử dụng hoặc đã hết hạn thì disable
-                 * button kích hoạt
-                 */
-                if (!tblVe.getValueAt(selectedRow, 5).equals("Chưa kích hoạt")) {
-                    btnKichHoat.setEnabled(false);
-                }
-            }
-
-        }
-
-    }//GEN-LAST:event_tblVeMousePressed
-
-    private void cbbTenLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenLoaiVeItemStateChanged
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
-        updateRender();
-    }//GEN-LAST:event_cbbTenLoaiVeItemStateChanged
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
     /**
      *
@@ -431,12 +353,12 @@ public class ThongTinVe extends javax.swing.JFrame {
      */
     private void btnKichHoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichHoatMouseClicked
         /**
-         * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng và trạng thái của
-         * vé là chưa kích hoạt thì cho phép bắt sự kiện click button kích hoạt
-         * ngược lại thì không làm gì cả.
-         */
+        * Nếu loại vé hiện tại là loại vé tuần hoặc vé tháng và trạng thái của
+        * vé là chưa kích hoạt thì cho phép bắt sự kiện click button kích hoạt
+        * ngược lại thì không làm gì cả.
+        */
         if ((loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang"))
-                && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
+            && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
             System.out.println("Long dep trai");
             try {
                 System.out.println(getDateThoiGianThuc());
@@ -448,10 +370,10 @@ public class ThongTinVe extends javax.swing.JFrame {
             }
 
             /**
-             * Cập nhật lại thời gian thực cho trường ngày kích hoạt của bảng
-             * C_VE, ngày hết hạn sẽ được cộng dựa vào loại vé, Trạng thái sẽ
-             * được chuyển thành đang sử dụng
-             */
+            * Cập nhật lại thời gian thực cho trường ngày kích hoạt của bảng
+            * C_VE, ngày hết hạn sẽ được cộng dựa vào loại vé, Trạng thái sẽ
+            * được chuyển thành đang sử dụng
+            */
             VeDTO ve = new VeDTO();
             ve = vetbl.getInfor(maVeHienTai);
             System.out.println(ve);
@@ -477,8 +399,58 @@ public class ThongTinVe extends javax.swing.JFrame {
             capNhatLaiTable();
 
         }
-
     }//GEN-LAST:event_btnKichHoatMouseClicked
+
+    private void tblVeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVeMousePressed
+        // TODO add your handling code here:
+        int selectedRow = tblVe.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            VeDTO ve = list_Ve.get(selectedRow);
+            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
+
+            System.out.println(lv.getStrTenLoaiVe());
+            System.out.println(ve.getDateNgayHetHan());
+            System.out.println(ve.getDateNgayHetHan());
+            System.out.println(ve.getStrTrangThai());
+
+            /**
+            * Lấy dữ liệu của mã vé getValueAt trong table sẽ có dạng tham số
+            * đầu là index dòng trong table muốn lấy tham số thứ 2 là index cột
+            * muốn lấy Cách lấy này như tọa độ, nó sẽ tham chiếu đến trục hoành
+            * và trục tung của bảng.
+            */
+            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 1));
+            System.out.println("Dữ liệu table:" + tblVe.getValueAt(selectedRow, 2));
+
+            /**
+            *
+            * Nếu tên loại vé là vé lượt xe máy hoặc vé lượt xe đạp thì sẽ
+            * disable button kích hoạt
+            */
+            if (tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe may")
+                || tblVe.getValueAt(selectedRow, 2).equals("Ve luot xe dap")) {
+                btnKichHoat.setEnabled(false);
+                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
+                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
+            }
+            if (tblVe.getValueAt(selectedRow, 2).equals("Ve tuan")
+                || tblVe.getValueAt(selectedRow, 2).equals("Ve thang")) {
+                btnKichHoat.setEnabled(true);
+                loaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 2);
+                maVeHienTai = (String) tblVe.getValueAt(selectedRow, 1);
+                trangThaiVeHienTai = (String) tblVe.getValueAt(selectedRow, 5);
+                /**
+                * Nếu trạng thái đang sử dụng hoặc đã hết hạn thì disable
+                * button kích hoạt
+                */
+                if (!tblVe.getValueAt(selectedRow, 5).equals("Chưa kích hoạt")) {
+                    btnKichHoat.setEnabled(false);
+                }
+            }
+
+        }
+    }//GEN-LAST:event_tblVeMousePressed
 
     /**
      * @param args the command line arguments
@@ -523,25 +495,18 @@ public class ThongTinVe extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnKichHoat;
     private javax.swing.JButton btnTimKiem;
-    private javax.swing.JComboBox<String> cbbTenLoaiVe;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.toedter.calendar.JDateChooser jdcNgayHetHan;
-    private com.toedter.calendar.JDateChooser jdcNgayKichHoat;
     private javax.swing.JTable tblVe;
-    private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtMaLoaiVe;
-    private javax.swing.JTextField txtMaVe;
     private javax.swing.JTextField txtTimKiem;
-    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/parking.png")));
+
+    }
 
     
 }

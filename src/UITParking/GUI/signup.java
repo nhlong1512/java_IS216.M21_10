@@ -284,7 +284,7 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String a = "";
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Ngocanh", "hr", "hr");
             
             //Thực thi insert dữ liệu người dùng từ form đăng ký
             String sql = "INSERT INTO NGUOIDUNG (MaND, Email, MatKhau, HoTen, VaiTro) VALUES (?, ?, ?, ?, ?)";

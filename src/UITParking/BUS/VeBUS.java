@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class VeBUS {
 
     private ArrayList<VeDTO> list_Ve;
+    private ArrayList<VeDTO> list_VeTV;
     /**
      * Xử lý các lệnh trong SQL
      */
@@ -52,6 +53,16 @@ public class VeBUS {
         }
         
         return null;
+    }
+    
+    public ArrayList<VeDTO> getList_VeTV(String strMaKH){
+        list_VeTV = new ArrayList<>();
+        for(VeDTO ve : list_Ve){
+            if(ve.getStrMaKH().equals(strMaKH)){
+                list_VeTV.add(ve);
+            }
+        }
+        return list_VeTV;
     }
 
     /**

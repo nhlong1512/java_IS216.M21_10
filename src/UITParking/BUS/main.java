@@ -190,5 +190,10 @@ public class main {
         System.out.println(ctrvtbl.getInfor("DT020"));
         
         System.out.println(getDateThoiGianThuc());
+        
+        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV("ND016");
+        for(VeDTO ve : list_VeTV){
+            System.out.println(ve);
+        }
     }
 }

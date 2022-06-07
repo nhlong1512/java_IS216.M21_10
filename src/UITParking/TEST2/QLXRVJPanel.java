@@ -47,6 +47,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     ArrayList<LoaiVeDTO> list_LV = loaivetbl.getList_LV();
     VeBUS vetbl = new VeBUS();
     ArrayList<VeDTO> list_Ve = vetbl.getList_Ve();
+
     CTRaVaoBUS ctrvtbl = new CTRaVaoBUS();
     ArrayList<CTRaVaoDTO> list_CTRV = ctrvtbl.getList_CTRV();
     XeBUS xetbl = new XeBUS();
@@ -68,6 +69,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         initTable();
         hoTroTimKiem();
         txtBienSoXe.setEnabled(false);
+        txtMaKhachHang.setEnabled(false);
+        txtMaTheKVL.setEnabled(false);
     }
 
     public void resetRender() {
@@ -75,26 +78,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     }
 
     public void updateRender() {
-        //Reset txtMaLoaiVe theo tên loại vé
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe máy")) {
-//            txtMaLoaiVe.setText("LVE01");
-//            jdcNgayHetHan.setDate(null);
-//            jdcNgayKichHoat.setDate(null);
-//            txtTrangThai.setText("Chưa kích hoạt");
-//
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
-//            txtMaLoaiVe.setText("LVE02");
-//            jdcNgayHetHan.setDate(null);
-//            jdcNgayKichHoat.setDate(null);
-//            txtTrangThai.setText("Chưa kích hoạt");
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
-//            txtMaLoaiVe.setText("LVE03");
-//        }
-//        if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tháng")) {
-//            txtMaLoaiVe.setText("LVE04");
-//        }
+
     }
 
     public void initTable() throws Exception {
@@ -254,14 +238,14 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
         jLabel13.setText("Mã Khách Hàng");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 90, 20));
-        jPanel1.add(txtMaKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 140, -1));
+        jPanel1.add(txtMaKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 130, -1));
 
         jLabel10.setText("Loại Xe");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 70, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 40, 20));
 
         jLabel12.setText("Biển Số Xe");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 60, 20));
-        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 130, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 60, 20));
+        jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 130, -1));
 
         cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe đạp", "Xe máy" }));
         cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
@@ -269,7 +253,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 cbbLoaiXeItemStateChanged(evt);
             }
         });
-        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 140, -1));
+        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 140, -1));
 
         btnXeVLRa.setText("Xe VL Ra");
         btnXeVLRa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,14 +288,14 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         jPanel1.add(btnDemoKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 210, 40));
 
         jLabel14.setText("Mã KVL");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 60, 20));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 60, 20));
 
         txtMaTheKVL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaTheKVLActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaTheKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 130, -1));
+        jPanel1.add(txtMaTheKVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -326,114 +310,266 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblChiTietRaVaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietRaVaoMousePressed
-        // TODO add your handling code here:
-        //        resetRender();
-        //        int selectedRow = tblVe.getSelectedRow();
-        //        if (selectedRow >= 0) {
-        //
-        //            VeDTO ve = list_Ve.get(selectedRow);
-        //            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-        //
-        //            txtMaVe.setText(ve.getStrMaVe());
-        //            txtMaKH.setText(ve.getStrMaKH());
-        //            txtMaLoaiVe.setText(ve.getStrMaLoaiVe());
-        //            txtTrangThai.setText(ve.getStrTrangThai());
-        //            cbbTenLoaiVe.setSelectedItem(lv.getStrTenLoaiVe());
-        //
-        //            if (ve.getDateNgayKichHoat() != null) {
-        //                jdcNgayKichHoat.setDate(ve.getDateNgayKichHoat());
-        //            }
-        //            if (ve.getDateNgayHetHan() != null) {
-        //                jdcNgayHetHan.setDate(ve.getDateNgayHetHan());
-        //            }
-        //        }
+
     }//GEN-LAST:event_tblChiTietRaVaoMousePressed
 
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
-    private void btnXeTVRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVRaMouseClicked
-        // TODO add your handling code here:
-        //        StringBuilder sb = new StringBuilder();
-        //        if (txtMaVe.getText().equals("")) {
-        //            sb.append("Mã vé không được để trống.");
-        //            txtMaVe.setBackground(Color.red);
-        //        } else {
-        //            txtMaVe.setBackground(Color.white);
-        //        }
-        //        if (vetbl.getInfor(txtMaVe.getText()) == null) {
-        //            sb.append("Mã vé không tồn tại.");
-        //        }
-        //        if (khachhangtbl.getInfor(txtMaKH.getText()) == null) {
-        //            sb.append("Mã khách hàng không tồn tại.");
-        //        }
-        //        if (loaivetbl.getInfor(txtMaLoaiVe.getText()) == null) {
-        //            sb.append("Mã loại vé không tồn tại.");
-        //        }
-        //        if (sb.length() > 0) {
-        //            JOptionPane.showMessageDialog(this, sb);
-        //            return;
-        //        }
-        //        try {
-        //            VeDTO ve = new VeDTO();
-        //            LoaiVeDTO lv = new LoaiVeDTO();
-        //            ve.setStrMaVe(txtMaVe.getText());
-        //            ve.setStrMaKH(txtMaKH.getText());
-        //
-        //            ve.setStrTrangThai(txtTrangThai.getText());
-        //            lv.setStrTenLoaiVe(cbbTenLoaiVe.getSelectedItem().toString());
-        //
-        //            updateRender();
-        //
-        //            System.out.println(jdcNgayKichHoat.getDate());
-        //            System.out.println(jdcNgayHetHan.getDate());
-        //            ve.setStrMaLoaiVe(txtMaLoaiVe.getText());
-        //            lv.setStrMaLoaiVe(txtMaLoaiVe.getText());
-        //
-        //            if (jdcNgayKichHoat.getDate() != null) {
-        //                ve.setDateNgayKichHoat(new java.sql.Date(jdcNgayKichHoat.getDate().getTime()));
-        //            } else {
-        //                ve.setDateNgayKichHoat(null);
-        //            }
-        //
-        //            if (jdcNgayHetHan.getDate() != null) {
-        //                ve.setDateNgayHetHan(new java.sql.Date(jdcNgayHetHan.getDate().getTime()));
-        //            } else {
-        //                ve.setDateNgayHetHan(null);
-        //            }
-        //            vetbl.sua(ve);
-        //
-        //            //Cập nhật lại Table
-        //            capNhatLaiTable();
-        //
-        //            JOptionPane.showMessageDialog(this, "Vé đã được cập nhật vào CSDL");
-        //
-        //        } catch (Exception e) {
-        //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-        //            e.printStackTrace();
-        //        }
-    }//GEN-LAST:event_btnXeTVRaMouseClicked
-
     /**
      * 
      * @param evt 
-     * Event xử lý khi xe thành viên vào bãi
-     * Xe thành viên vào bãi thì ở đây ta mô phỏng
-     * bằng cách nhập mã Khách hàng vào
-     * Ở đây khi kiểm tra mã khách hàng tồn tại,
-     * Ta cần xử lý kiểm tra xem khách hàng có vé chưa
-     * Với khách hàng có vé tuần, tháng đang sử dụng thì ưu tiên
-     * sử dụng nó. Nếu chưa có thì ưu tiên sử dụng vé lượt
-     * Hệ thống sẽ tự kích hoạt vé lượt, chuyển trạng thái sang 
-     * đang sử dụng. Đối với vé lượt thì trường thời gian kích hoạt
-     * và thời gian hết hạn không cần care.
-     * Trong trường hợp khách hàng thành viên không còn loại vé nào
-     * thì sẽ hiển thị thông báo và khách hàng thành viên phải trả 
-     * tiền như khách hàng vãng lai
+     * Khi khách thành viên ra khỏi bãi, điều duy nhất cần làm là
+     * Cập nhật giờ ra cho bảng chi tiết ra vào.
+     */
+    private void btnXeTVRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVRaMouseClicked
+        for (CTRaVaoDTO ctrv : list_CTRV) {
+            //Nếu mã thẻ KVL trùng với barrier và thời gian ra đang là null thì cập nhật
+            if (ctrv.getStrMaKH()!= null) {
+                if (ctrv.getStrMaKH().equals(txtMaKhachHang.getText())
+                        && ctrv.getDateThoiGianRa() == null) {
+                    try {
+                        ctrv.setDateThoiGianRa(getDateThoiGianThuc());
+                        try {
+                            ctrvtbl.sua(ctrv);
+                        } catch (Exception ex) {
+                            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");
+                }
+            }
+
+        }
+        capNhatLaiTable();
+    }//GEN-LAST:event_btnXeTVRaMouseClicked
+
+    /**
+     *
+     * @param evt Event xử lý khi xe thành viên vào bãi Xe thành viên vào bãi
+     * thì ở đây ta mô phỏng bằng cách nhập mã Khách hàng vào Ở đây khi kiểm tra
+     * mã khách hàng tồn tại, Ta cần xử lý kiểm tra xem khách hàng có vé chưa
+     * Với khách hàng có vé tuần, tháng đang sử dụng thì ưu tiên sử dụng nó. Nếu
+     * chưa có thì ưu tiên sử dụng vé lượt Hệ thống sẽ tự kích hoạt vé lượt,
+     * chuyển trạng thái sang đang sử dụng. Đối với vé lượt thì trường thời gian
+     * kích hoạt và thời gian hết hạn không cần care. Trong trường hợp khách
+     * hàng thành viên không còn loại vé nào thì sẽ hiển thị thông báo và khách
+     * hàng thành viên phải trả tiền như khách hàng vãng lai. Flow vào, barrier
+     * vẫn kiểm tra loại xe và biển số xe Ở trên app demo thì sẽ nhập tay biển
+     * số xe và chọn lựa loại xe
+     *
      */
     private void btnXeTVVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVVaoMouseClicked
-        
+        System.out.println(nguoidungtbl.getInfor(txtMaKhachHang.getText()));
+        System.out.println(khachhangtbl.getInfor(txtMaKhachHang.getText()));
+        NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKhachHang.getText());
+        KhachHangDTO kh = khachhangtbl.getInfor(txtMaKhachHang.getText());
+        XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
+        System.out.println(xe);
+        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV(txtMaKhachHang.getText());
+        //Nếu khách hàng không có vé nào sẽ thông báo cho khách hàng
+        if (list_VeTV.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Xe vào bãi không thành công, vui lòng kiểm tra lại thông tin vé của mình!");
+            return;
+        }
+
+        //Kiểm tra nếu có vé tuần hoặc tháng đang sử dụng thì cho phép vào bãi
+        for (VeDTO ve : list_VeTV) {
+            if ((ve.getStrMaLoaiVe().equals("LVE03") || ve.getStrMaLoaiVe().equals("LVE04"))
+                    && ve.getStrTrangThai().equals("Đang sử dụng")) {
+                System.out.println(ve);
+                JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
+                /**
+                 * Thêm thông tin xe vào bảng xe Và thông tin chi tiết ra vào
+                 * mới
+                 */
+                xe = new XeDTO();
+                try {
+                    String maXeTemp = xetbl.getMaxMaXe();
+                    xe.setStrMaXe(maXeTemp);
+                    System.out.println(maXeTemp);
+                    if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                        xe.setStrTenLoaiXe("Xe dap");
+                        xe.setStrBienSoXe(null);
+                    } else {
+                        xe.setStrTenLoaiXe("Xe may");
+                        xe.setStrBienSoXe(txtBienSoXe.getText());
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    xetbl.them(xe);
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                CTRaVaoDTO ctrv = new CTRaVaoDTO();
+                try {
+                    String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
+                    System.out.println(maCTRaVaoTemp);
+                    ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
+                    ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                    ctrv.setDateThoiGianRa(null);
+                    ctrv.setStrMaNV("ND011");
+                    ctrv.setStrMaKH(txtMaKhachHang.getText());
+                    ctrv.setStrMaXe(xe.getStrMaXe());
+                    ctrv.setStrMaTheKVL(null);
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    ctrvtbl.them(ctrv);
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                return;
+            }
+        }
+
+        /**
+         * Nếu kiếm tra không có vé tuần tháng đang sử dụng, sẽ chuyển sang tự
+         * sử dụng vé lượt. Nếu kiểm tra cbbLoaiXe là xe máy thì sử dụng vé lượt
+         * xe máy Nếu kiểm tra cbbLoaiXe là xe đạp thì sử dụng vé lượt xe đạp.
+         */
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+            for (VeDTO ve : list_VeTV) {
+                /**
+                 * Nếu cbb là xe đạp thì sẽ kiểm tra xem có LVE002 và trạng thái
+                 * chưa kích hoạt tồn tại không Nếu có thì kích hoạt chuyển
+                 * trạng thái sang đang sử dụng và return.
+                 */
+                if (ve.getStrMaLoaiVe().equals("LVE02")
+                        && ve.getStrTrangThai().equals("Chưa kích hoạt")) {
+                    System.out.println(ve);
+                    ve.setStrTrangThai("Đang sử dụng");
+                    try {
+                        vetbl.sua(ve);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
+                    /**
+                     * Thêm thông tin xe vào bảng xe Và thông tin chi tiết ra
+                     * vào mới
+                     */
+                    xe = new XeDTO();
+                    try {
+                        String maXeTemp = xetbl.getMaxMaXe();
+                        xe.setStrMaXe(maXeTemp);
+                        System.out.println(maXeTemp);
+                        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                            xe.setStrTenLoaiXe("Xe dap");
+                            xe.setStrBienSoXe(null);
+                        } else {
+                            xe.setStrTenLoaiXe("Xe may");
+                            xe.setStrBienSoXe(txtBienSoXe.getText());
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        xetbl.them(xe);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    CTRaVaoDTO ctrv = new CTRaVaoDTO();
+                    try {
+                        String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
+                        System.out.println(maCTRaVaoTemp);
+                        ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
+                        ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                        ctrv.setDateThoiGianRa(null);
+                        ctrv.setStrMaNV("ND011");
+                        ctrv.setStrMaKH(txtMaKhachHang.getText());
+                        ctrv.setStrMaXe(xe.getStrMaXe());
+                        ctrv.setStrMaTheKVL(null);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        ctrvtbl.them(ctrv);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    return;
+                }
+            }
+        } else {
+            for (VeDTO ve : list_VeTV) {
+                /**
+                 * Nếu cbb là xe máy thì sẽ kiểm tra xem có LVE001 và trạng thái
+                 * chưa kích hoạt tồn tại không Nếu có thì kích hoạt chuyển
+                 * trạng thái sang đang sử dụng và return.
+                 */
+                if (ve.getStrMaLoaiVe().equals("LVE01")
+                        && ve.getStrTrangThai().equals("Chưa kích hoạt")) {
+                    System.out.println(ve);
+                    ve.setStrTrangThai("Đang sử dụng");
+                    try {
+                        vetbl.sua(ve);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
+                    /**
+                     * Thêm thông tin xe vào bảng xe Và thông tin chi tiết ra
+                     * vào mới
+                     */
+                    xe = new XeDTO();
+                    try {
+                        String maXeTemp = xetbl.getMaxMaXe();
+                        xe.setStrMaXe(maXeTemp);
+                        System.out.println(maXeTemp);
+                        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                            xe.setStrTenLoaiXe("Xe dap");
+                            xe.setStrBienSoXe(null);
+                        } else {
+                            xe.setStrTenLoaiXe("Xe may");
+                            xe.setStrBienSoXe(txtBienSoXe.getText());
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        xetbl.them(xe);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    CTRaVaoDTO ctrv = new CTRaVaoDTO();
+                    try {
+                        String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
+                        System.out.println(maCTRaVaoTemp);
+                        ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
+                        ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                        ctrv.setDateThoiGianRa(null);
+                        ctrv.setStrMaNV("ND011");
+                        ctrv.setStrMaKH(txtMaKhachHang.getText());
+                        ctrv.setStrMaXe(xe.getStrMaXe());
+                        ctrv.setStrMaTheKVL(null);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        ctrvtbl.them(ctrv);
+                    } catch (Exception ex) {
+                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    return;
+                }
+            }
+        }
+
+        /**
+         * Nếu tất cả trường hợp trên đều không thỏa mãn Đồng nghĩa việc không
+         * có loại vé phù hợp Thì sẽ thông báo ra màn hình.
+         */
+        capNhatLaiTable();
+        JOptionPane.showMessageDialog(this, "Xe vào bãi không thành công, vui lòng kiểm tra lại thông tin vé của mình!");
+
     }//GEN-LAST:event_btnXeTVVaoMouseClicked
 
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
@@ -452,8 +588,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         btnXeTVRa.setEnabled(false);
         btnXeVLVao.setEnabled(true);
         btnXeVLRa.setEnabled(true);
-        cbbLoaiXe.setEnabled(true);
         txtMaKhachHang.setEnabled(false);
+        txtMaTheKVL.setEnabled(true);
+
 
     }//GEN-LAST:event_btnDemoKVLMouseClicked
 
@@ -468,8 +605,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         btnXeVLRa.setEnabled(false);
         btnXeTVVao.setEnabled(true);
         btnXeTVRa.setEnabled(true);
-        cbbLoaiXe.setEnabled(false);
         txtMaKhachHang.setEnabled(true);
+        txtMaTheKVL.setEnabled(false);
     }//GEN-LAST:event_btnDemoKHTVMouseClicked
 
     /**
@@ -542,6 +679,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        capNhatLaiTable();
         JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
 
 
@@ -590,6 +728,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
             }
 
         }
+        capNhatLaiTable();
     }//GEN-LAST:event_btnXeVLRaMouseClicked
 
     private void txtMaTheKVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaTheKVLActionPerformed

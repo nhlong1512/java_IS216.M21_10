@@ -188,5 +188,7 @@ public class main {
             System.out.println("New----" + ctrv);
         }
         System.out.println(ctrvtbl.getInfor("DT020"));
+        
+        System.out.println(getDateThoiGianThuc());
     }
 }

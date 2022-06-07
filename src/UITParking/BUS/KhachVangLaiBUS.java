@@ -30,6 +30,12 @@ public class KhachVangLaiBUS {
     public int getNumbKVL() {
         return list_KVL.size();
     }
+    
+    public String getMaxMaKVL() throws Exception {
+        kvlDAO = new KhachVangLaiDAO();
+        return kvlDAO.getMaxMaKVL();
+    }
+
 
     public ArrayList<KhachVangLaiDTO> getlist_KVL() {
         return list_KVL;

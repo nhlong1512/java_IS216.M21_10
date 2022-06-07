@@ -67,9 +67,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         panelAdminQLHD = new Admin.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         label_QLHD = new javax.swing.JLabel();
-        panelAdminQLDT = new Admin.PanelRound();
+        panelAdminQLXRV = new Admin.PanelRound();
         jLabel10 = new javax.swing.JLabel();
-        label_QLDT = new javax.swing.JLabel();
+        label_QLXRV = new javax.swing.JLabel();
         panelAdminBCTK = new Admin.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         label_BCTK = new javax.swing.JLabel();
@@ -324,59 +324,59 @@ public class HomepageAdmin extends javax.swing.JFrame {
 
         jPanel2.add(panelAdminQLHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 180, 200));
 
-        panelAdminQLDT.setBackground(new java.awt.Color(255, 255, 255));
-        panelAdminQLDT.setRoundBottomLeft(50);
-        panelAdminQLDT.setRoundBottomRight(50);
-        panelAdminQLDT.setRoundTopLeft(50);
-        panelAdminQLDT.setRoundTopRight(50);
-        panelAdminQLDT.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelAdminQLXRV.setBackground(new java.awt.Color(255, 255, 255));
+        panelAdminQLXRV.setRoundBottomLeft(50);
+        panelAdminQLXRV.setRoundBottomRight(50);
+        panelAdminQLXRV.setRoundTopLeft(50);
+        panelAdminQLXRV.setRoundTopRight(50);
+        panelAdminQLXRV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelAdminQLDTMouseClicked(evt);
+                panelAdminQLXRVMouseClicked(evt);
             }
         });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doanhthu.png"))); // NOI18N
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        label_QLDT.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
-        label_QLDT.setForeground(new java.awt.Color(0, 0, 102));
-        label_QLDT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_QLDT.setText("Quản lý doanh thu");
-        label_QLDT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        label_QLDT.addMouseListener(new java.awt.event.MouseAdapter() {
+        label_QLXRV.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
+        label_QLXRV.setForeground(new java.awt.Color(0, 0, 102));
+        label_QLXRV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_QLXRV.setText("Quản lý xe ra vào");
+        label_QLXRV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        label_QLXRV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                label_QLDTMouseEntered(evt);
+                label_QLXRVMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                label_QLDTMouseExited(evt);
+                label_QLXRVMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout panelAdminQLDTLayout = new javax.swing.GroupLayout(panelAdminQLDT);
-        panelAdminQLDT.setLayout(panelAdminQLDTLayout);
-        panelAdminQLDTLayout.setHorizontalGroup(
-            panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAdminQLDTLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelAdminQLXRVLayout = new javax.swing.GroupLayout(panelAdminQLXRV);
+        panelAdminQLXRV.setLayout(panelAdminQLXRVLayout);
+        panelAdminQLXRVLayout.setHorizontalGroup(
+            panelAdminQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLXRVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_QLDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelAdminQLDTLayout.createSequentialGroup()
+                .addGroup(panelAdminQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_QLXRV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelAdminQLXRVLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelAdminQLDTLayout.setVerticalGroup(
-            panelAdminQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAdminQLDTLayout.createSequentialGroup()
+        panelAdminQLXRVLayout.setVerticalGroup(
+            panelAdminQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAdminQLXRVLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_QLDT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_QLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2.add(panelAdminQLDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 200));
+        jPanel2.add(panelAdminQLXRV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 200));
 
         panelAdminBCTK.setBackground(new java.awt.Color(255, 255, 255));
         panelAdminBCTK.setRoundBottomLeft(50);
@@ -705,13 +705,13 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLHD.setForeground(new Color(0, 0, 102));
     }//GEN-LAST:event_label_QLHDMouseExited
 
-    private void label_QLDTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLDTMouseEntered
-        label_QLDT.setForeground(new Color(191, 207, 255));
-    }//GEN-LAST:event_label_QLDTMouseEntered
+    private void label_QLXRVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXRVMouseEntered
+        label_QLXRV.setForeground(new Color(191, 207, 255));
+    }//GEN-LAST:event_label_QLXRVMouseEntered
 
-    private void label_QLDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLDTMouseExited
-        label_QLDT.setForeground(new Color(0, 0, 102));
-    }//GEN-LAST:event_label_QLDTMouseExited
+    private void label_QLXRVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXRVMouseExited
+        label_QLXRV.setForeground(new Color(0, 0, 102));
+    }//GEN-LAST:event_label_QLXRVMouseExited
 
     private void label_BCTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_BCTKMouseEntered
         label_BCTK.setForeground(new Color(191, 207, 255));
@@ -829,19 +829,18 @@ public class HomepageAdmin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_panelAdminQLHDMouseClicked
 
-    private void panelAdminQLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLDTMouseClicked
-        // TODO add your handling code here:            
-//        kindSelectedPublic = "QLDT";
-//
-//        MainForm _mainForm = null;
-//        try {
-//            _mainForm = new MainForm();
-//        } catch (Exception ex) {
-//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        _mainForm.show();
-//        dispose();
-    }//GEN-LAST:event_panelAdminQLDTMouseClicked
+    private void panelAdminQLXRVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXRVMouseClicked
+        kindSelectedPublic = "QLXRV";
+
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
+    }//GEN-LAST:event_panelAdminQLXRVMouseClicked
 
     private void panelAdminBCTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminBCTKMouseClicked
         // TODO add your handling code here:
@@ -1005,21 +1004,21 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label_BCTK;
     private javax.swing.JLabel label_DangXuat;
-    private javax.swing.JLabel label_QLDT;
     private javax.swing.JLabel label_QLHD;
     private javax.swing.JLabel label_QLKH;
     private javax.swing.JLabel label_QLKVL;
     private javax.swing.JLabel label_QLNV;
     private javax.swing.JLabel label_QLVE;
     private javax.swing.JLabel label_QLXE;
+    private javax.swing.JLabel label_QLXRV;
     private Admin.PanelRound panelAdminBCTK;
-    private Admin.PanelRound panelAdminQLDT;
     private Admin.PanelRound panelAdminQLHD;
     private Admin.PanelRound panelAdminQLKH;
     private Admin.PanelRound panelAdminQLKVL;
     private Admin.PanelRound panelAdminQLNV;
     private Admin.PanelRound panelAdminQLV;
     private Admin.PanelRound panelAdminQLX;
+    private Admin.PanelRound panelAdminQLXRV;
     private Admin.PanelRound panelRound1;
     private javax.swing.JLabel txtChucVuNhanVien;
     private javax.swing.JLabel txtHoTenNhanVien;

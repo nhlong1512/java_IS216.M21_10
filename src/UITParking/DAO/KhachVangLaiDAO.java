@@ -6,6 +6,7 @@ package UITParking.DAO;
 
 import UITParking.DTO.KhachVangLaiDTO;
 import UITParking.DTO.NhanVienDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -101,5 +102,16 @@ public class KhachVangLaiDAO {
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
         }
+    }
+    public String getMaxMaKVL() throws Exception {
+        String sql = "Select Max(MaTheKVL) as MaxKVL from KHACHVANGLAI";
+        pst = this.connection.getConnect().prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        String id = "";
+        if (rs.next()) {
+            String maxhd = rs.getString("MaxKVL");
+            id = getID(maxhd);
+        }
+        return "VL" + id;
     }
 }

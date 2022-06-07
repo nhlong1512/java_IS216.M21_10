@@ -70,8 +70,8 @@ public class MainForm extends javax.swing.JFrame {
                 controller.setView(jpnBCTK, jlbBCTK);
             }
             break;
-            case "QLDT": {
-                controller.setView(jpnDT, jlbDT);
+            case "QLXRV": {
+                controller.setView(jpnQLXRV, jlbQLXRV);
             }
             break;
 
@@ -86,11 +86,12 @@ public class MainForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("QLKVL", jpnQLKVL, jlbQLKVL));
         listItem.add(new DanhMucBean("QLHD", jpnQLHD, jlbQLHD));
         listItem.add(new DanhMucBean("QLV", jpnQLV, jlbQLV));
-//        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
-//        listItem.add(new DanhMucBean("QLDT", jpnDT, jlbDT));
+        listItem.add(new DanhMucBean("QLXRV", jpnQLXRV, jlbQLXRV));
+        listItem.add(new DanhMucBean("BCTK", jpnBCTK, jlbBCTK));
+        
         controller.setEvent(listItem);
-        jpnBCTK.setVisible(false);
-        jpnDT.setVisible(false);
+//        jpnQLNV.setVisible(false);
+//        jpnQLX.setVisible(false);
     }
 
     /**
@@ -107,9 +108,9 @@ public class MainForm extends javax.swing.JFrame {
         jpnBCTK = new Admin.PanelRound();
         jlbBCTK = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jpnDT = new Admin.PanelRound();
+        jpnQLXRV = new Admin.PanelRound();
         jLabel4 = new javax.swing.JLabel();
-        jlbDT = new javax.swing.JLabel();
+        jlbQLXRV = new javax.swing.JLabel();
         jpnQLV = new Admin.PanelRound();
         jLabel5 = new javax.swing.JLabel();
         jlbQLV = new javax.swing.JLabel();
@@ -170,32 +171,32 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnDT.setBackground(new java.awt.Color(255, 255, 255));
-        jpnDT.setRoundBottomLeft(25);
-        jpnDT.setRoundBottomRight(25);
-        jpnDT.setRoundTopLeft(25);
-        jpnDT.setRoundTopRight(25);
+        jpnQLXRV.setBackground(new java.awt.Color(255, 255, 255));
+        jpnQLXRV.setRoundBottomLeft(25);
+        jpnQLXRV.setRoundBottomRight(25);
+        jpnQLXRV.setRoundTopLeft(25);
+        jpnQLXRV.setRoundTopRight(25);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/growth.png"))); // NOI18N
 
-        jlbDT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jlbDT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbDT.setText("Doanh thu theo ngày");
+        jlbQLXRV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlbQLXRV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbQLXRV.setText("Quản Lý Xe Ra Vào");
 
-        javax.swing.GroupLayout jpnDTLayout = new javax.swing.GroupLayout(jpnDT);
-        jpnDT.setLayout(jpnDTLayout);
-        jpnDTLayout.setHorizontalGroup(
-            jpnDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnDTLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpnQLXRVLayout = new javax.swing.GroupLayout(jpnQLXRV);
+        jpnQLXRV.setLayout(jpnQLXRVLayout);
+        jpnQLXRVLayout.setHorizontalGroup(
+            jpnQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXRVLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jlbDT, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+            .addComponent(jlbQLXRV, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
         );
-        jpnDTLayout.setVerticalGroup(
-            jpnDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnDTLayout.createSequentialGroup()
-                .addComponent(jlbDT, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jpnQLXRVLayout.setVerticalGroup(
+            jpnQLXRVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnQLXRVLayout.createSequentialGroup()
+                .addComponent(jlbQLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -421,7 +422,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(jpnDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnQLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jpnBCTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,7 +442,7 @@ public class MainForm extends javax.swing.JFrame {
                                 .addComponent(jpnQLKVL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jpnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jpnQLV, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jpnDT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpnQLXRV, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jpnBCTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jpnMenuLayout.createSequentialGroup()
@@ -549,15 +550,14 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jlbBCTK;
-    private javax.swing.JLabel jlbDT;
     private javax.swing.JLabel jlbQLHD;
     private javax.swing.JLabel jlbQLKH;
     private javax.swing.JLabel jlbQLKVL;
     private javax.swing.JLabel jlbQLNV;
     private javax.swing.JLabel jlbQLV;
     private javax.swing.JLabel jlbQLX;
+    private javax.swing.JLabel jlbQLXRV;
     private Admin.PanelRound jpnBCTK;
-    private Admin.PanelRound jpnDT;
     private javax.swing.JPanel jpnMenu;
     private Admin.PanelRound jpnQLHD;
     private Admin.PanelRound jpnQLKH;
@@ -565,6 +565,7 @@ public class MainForm extends javax.swing.JFrame {
     private Admin.PanelRound jpnQLNV;
     private Admin.PanelRound jpnQLV;
     private Admin.PanelRound jpnQLX;
+    private Admin.PanelRound jpnQLXRV;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
     // End of variables declaration//GEN-END:variables

@@ -62,8 +62,17 @@ public class CTRaVaoDAO {
             pst = this.connection.getConnect().prepareStatement(sql);
 
             pst.setString(1, CTRaVao.getStrMaCTRaVao());
-            pst.setDate(2, new java.sql.Date(CTRaVao.getDateThoiGianVao().getTime()));
-            pst.setDate(3, new java.sql.Date(CTRaVao.getDateThoiGianRa().getTime()));
+            if (CTRaVao.getDateThoiGianVao() != null) {
+                pst.setDate(2, new java.sql.Date(CTRaVao.getDateThoiGianVao().getTime()));
+            } else {
+                pst.setDate(2, null);
+            }
+            if (CTRaVao.getDateThoiGianRa() != null) {
+                pst.setDate(3, new java.sql.Date(CTRaVao.getDateThoiGianRa().getTime()));
+
+            } else {
+                pst.setDate(3, null);
+            }
             pst.setString(4, CTRaVao.getStrMaNV());
             pst.setString(5, CTRaVao.getStrMaKH());
             pst.setString(6, CTRaVao.getStrMaXe());
@@ -102,8 +111,17 @@ public class CTRaVaoDAO {
             pst = this.connection.getConnect().prepareStatement(sql);
 
             pst.setString(7, CTRaVao.getStrMaCTRaVao());
-            pst.setDate(1, new java.sql.Date(CTRaVao.getDateThoiGianVao().getTime()));
-            pst.setDate(2, new java.sql.Date(CTRaVao.getDateThoiGianRa().getTime()));
+            if (CTRaVao.getDateThoiGianVao() != null) {
+                pst.setDate(1, new java.sql.Date(CTRaVao.getDateThoiGianVao().getTime()));
+            } else {
+                pst.setDate(1, null);
+            }
+            if (CTRaVao.getDateThoiGianRa() != null) {
+                pst.setDate(2, new java.sql.Date(CTRaVao.getDateThoiGianRa().getTime()));
+
+            } else {
+                pst.setDate(2, null);
+            }
             pst.setString(3, CTRaVao.getStrMaNV());
             pst.setString(4, CTRaVao.getStrMaKH());
             pst.setString(5, CTRaVao.getStrMaXe());
@@ -116,7 +134,7 @@ public class CTRaVaoDAO {
     }
 
     public String getMaxMaCTRaVao() throws Exception {
-        String sql = "Select Max(MaCTRaVao) as MaxCTRaVao from CHITIETHOADON";
+        String sql = "Select Max(MaCTRaVao) as MaxCTRaVao from CHITIETRAVAO";
         pst = this.connection.getConnect().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         String id = "";

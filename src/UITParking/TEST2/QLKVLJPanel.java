@@ -322,40 +322,6 @@ public class QLKVLJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLuubtnLuuMouseClicked
 
-    private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
-        // TODO add your handling code here:
-//        StringBuilder sb = new StringBuilder();
-//        if (txtMaTheKVL.getText().equals("")) {
-//            sb.append("Mã thẻ khách vãng lai không được để trống.");
-//            txtMaTheKVL.setBackground(Color.red);
-//        } else {
-//            txtMaTheKVL.setBackground(Color.white);
-//        }
-//        if (kvltbl.getInfor(txtMaTheKVL.getText()) == null) {
-//            sb.append("Mã thẻ khách vãng lai không tồn tại.");
-//        }
-//        if (sb.length() > 0) {
-//            JOptionPane.showMessageDialog(this, sb);
-//            return;
-//        }
-//        try {
-//            KhachHangDTO kvl = new KhachHangDTO();
-//            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
-//            xe.setStrMaXe(txtMaTheKVL.getText());
-//            xe.setStrTenLoaiXe(txtMaXe.getText());
-//            xe.setStrBienSoXe(txtTenLoaiXe.getText());
-//            xetbl.sua(xe);
-//            //Cập nhật lại Table
-//            capNhatLaiTable();
-//
-//            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-//            e.printStackTrace();
-//        }
-    }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
-
     private void btnXoabtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoabtnXoaMouseClicked
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
@@ -427,6 +393,40 @@ public class QLKVLJPanel extends javax.swing.JPanel {
     private void txtMaTheKVLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaTheKVLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaTheKVLActionPerformed
+
+    private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
+        // TODO add your handling code here:
+        //        StringBuilder sb = new StringBuilder();
+        //        if (txtMaTheKVL.getText().equals("")) {
+            //            sb.append("Mã thẻ khách vãng lai không được để trống.");
+            //            txtMaTheKVL.setBackground(Color.red);
+            //        } else {
+            //            txtMaTheKVL.setBackground(Color.white);
+            //        }
+        //        if (kvltbl.getInfor(txtMaTheKVL.getText()) == null) {
+            //            sb.append("Mã thẻ khách vãng lai không tồn tại.");
+            //        }
+        //        if (sb.length() > 0) {
+            //            JOptionPane.showMessageDialog(this, sb);
+            //            return;
+            //        }
+        //        try {
+            //            KhachHangDTO kvl = new KhachHangDTO();
+            //            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
+            //            xe.setStrMaXe(txtMaTheKVL.getText());
+            //            xe.setStrTenLoaiXe(txtMaXe.getText());
+            //            xe.setStrBienSoXe(txtTenLoaiXe.getText());
+            //            xetbl.sua(xe);
+            //            //Cập nhật lại Table
+            //            capNhatLaiTable();
+            //
+            //            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
+            //
+            //        } catch (Exception e) {
+            //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            //            e.printStackTrace();
+            //        }
+    }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

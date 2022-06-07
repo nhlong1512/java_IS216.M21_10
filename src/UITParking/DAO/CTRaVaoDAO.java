@@ -132,6 +132,8 @@ public class CTRaVaoDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
+    
+    
 
     public String getMaxMaCTRaVao() throws Exception {
         String sql = "Select Max(MaCTRaVao) as MaxCTRaVao from CHITIETRAVAO";

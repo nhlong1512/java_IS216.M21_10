@@ -10,6 +10,7 @@ import UITParking.BUS.XeBUS;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -93,7 +94,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             }
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
+                 nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), tenLoaiXe, bienSoXe, kh.getLongSoDu()});
             index++;
         }
@@ -145,7 +147,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()),
+                nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT(), kh.getStrMaXe(), xe.getStrTenLoaiXe(),
                 xe.getStrBienSoXe(), kh.getLongSoDu(), nd.getStrMatKhau()});
             index++;

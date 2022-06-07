@@ -12,7 +12,7 @@ import UITParking.DTO.CTHDMuaVeDTO;
 import UITParking.DTO.HDMuaVeDTO;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.VeDTO;
-import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.sysdate;
 import static UITParking.GUI.InitPublic.getThoiGianThuc;
 import static UITParking.GUI.MuaVe.slVe3000Dong;
 import static UITParking.GUI.MuaVe.slVe2000Dong;
@@ -890,7 +890,7 @@ public class GioHang extends javax.swing.JFrame {
                 //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
                 //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
                 String maHD = hdmuavetbl.getMaxMaHD();
-                HDMuaVeDTO hd = new HDMuaVeDTO(maHD, kh.getStrMaKH(), getDateThoiGianThuc(), pTongTienThanhToan);
+                HDMuaVeDTO hd = new HDMuaVeDTO(maHD, kh.getStrMaKH(), sysdate(), pTongTienThanhToan);
                 hdmuavetbl.them(hd);
 
                 /**

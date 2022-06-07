@@ -18,7 +18,9 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
+import static UITParking.GUI.InitPublic.sysdate;
 import java.awt.Color;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -90,8 +92,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
 //            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
-                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), 
+                (ctrv.getDateThoiGianVao() != null ? formatDate(ctrv.getDateThoiGianVao()) : ctrv.getDateThoiGianVao()),
+                (ctrv.getDateThoiGianRa() != null ? formatDate(ctrv.getDateThoiGianRa()) : ctrv.getDateThoiGianRa()), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
                 ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
             index++;
         }
@@ -140,8 +143,9 @@ public class QLXRVJPanel extends javax.swing.JPanel {
 
 //            LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
-            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), ctrv.getDateThoiGianVao(),
-                ctrv.getDateThoiGianRa(), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
+            model.addRow(new Object[]{index, ctrv.getStrMaCTRaVao(), 
+                (ctrv.getDateThoiGianVao() != null ? formatDate(ctrv.getDateThoiGianVao()) : ctrv.getDateThoiGianVao()),
+                (ctrv.getDateThoiGianRa() != null ? formatDate(ctrv.getDateThoiGianRa()) : ctrv.getDateThoiGianRa()), ctrv.getStrMaKH() == null ? "null" : ctrv.getStrMaKH(), ctrv.getStrMaXe(),
                 ctrv.getStrMaTheKVL() == null ? "null" : ctrv.getStrMaTheKVL()});
             index++;
         }
@@ -318,32 +322,42 @@ public class QLXRVJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimKiemMouseClicked
 
     /**
-     * 
-     * @param evt 
-     * Khi khách thành viên ra khỏi bãi, điều duy nhất cần làm là
-     * Cập nhật giờ ra cho bảng chi tiết ra vào.
+     *
+     * @param evt Khi khách thành viên ra khỏi bãi, điều duy nhất cần làm là Cập
+     * nhật giờ ra cho bảng chi tiết ra vào.
      */
     private void btnXeTVRaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVRaMouseClicked
+        ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV(txtMaKhachHang.getText());
+        for (VeDTO ve : list_VeTV) {
+            if ((ve.getStrMaLoaiVe().equals("LVE01") || ve.getStrMaLoaiVe().equals("LVE02"))
+                    && ve.getStrTrangThai().equals("Đang sử dụng")) {
+                ve.setStrTrangThai("Đã hết hạn");
+                try {
+                    vetbl.sua(ve);
+                } catch (Exception ex) {
+                    Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         for (CTRaVaoDTO ctrv : list_CTRV) {
             //Nếu mã thẻ KVL trùng với barrier và thời gian ra đang là null thì cập nhật
-            if (ctrv.getStrMaKH()!= null) {
+            if (ctrv.getStrMaKH() != null) {
                 if (ctrv.getStrMaKH().equals(txtMaKhachHang.getText())
                         && ctrv.getDateThoiGianRa() == null) {
+                    ctrv.setDateThoiGianRa(sysdate());
                     try {
-                        ctrv.setDateThoiGianRa(getDateThoiGianThuc());
-                        try {
-                            ctrvtbl.sua(ctrv);
-                        } catch (Exception ex) {
-                            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } catch (ParseException ex) {
+                        ctrvtbl.sua(ctrv);
+                    } catch (Exception ex) {
                         Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    capNhatLaiTable();
                     JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");
+                    return;
                 }
             }
 
         }
+        JOptionPane.showMessageDialog(this, "Xe ra bãi thất bại");
         capNhatLaiTable();
     }//GEN-LAST:event_btnXeTVRaMouseClicked
 
@@ -363,16 +377,15 @@ public class QLXRVJPanel extends javax.swing.JPanel {
      *
      */
     private void btnXeTVVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXeTVVaoMouseClicked
-        System.out.println(nguoidungtbl.getInfor(txtMaKhachHang.getText()));
-        System.out.println(khachhangtbl.getInfor(txtMaKhachHang.getText()));
+
         NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaKhachHang.getText());
         KhachHangDTO kh = khachhangtbl.getInfor(txtMaKhachHang.getText());
         XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
-        System.out.println(xe);
         ArrayList<VeDTO> list_VeTV = vetbl.getList_VeTV(txtMaKhachHang.getText());
         //Nếu khách hàng không có vé nào sẽ thông báo cho khách hàng
         if (list_VeTV.size() == 0) {
             JOptionPane.showMessageDialog(this, "Xe vào bãi không thành công, vui lòng kiểm tra lại thông tin vé của mình!");
+            capNhatLaiTable();
             return;
         }
 
@@ -380,7 +393,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         for (VeDTO ve : list_VeTV) {
             if ((ve.getStrMaLoaiVe().equals("LVE03") || ve.getStrMaLoaiVe().equals("LVE04"))
                     && ve.getStrTrangThai().equals("Đang sử dụng")) {
-                System.out.println(ve);
+                capNhatLaiTable();
                 JOptionPane.showMessageDialog(this, "Xe vào bãi thành công");
                 /**
                  * Thêm thông tin xe vào bảng xe Và thông tin chi tiết ra vào
@@ -411,7 +424,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
                     System.out.println(maCTRaVaoTemp);
                     ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
-                    ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                    ctrv.setDateThoiGianVao(sysdate());
                     ctrv.setDateThoiGianRa(null);
                     ctrv.setStrMaNV("ND011");
                     ctrv.setStrMaKH(txtMaKhachHang.getText());
@@ -425,7 +438,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                capNhatLaiTable();
                 return;
             }
         }
@@ -481,7 +494,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                         String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
                         System.out.println(maCTRaVaoTemp);
                         ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
-                        ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                        ctrv.setDateThoiGianVao(sysdate());
                         ctrv.setDateThoiGianRa(null);
                         ctrv.setStrMaNV("ND011");
                         ctrv.setStrMaKH(txtMaKhachHang.getText());
@@ -495,6 +508,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     } catch (Exception ex) {
                         Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    capNhatLaiTable();
                     return;
                 }
             }
@@ -544,7 +558,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                         String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
                         System.out.println(maCTRaVaoTemp);
                         ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
-                        ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+                        ctrv.setDateThoiGianVao(sysdate());
                         ctrv.setDateThoiGianRa(null);
                         ctrv.setStrMaNV("ND011");
                         ctrv.setStrMaKH(txtMaKhachHang.getText());
@@ -558,6 +572,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     } catch (Exception ex) {
                         Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    capNhatLaiTable();
                     return;
                 }
             }
@@ -591,6 +606,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
         txtMaKhachHang.setEnabled(false);
         txtMaTheKVL.setEnabled(true);
 
+        System.out.println(sysdate());
 
     }//GEN-LAST:event_btnDemoKVLMouseClicked
 
@@ -665,7 +681,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
             String maCTRaVaoTemp = ctrvtbl.getMaxMaCTRaVao();
             System.out.println(maCTRaVaoTemp);
             ctrv.setStrMaCTRaVao(maCTRaVaoTemp);
-            ctrv.setDateThoiGianVao(getDateThoiGianThuc());
+            ctrv.setDateThoiGianVao(sysdate());
             ctrv.setDateThoiGianRa(null);
             ctrv.setStrMaNV("ND011");
             ctrv.setStrMaKH(null);
@@ -713,14 +729,10 @@ public class QLXRVJPanel extends javax.swing.JPanel {
             if (ctrv.getStrMaTheKVL() != null) {
                 if (ctrv.getStrMaTheKVL().equals(txtMaTheKVL.getText())
                         && ctrv.getDateThoiGianRa() == null) {
+                    ctrv.setDateThoiGianRa(sysdate());
                     try {
-                        ctrv.setDateThoiGianRa(getDateThoiGianThuc());
-                        try {
-                            ctrvtbl.sua(ctrv);
-                        } catch (Exception ex) {
-                            Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } catch (ParseException ex) {
+                        ctrvtbl.sua(ctrv);
+                    } catch (Exception ex) {
                         Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");

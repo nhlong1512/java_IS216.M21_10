@@ -128,6 +128,7 @@ public class VeDAO {
             }else{
                 pst.setDate(4, null);
             }
+            
             pst.setString(5, ve.getStrTrangThai());
 
             return pst.executeUpdate() > 0;
@@ -135,6 +136,7 @@ public class VeDAO {
             throw new ArithmeticException(ex.getMessage());
         }
     }
+    
 
     public String getMaxMaVe() throws Exception {
         String sql = "Select Max(MaVe) as MaxVe from C_VE";

@@ -18,6 +18,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -99,7 +100,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
-                hd.getDateNgayHD(), hd.getLongTongTriGia()});
+                (hd.getDateNgayHD() != null ? formatDate(hd.getDateNgayHD()) : hd.getDateNgayHD()),
+                 hd.getLongTongTriGia()});
             index++;
         }
 
@@ -193,7 +195,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model1.addRow(new Object[]{index, hd.getStrMaHD(), hd.getStrMaKH(),
-                hd.getDateNgayHD(), hd.getLongTongTriGia()});
+                (hd.getDateNgayHD() != null ? formatDate(hd.getDateNgayHD()) : hd.getDateNgayHD()),
+                 hd.getLongTongTriGia()});
             index++;
         }
         model1.fireTableDataChanged();

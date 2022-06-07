@@ -12,6 +12,7 @@ import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -79,7 +80,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
             NguoiDungDTO nd = nguoidungtbl.getInfor(nv.getStrMaNV());
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
+                nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT(), nd.getStrMatKhau()});
             index++;
         }
@@ -130,7 +132,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
             NguoiDungDTO nd = nguoidungtbl.getInfor(nv.getStrMaNV());
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
-                nd.getDateNgSinh(), nd.getStrGioiTinh(), nd.getStrDiaChi(),
+                (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
+                nd.getStrGioiTinh(), nd.getStrDiaChi(),
                 nd.getStrQueQuan(), nd.getStrSDT(), nd.getStrMatKhau()});
             index++;
         }

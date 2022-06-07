@@ -14,6 +14,7 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -105,8 +106,10 @@ public class QLVJPanel extends javax.swing.JPanel {
             LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
             model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
-                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                lv.getStrTenLoaiVe(), ve.getStrMaKH(),
+                (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), 
+                ve.getStrTrangThai()});
             index++;
         }
 
@@ -156,8 +159,9 @@ public class QLVJPanel extends javax.swing.JPanel {
             LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
             //Cập nhật bảng
             model.addRow(new Object[]{index, ve.getStrMaVe(), ve.getStrMaLoaiVe(),
-                lv.getStrTenLoaiVe(), ve.getStrMaKH(), ve.getDateNgayKichHoat(),
-                ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                lv.getStrTenLoaiVe(), ve.getStrMaKH(),
+                (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), ve.getStrTrangThai()});
             index++;
         }
         model.fireTableDataChanged();

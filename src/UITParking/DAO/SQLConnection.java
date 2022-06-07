@@ -42,7 +42,7 @@ public class SQLConnection {
     protected Connection getConnect() throws Exception {
 //        nếu connection null thì khởi tạo mới
         if (this.connect == null) {
-            driveTest();
+            driveTest();    
             
 //            Tạo url để kết nối tới Database
             String url = "jdbc:oracle:thin:@localhost:1521:" + this.Sid;

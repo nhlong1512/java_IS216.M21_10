@@ -14,10 +14,12 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import static UITParking.GUI.InitPublic.formatDate;
 import static UITParking.GUI.InitPublic.getConvertStringToLocalDate;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
+import static UITParking.GUI.InitPublic.sysdate;
 import static UITParking.GUI.login.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -139,8 +141,9 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
-                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), 
+                    (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), ve.getStrTrangThai()});
                 index++;
             }
 
@@ -191,8 +194,9 @@ public class ThongTinVe extends javax.swing.JFrame {
             //Lấy ra xe và biển số xe của khách hàng
             if (ve.getStrMaKH().equals(pMaND)) {
                 LoaiVeDTO lv = loaivetbl.getInfor(ve.getStrMaLoaiVe());
-                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), ve.getDateNgayKichHoat(),
-                    ve.getDateNgayHetHan(), ve.getStrTrangThai()});
+                model.addRow(new Object[]{index, ve.getStrMaVe(), lv.getStrTenLoaiVe(), 
+                    (ve.getDateNgayKichHoat() != null ? formatDate(ve.getDateNgayKichHoat()) : ve.getDateNgayKichHoat()),
+                (ve.getDateNgayHetHan() != null ? formatDate(ve.getDateNgayHetHan()) : ve.getDateNgayHetHan()), ve.getStrTrangThai()});
                 index++;
             }
 
@@ -361,7 +365,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
             System.out.println("Long dep trai");
             try {
-                System.out.println(getDateThoiGianThuc());
+                System.out.println(sysdate());
                 System.out.println(getDateThoiGianVeTuan());
                 System.out.println(getDateThoiGianVeThang());
 
@@ -378,7 +382,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             ve = vetbl.getInfor(maVeHienTai);
             System.out.println(ve);
             try {
-                ve.setDateNgayKichHoat(getDateThoiGianThuc());
+                ve.setDateNgayKichHoat(sysdate());
                 ve.setStrTrangThai("Đang sử dụng");
                 if (ve.getStrMaLoaiVe().equals("LVE03")) {
                     ve.setDateNgayHetHan(getDateThoiGianVeTuan());

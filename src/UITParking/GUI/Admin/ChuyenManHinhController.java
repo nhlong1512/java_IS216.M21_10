@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import static UITParking.GUI.HomepageAdmin.kindSelectedPublic;
-import UITParking.TEST2.DanhMucBean;
+import UITParking.GUI.Admin.DanhMucBean;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.List;
@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 public class ChuyenManHinhController {
 
     private JPanel root;
-    private String kindSelected = "";
+    private String kindSelected = kindSelectedPublic;
 
     private ArrayList<DanhMucBean> listItem = null;
 
@@ -34,6 +34,17 @@ public class ChuyenManHinhController {
 
     public void setView(JPanel jpnItem, JLabel jlbItem) throws Exception {
         switch (kindSelectedPublic) {
+            case "QLKH": {
+                jpnItem.setBackground(new Color(220, 148, 34));
+                jlbItem.setBackground(new Color(220, 148, 34));
+
+                root.removeAll();
+                root.setLayout(new BorderLayout());
+                root.add(new QLKHJPanel());
+                root.validate();
+                root.repaint();
+            }
+            break;
             case "QLNV": {
                 jpnItem.setBackground(new Color(220, 148, 34));
                 jlbItem.setBackground(new Color(220, 148, 34));
@@ -56,18 +67,6 @@ public class ChuyenManHinhController {
                 root.repaint();
             }
             break;
-            case "QLKH": {
-                jpnItem.setBackground(new Color(220, 148, 34));
-                jlbItem.setBackground(new Color(220, 148, 34));
-
-                root.removeAll();
-                root.setLayout(new BorderLayout());
-                root.add(new QLKHJPanel());
-                root.validate();
-                root.repaint();
-            }
-            break;
-
             case "QLX": {
                 jpnItem.setBackground(new Color(220, 148, 34));
                 jlbItem.setBackground(new Color(220, 148, 34));
@@ -139,15 +138,6 @@ public class ChuyenManHinhController {
             }
             break;
         }
-//        kindSelected = "QLKH";
-//        jpnItem.setBackground(new Color(220, 148, 34));
-//        jlbItem.setBackground(new Color(220, 148, 34));
-//
-//        root.removeAll();
-//        root.setLayout(new BorderLayout());
-//        root.add(new QLKHJPanel());
-//        root.validate();
-//        root.repaint();
     }
 
     public void setEvent(ArrayList<DanhMucBean> listItem) {
@@ -174,6 +164,14 @@ public class ChuyenManHinhController {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
+                case "QLKH": {
+                    try {
+                        node = new QLKHJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
                 case "QLNV": {
                     try {
                         node = new QLNVJPanel();
@@ -190,14 +188,6 @@ public class ChuyenManHinhController {
                     }
                 }
                 break;
-                case "QLKH": {
-                    try {
-                        node = new QLKHJPanel();
-                    } catch (Exception ex) {
-                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    break;
-                }
 
                 case "QLX": {
                     try {
@@ -227,7 +217,13 @@ public class ChuyenManHinhController {
                 break;
 
                 case "BCTK":
-                    node = new BCTKJPanel();
+                    {
+                    try {
+                        node = new BCTKJPanel();
+                    } catch (Exception ex) {
+                        Logger.getLogger(ChuyenManHinhController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
                 case "QLXRV":
                 {
@@ -248,14 +244,14 @@ public class ChuyenManHinhController {
             root.add(node);
             root.validate();
             root.repaint();
+            kindSelected = kind;
             setChangeBackground(kind);
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            kindSelected = kind;
-            jpnItem.setBackground(new Color(255, 255, 255));
-            jlbItem.setBackground(new Color(255, 255, 255));
+            jpnItem.setBackground(new Color(220, 148, 34));
+            jlbItem.setBackground(new Color(220, 148, 34));
 
         }
 

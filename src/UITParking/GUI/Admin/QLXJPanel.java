@@ -2,8 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.TEST2;
-
+package UITParking.GUI.Admin;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.BUS.NguoiDungBUS;
@@ -25,6 +24,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ADMIN
@@ -39,25 +39,26 @@ public class QLXJPanel extends javax.swing.JPanel {
     
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã Xe", "Tên Loại Xe", "Biển Số Xe"};
-
+    
     private TableRowSorter<TableModel> rowSorter = null;
-
+    
     public QLXJPanel() throws Exception {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
+        txtMaXe.setEnabled(false);
+        txtBienSoXe.setEnabled(false);
     }
-
+    
     public void resetRender() {
         txtMaXe.setText("");
         txtBienSoXe.setText("");
-        txtTenLoaiXe.setText("");
-
+        cbbLoaiXe.setSelectedItem("Xe đạp");
+        txtBienSoXe.setEnabled(false);
     }
-
+    
     public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);
@@ -66,16 +67,16 @@ public class QLXJPanel extends javax.swing.JPanel {
 
             //Cập nhật bảng
             model.addRow(new Object[]{index, xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
+                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
             index++;
         }
-
+        
         tblXe.setModel(model);
-
+        
     }
-
+    
     public void hoTroTimKiem() {
-
+        
         rowSorter = new TableRowSorter<>(tblXe.getModel());
         tblXe.setRowSorter(rowSorter);
         txtTimKiem.getDocument().addDocumentListener(new DocumentListener() {
@@ -88,7 +89,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
-
+            
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String text = txtTimKiem.getText();
@@ -98,7 +99,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
-
+            
             @Override
             public void changedUpdate(DocumentEvent e) {
             }
@@ -113,12 +114,11 @@ public class QLXJPanel extends javax.swing.JPanel {
         for (XeDTO xe : list_XE) {
             //Cập nhật bảng
             model.addRow(new Object[]{index, xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
+                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
             index++;
         }
         model.fireTableDataChanged();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,7 +133,6 @@ public class QLXJPanel extends javax.swing.JPanel {
         jLabel62 = new javax.swing.JLabel();
         txtMaXe = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
-        txtTenLoaiXe = new javax.swing.JTextField();
         jLabel64 = new javax.swing.JLabel();
         txtBienSoXe = new javax.swing.JTextField();
         btnNhapMoi = new javax.swing.JButton();
@@ -144,21 +143,21 @@ public class QLXJPanel extends javax.swing.JPanel {
         txtTimKiem = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblXe = new javax.swing.JTable();
+        cbbLoaiXe = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel62.setText("Mã xe");
-        jPanel1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 64, 22));
+        jPanel1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 64, 20));
         jPanel1.add(txtMaXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 232, -1));
 
         jLabel63.setText("Tên loại xe");
-        jPanel1.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 70, -1));
-        jPanel1.add(txtTenLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 230, -1));
+        jPanel1.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 70, 20));
 
         jLabel64.setText("Biển số xe");
         jLabel64.setToolTipText("");
-        jPanel1.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 55, -1));
+        jPanel1.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 55, 20));
         jPanel1.add(txtBienSoXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 230, -1));
 
         btnNhapMoi.setText("Nhập mới");
@@ -222,6 +221,14 @@ public class QLXJPanel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 213, 1120, 302));
 
+        cbbLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe đạp", "Xe máy" }));
+        cbbLoaiXe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiXeItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cbbLoaiXe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 59, 230, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,30 +247,31 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void btnLuubtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuubtnLuuMouseClicked
         StringBuilder sb = new StringBuilder();
-        if (txtMaXe.getText().equals("")) {
-            sb.append("Mã xe không được để trống.");
-            txtMaXe.setBackground(Color.red);
-        } 
         if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại.");
         }
-
+        
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
         try {
             XeDTO xe = new XeDTO();
-            xe.setStrMaXe(txtMaXe.getText());
-            xe.setStrTenLoaiXe(txtTenLoaiXe.getText());
-            xe.setStrBienSoXe(txtBienSoXe.getText());
+            String tempMaXe = xetbl.getMaxMaXe();
+            xe.setStrMaXe(tempMaXe);
+            if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+                xe.setStrTenLoaiXe("Xe dap");
+                xe.setStrBienSoXe(null);
+            } else {
+                xe.setStrTenLoaiXe("Xe may");
+                xe.setStrBienSoXe(txtBienSoXe.getText());
+            }
             xetbl.them(xe);
-            
 
             //Cập nhật lại Table
             capNhatLaiTable();
             JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
@@ -272,94 +280,93 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaXe.getText().equals("")) {
-            sb.append("Mã xe không được để trống.");
-            txtMaXe.setBackground(Color.red);
-        } else {
-            txtMaXe.setBackground(Color.white);
-        }
-        if (xetbl.getInfor(txtMaXe.getText()) == null) {
-            sb.append("Mã xe không tồn tại.");
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-        try {
-            XeDTO xe = new XeDTO();
-            xe.setStrMaXe(txtMaXe.getText());
-            xe.setStrTenLoaiXe(txtTenLoaiXe.getText());
-            xe.setStrBienSoXe(txtBienSoXe.getText());
-            xetbl.sua(xe);
-            //Cập nhật lại Table
-            capNhatLaiTable();
-
-            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaXe.getText().equals("")) {
+//            sb.append("Mã xe không được để trống.");
+//            txtMaXe.setBackground(Color.red);
+//        } else {
+//            txtMaXe.setBackground(Color.white);
+//        }
+//        if (xetbl.getInfor(txtMaXe.getText()) == null) {
+//            sb.append("Mã xe không tồn tại.");
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//        try {
+//            XeDTO xe = new XeDTO();
+//            xe.setStrMaXe(txtMaXe.getText());
+//            xe.setStrTenLoaiXe(txtTenLoaiXe.getText());
+//            xe.setStrBienSoXe(txtBienSoXe.getText());
+//            xetbl.sua(xe);
+//            //Cập nhật lại Table
+//            capNhatLaiTable();
+//
+//            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
 
     private void btnXoabtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoabtnXoaMouseClicked
         // TODO add your handling code here:
-        StringBuilder sb = new StringBuilder();
-        if (txtMaXe.getText().equals("")) {
-            sb.append("Mã xe không được để trống.");
-            txtMaXe.setBackground(Color.red);
-        } else {
-            txtMaXe.setBackground(Color.white);
-        }
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(this, sb);
-            return;
-        }
-
-        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
-            return;
-        }
-        try {
-            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
-            xetbl.xoa(xe);
-
-            JOptionPane.showMessageDialog(this, "Xe đã xóa khỏi CSDL");
-
-            //Reset lại render
-            resetRender();
-
-            //Cập nhật lại bảng
-            capNhatLaiTable();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            e.printStackTrace();
-        }
+//        StringBuilder sb = new StringBuilder();
+//        if (txtMaXe.getText().equals("")) {
+//            sb.append("Mã xe không được để trống.");
+//            txtMaXe.setBackground(Color.red);
+//        } else {
+//            txtMaXe.setBackground(Color.white);
+//        }
+//        if (sb.length() > 0) {
+//            JOptionPane.showMessageDialog(this, sb);
+//            return;
+//        }
+//
+//        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?") == JOptionPane.NO_OPTION) {
+//            return;
+//        }
+//        try {
+//            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
+//            xetbl.xoa(xe);
+//
+//            JOptionPane.showMessageDialog(this, "Xe đã xóa khỏi CSDL");
+//
+//            //Reset lại render
+//            resetRender();
+//
+//            //Cập nhật lại bảng
+//            capNhatLaiTable();
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnXoabtnXoaMouseClicked
 
     private void btnTimKiembtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiembtnTimKiemMouseClicked
         // TODO add your handling code here:
-        if (txtMaXe.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Mã xe phải được nhập để tìm kiếm");
-            return;
-        }
-
-        try {
-            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
-
-            if (xe != null) {
-                txtMaXe.setText(xe.getStrMaXe());
-                txtTenLoaiXe.setText(xe.getStrTenLoaiXe());
-                txtBienSoXe.setText(xe.getStrBienSoXe());
-            } else {
-                JOptionPane.showMessageDialog(this, "Xe không tìm thấy");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        if (txtMaXe.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Mã xe phải được nhập để tìm kiếm");
+//            return;
+//        }
+//
+//        try {
+//            XeDTO xe = xetbl.getInfor(txtMaXe.getText());
+//
+//            if (xe != null) {
+//                txtMaXe.setText(xe.getStrMaXe());
+//                txtBienSoXe.setText(xe.getStrBienSoXe());
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Xe không tìm thấy");
+//            }
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnTimKiembtnTimKiemMouseClicked
 
     private void tblXetblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblXetblNhanVienMousePressed
@@ -367,15 +374,30 @@ public class QLXJPanel extends javax.swing.JPanel {
         resetRender();
         int selectedRow = tblXe.getSelectedRow();
         if (selectedRow >= 0) {
-
+            
             XeDTO xe = list_XE.get(selectedRow);
-
+            
             txtMaXe.setText(xe.getStrMaXe());
-            txtTenLoaiXe.setText(xe.getStrTenLoaiXe());
+            
+            if (xe.getStrTenLoaiXe().equals("Xe dap")) {
+                cbbLoaiXe.setSelectedItem("Xe đạp");
+            }
+            if (xe.getStrTenLoaiXe().equals("Xe may")) {
+                cbbLoaiXe.setSelectedItem("Xe máy");
+            }
             txtBienSoXe.setText(xe.getStrBienSoXe());
             
         }
     }//GEN-LAST:event_tblXetblNhanVienMousePressed
+
+    private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
+        // TODO add your handling code here:
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+            txtBienSoXe.setEnabled(false);
+        } else {
+            txtBienSoXe.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbbLoaiXeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -384,6 +406,7 @@ public class QLXJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNhapMoi;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cbbLoaiXe;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
@@ -392,7 +415,6 @@ public class QLXJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblXe;
     private javax.swing.JTextField txtBienSoXe;
     private javax.swing.JTextField txtMaXe;
-    private javax.swing.JTextField txtTenLoaiXe;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 }

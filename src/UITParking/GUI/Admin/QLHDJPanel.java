@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import UITParking.BUS.CTHDMuaVeBUS;
 import UITParking.BUS.HDMuaVeBUS;
@@ -75,8 +75,17 @@ public class QLHDJPanel extends javax.swing.JPanel {
         btnXoaChiTiet.setEnabled(false);
         btnCapNhatHoaDon.setEnabled(false);
         btnCapNhatChiTiet.setEnabled(false);
+        btnNhapMoiChiTiet.setEnabled(false);
+        btnNhapMoiHoaDon.setEnabled(false);
         btnLuuHoaDon.setEnabled(false);
         btnLuuChiTiet.setEnabled(false);
+        txtMaHDMuaVe.setEnabled(false);
+        txtMaHDChiTiet.setEnabled(false);
+        txtMaKHMuaVe.setEnabled(false);
+        txtSLVeChiTiet.setEditable(false);
+        txtTongTriGiaMuaVe.setEditable(false);
+        txtMaLoaiVeChiTiet.setEnabled(false);
+        jdcNgayHDMuaVe.setEnabled(false);
     }
 
     public void resetRender1() {

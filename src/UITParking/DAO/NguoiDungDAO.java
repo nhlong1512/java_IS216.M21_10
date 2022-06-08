@@ -5,6 +5,7 @@
 package UITParking.DAO;
 
 import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.InitPublic.getID;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -233,5 +234,17 @@ public class NguoiDungDAO {
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
         }
+    }
+    
+    public String getMaxMaND() throws Exception {
+        String sql = "Select Max(MaND) as MaxND from NGUOIDUNG";
+        pst = this.connection.getConnect().prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        String id = "";
+        if (rs.next()) {
+            String maxhd = rs.getString("MaxND");
+            id = getID(maxhd);
+        }
+        return "ND" + id;
     }
 }

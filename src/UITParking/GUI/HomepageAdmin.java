@@ -7,7 +7,7 @@ package UITParking.GUI;
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.NguoiDungDTO;
 import static UITParking.GUI.login.pMaND;
-import UITParking.TEST2.MainForm;
+import UITParking.GUI.Admin.MainForm;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -172,7 +172,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLVE.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLVE.setForeground(new java.awt.Color(0, 0, 102));
         label_QLVE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_QLVE.setText("Quản lý vé");
+        label_QLVE.setText("Tra cứu vé");
         label_QLVE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLVE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,7 +284,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
         label_QLHD.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
         label_QLHD.setForeground(new java.awt.Color(0, 0, 102));
         label_QLHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_QLHD.setText("Quản lý hóa đơn");
+        label_QLHD.setText("Tra cứu hóa đơn");
         label_QLHD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_QLHD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -497,7 +497,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNhanVienId)
                     .addComponent(txtHoTenNhanVien))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
@@ -505,7 +505,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
                         .addComponent(txtChucVuNhanVien))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addComponent(label_DangXuat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15)))
                 .addGap(149, 149, 149))
         );
@@ -521,16 +521,12 @@ public class HomepageAdmin extends javax.swing.JFrame {
                             .addComponent(txtNhanVienId)
                             .addComponent(txtChucVuNhanVien)
                             .addComponent(jLabel9))
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRound1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(txtHoTenNhanVien)
-                                    .addComponent(label_DangXuat)))
-                            .addGroup(panelRound1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel15)))))
+                        .addGap(20, 20, 20)
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtHoTenNhanVien)
+                            .addComponent(label_DangXuat)
+                            .addComponent(jLabel15))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -751,10 +747,10 @@ public class HomepageAdmin extends javax.swing.JFrame {
 
     private void panelAdminQLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLKHMouseClicked
         // TODO add your handling code here:
+        kindSelectedPublic = "QLKH";
         MainForm _mainForm = null;
         try {
             _mainForm = new MainForm();
-            kindSelectedPublic = "QLKH";
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -843,17 +839,17 @@ public class HomepageAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_panelAdminQLXRVMouseClicked
 
     private void panelAdminBCTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminBCTKMouseClicked
-        // TODO add your handling code here:
-//        kindSelectedPublic = "BCTK";
-//        MainForm _mainForm = null;
-//        try {
-//            _mainForm = new MainForm();
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        _mainForm.show();
-//        dispose();
+//         TODO add your handling code here:
+        kindSelectedPublic = "BCTK";
+        MainForm _mainForm = null;
+        try {
+            _mainForm = new MainForm();
+
+        } catch (Exception ex) {
+            Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        _mainForm.show();
+        dispose();
     }//GEN-LAST:event_panelAdminBCTKMouseClicked
 
     private void panelAdminQLXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXMouseClicked

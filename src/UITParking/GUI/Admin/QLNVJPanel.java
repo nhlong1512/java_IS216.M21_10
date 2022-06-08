@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.BUS.NguoiDungBUS;
@@ -51,9 +51,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
+        txtMaNV.setEnabled(false);
+        txtEmail.setEnabled(false);
     }
 
     public void resetRender() {
@@ -64,6 +63,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         txtQueQuan.setText("");
         txtSDT.setText("");
         txtMaNV.setText("");
+        txtMatKhau.setText("");
         //clear Selection Group
         btnGroupGioiTinh.clearSelection();
         jdcNgaySinh.setDate(null);
@@ -410,6 +410,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             if (nd.getDateNgSinh() != null) {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
             }
+            txtEmail.setEnabled(false);
         }
     }//GEN-LAST:event_tblNhanVientblNhanVienMousePressed
 
@@ -446,12 +447,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
     private void btnXoabtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoabtnXoaMouseClicked
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if (txtMaNV.getText().equals("")) {
-            sb.append("Mã nhân viên không được để trống.");
-            txtMaNV.setBackground(Color.red);
-        } else {
-            txtMaNV.setBackground(Color.white);
-        }
+        
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
@@ -461,10 +457,12 @@ public class QLNVJPanel extends javax.swing.JPanel {
             return;
         }
         try {
+            System.out.println(txtMaNV.getText());
             NguoiDungDTO nd = nguoidungtbl.getInfor(txtMaNV.getText());
             NhanVienDTO nv = nhanvientbl.getInfor(txtMaNV.getText());
-            nguoidungtbl.xoa(nd);
             nhanvientbl.xoa(nv);
+            nguoidungtbl.xoa(nd);
+            
 
             JOptionPane.showMessageDialog(this, "Nhân viên đã xóa khỏi CSDL");
 
@@ -483,12 +481,6 @@ public class QLNVJPanel extends javax.swing.JPanel {
     private void btnCapNhatbtnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatbtnCapNhatMouseClicked
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if (txtMaNV.getText().equals("")) {
-            sb.append("Mã nhân viên không được để trống.");
-            txtMaNV.setBackground(Color.red);
-        } else {
-            txtMaNV.setBackground(Color.white);
-        }
         if (nguoidungtbl.getInfor(txtMaNV.getText()) == null) {
             sb.append("Mã nhân viên không tồn tại.");
         }
@@ -532,12 +524,6 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private void btnLuubtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuubtnLuuMouseClicked
         StringBuilder sb = new StringBuilder();
-        if (txtMaNV.getText().equals("")) {
-            sb.append("Mã nhân viên không được để trống.");
-            txtMaNV.setBackground(Color.red);
-        } else {
-            txtMaNV.setBackground(Color.white);
-        }
         if (nguoidungtbl.getInfor(txtMaNV.getText()) != null) {
             sb.append("Mã nhân viên đã tồn tại.");
         }
@@ -550,16 +536,17 @@ public class QLNVJPanel extends javax.swing.JPanel {
             return;
         }
         try {
+            String maNVTemp = nguoidungtbl.getMaxMaND();
             NguoiDungDTO nd = new NguoiDungDTO();
             NhanVienDTO nv = new NhanVienDTO();
-            nd.setStrMaND(txtMaNV.getText());
+            nd.setStrMaND(maNVTemp);
             nd.setStrEmail(txtEmail.getText());
             nd.setStrHoTen(txtHoTen.getText());
             nd.setStrDiaChi(txtDiaChi.getText());
             nd.setStrQueQuan(txtQueQuan.getText());
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
-            nv.setStrMaNV(txtMaNV.getText());
+            nv.setStrMaNV(maNVTemp);
             nd.setStrMatKhau(txtMatKhau.getText());
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
@@ -581,6 +568,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private void btnNhapMoibtnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoibtnNhapMoiMouseClicked
         resetRender();
+        txtEmail.setEnabled(true);
     }//GEN-LAST:event_btnNhapMoibtnNhapMoiMouseClicked
 
 

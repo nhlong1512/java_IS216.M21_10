@@ -30,6 +30,11 @@ public class NguoiDungBUS {
         return list_ND.size();
     }
     
+    public String getMaxMaND() throws Exception {
+        ndDAO = new NguoiDungDAO();
+        return ndDAO.getMaxMaND();
+    }
+    
     public ArrayList<NguoiDungDTO> getList_ND() {
         return list_ND;
     }

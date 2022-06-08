@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UITParking.TEST2;
+package UITParking.GUI.Admin;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.BUS.LoaiVeBUS;
@@ -56,10 +56,18 @@ public class QLVJPanel extends javax.swing.JPanel {
         initComponents();
         initTable();
         hoTroTimKiem();
-//        btnCapNhat.setEnabled(false);
-//        btnXoa.setEnabled(false);
-//        btnLuu.setEnabled(false);
-        txtMaLoaiVe.setEditable(false);
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(false);
+        btnNhapMoi.setEnabled(false);
+        txtMaLoaiVe.setEnabled(false);
+        txtMaKH.setEnabled(false);
+        txtMaVe.setEnabled(false);
+        txtTrangThai.setEditable(false);
+        jdcNgayKichHoat.setEnabled(false);
+        jdcNgayHetHan.setEnabled(false);
+        
+        
     }
 
     public void resetRender() {

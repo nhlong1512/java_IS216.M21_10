@@ -36,7 +36,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" alignment="0" pref="913" max="32767" attributes="0"/>
+              <Component id="jPanel2" alignment="0" pref="1140" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -193,7 +193,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="210" width="881" height="250"/>
+                  <AbsoluteConstraints x="10" y="210" width="1120" height="250"/>
                 </Constraint>
               </Constraints>
 

@@ -271,8 +271,10 @@ public class QLHDJPanel extends javax.swing.JPanel {
         });
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1140, 530));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1140, 530));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -282,7 +284,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HÓA ĐƠN MUA VÉ");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 597, 47));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 550, 47));
 
         jLabel2.setText("Mã hóa đơn");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 61, 84, 22));
@@ -349,7 +351,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 btnXoaHoaDonMouseClicked(evt);
             }
         });
-        jPanel3.add(btnXoaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 202, -1, -1));
+        jPanel3.add(btnXoaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         btnTimKiemHoaDon.setText("Tìm Kiếm");
         btnTimKiemHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -357,8 +359,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 btnTimKiemHoaDonMouseClicked(evt);
             }
         });
-        jPanel3.add(btnTimKiemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 202, -1, -1));
-        jPanel3.add(txtTimKiemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 202, 144, -1));
+        jPanel3.add(btnTimKiemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+        jPanel3.add(txtTimKiemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 144, -1));
 
         tblHoaDonMuaVe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -378,7 +380,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblHoaDonMuaVe);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 242, 590, 260));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 242, 560, 260));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -388,7 +390,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("CHI TIẾT HÓA ĐƠN MUA VÉ");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 592, 47));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 530, 47));
 
         jLabel8.setText("Mã hóa đơn");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 55, 82, 22));
@@ -451,7 +453,12 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 btnXoaChiTietMouseClicked(evt);
             }
         });
-        jPanel5.add(btnXoaChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 199, -1, -1));
+        btnXoaChiTiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaChiTietActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnXoaChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         btnTimKiemChiTiet.setText("Tìm Kiếm");
         btnTimKiemChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -459,8 +466,8 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 btnTimKiemChiTietMouseClicked(evt);
             }
         });
-        jPanel5.add(btnTimKiemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 199, -1, -1));
-        jPanel5.add(txtTimKiemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 199, 144, -1));
+        jPanel5.add(btnTimKiemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
+        jPanel5.add(txtTimKiemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 130, -1));
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -481,7 +488,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblChiTietHoaDon);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 239, 580, 264));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 530, 264));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -489,9 +496,9 @@ public class QLHDJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -500,7 +507,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -508,7 +515,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,6 +631,10 @@ public class QLHDJPanel extends javax.swing.JPanel {
             txtSLVeChiTiet.setText(String.valueOf(cthd.getLongSoLuongVe()));
         }
     }//GEN-LAST:event_tblChiTietHoaDonMousePressed
+
+    private void btnXoaChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaChiTietActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaChiTietActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

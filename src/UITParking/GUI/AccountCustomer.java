@@ -509,7 +509,7 @@ public class AccountCustomer extends javax.swing.JFrame {
         }
         
         //Nếu khách hàng đã có xe rồi
-        if(!kh.getStrMaXe().equals("")){
+        if(kh.getStrMaXe() != null){
             XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");

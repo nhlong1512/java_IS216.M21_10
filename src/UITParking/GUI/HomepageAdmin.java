@@ -335,7 +335,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doanhthu.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/QLXRAVAO.png"))); // NOI18N
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         label_QLXRV.setFont(new java.awt.Font("Cooper", 0, 14)); // NOI18N
@@ -522,11 +522,12 @@ public class HomepageAdmin extends javax.swing.JFrame {
                             .addComponent(txtChucVuNhanVien)
                             .addComponent(jLabel9))
                         .addGap(20, 20, 20)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(txtHoTenNhanVien)
-                            .addComponent(label_DangXuat)
-                            .addComponent(jLabel15))))
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel14)
+                                .addComponent(txtHoTenNhanVien)
+                                .addComponent(label_DangXuat)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

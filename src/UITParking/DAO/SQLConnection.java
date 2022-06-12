@@ -39,7 +39,7 @@ public class SQLConnection {
         }
     }
     
-    protected Connection getConnect() throws Exception {
+    public Connection getConnect() throws Exception {
 //        nếu connection null thì khởi tạo mới
         if (this.connect == null) {
             driveTest();    

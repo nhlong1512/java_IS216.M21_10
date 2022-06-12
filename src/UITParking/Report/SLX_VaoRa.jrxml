@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b30a9b5-8f31-44a0-adb3-d9891e89fbaf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select  EXTRACT(DAY FROM THOIGIANVAO) ||'/' ||EXTRACT(MONTH FROM THOIGIANVAO) || '/'|| EXTRACT(YEAR FROM THOIGIANVAO) THOIGIAN, Count(THOIGIANVAO) SLXEVAO, COUNT(THOIGIANRA) SLXERA
+from chitietravao
+GROUP BY EXTRACT(DAY FROM THOIGIANVAO)|| '/' || EXTRACT(MONTH FROM THOIGIANVAO) || '/'|| EXTRACT(YEAR FROM THOIGIANVAO)
+ORDER BY THOIGIAN, SLXEVAO, SLXERA]]>
+	</queryString>
+	<field name="THOIGIAN" class="java.lang.String"/>
+	<field name="SLXEVAO" class="java.math.BigDecimal"/>
+	<field name="SLXERA" class="java.math.BigDecimal"/>
+	<variable name="SLXEVAO_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_THOIGIAN" calculation="Sum">
+		<variableExpression><![CDATA[$F{SLXEVAO}]]></variableExpression>
+	</variable>
+	<variable name="SLXERA_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_THOIGIAN" calculation="Sum">
+		<variableExpression><![CDATA[$F{SLXERA}]]></variableExpression>
+	</variable>
+	<variable name="SLXEVAO_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SLXEVAO}]]></variableExpression>
+	</variable>
+	<variable name="SLXERA_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SLXERA}]]></variableExpression>
+	</variable>
+	<group name="GROUP_THOIGIAN">
+		<groupExpression><![CDATA[$F{THOIGIAN}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="d0cf986b-4c2d-46a0-bcd3-b50b4ead583b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THỐNG KÊ SỐ LƯỢNG XE RA VÀO ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="43" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="43" backcolor="#CCFFFF" uuid="89d43106-a2d9-4fde-8222-21573e44dc0d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="159" height="44" uuid="f5ef1512-aa3a-43d1-8af8-220348b4569b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="1" width="220" height="44" uuid="b80c5fa3-0b01-42cc-a388-4a42ce8d56ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng xe vào]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="1" width="176" height="44" uuid="50abcb52-f5c8-4815-bfc7-9f359f3b200d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng xe ra]]></text>
+			</staticText>
+			<line>
+				<reportElement x="159" y="0" width="1" height="44" uuid="67ac703d-0558-4fb4-b13b-228a03896147"/>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="44" uuid="a327cde2-12f1-4588-9b53-000295ee65f0"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="64" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="159" height="63" uuid="0255bfd5-ee78-4e76-ba1f-104ba0a73426"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THOIGIAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="220" height="63" uuid="f0d3bd9a-2f0d-4f63-8938-aab9134e86ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SLXEVAO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="63" uuid="f413d957-c98d-4208-9c7f-8dfb9f19931f"/>
+			</line>
+			<line>
+				<reportElement x="159" y="0" width="1" height="63" uuid="0cdcbaa5-d8b9-4697-ad17-db87cdd355dd"/>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="63" uuid="30403f4f-85ab-41fc-87bb-28c021aee830"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="63" uuid="ab518d07-22cb-41fc-a948-5ead2c004908"/>
+			</line>
+			<line>
+				<reportElement x="0" y="63" width="555" height="1" uuid="bf3d0013-cd96-4a45-8d6e-8d55664f52de"/>
+			</line>
+			<textField>
+				<reportElement x="382" y="0" width="173" height="63" uuid="a9639d7c-55dc-4807-aed9-8956645fbe1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SLXERA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="399" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="160" y="0" width="220" height="59" backcolor="#FFCCFF" uuid="39acd99d-64b7-455c-8736-5a197ce391e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SLXEVAO_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="381" y="0" width="174" height="59" backcolor="#FFCCFF" uuid="536c1f49-b664-42f2-a67c-12df28a52459"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SLXERA_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="159" height="59" backcolor="#FFCCFF" uuid="946725d4-0a34-4a48-9f3d-aef9522fa7c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="1" height="57" uuid="c8076484-0428-4b7a-a453-5ca89bf278c3"/>
+			</line>
+			<line>
+				<reportElement x="159" y="0" width="1" height="57" uuid="3efb5cfd-d1f0-4326-aea7-d05e60fe3c56"/>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="57" uuid="a0ec9be9-f98a-4bdc-94af-ab7989b30b62"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="57" uuid="c1d739fb-3f98-40ff-b69e-984dfd80bf74"/>
+			</line>
+			<line>
+				<reportElement x="0" y="57" width="555" height="1" uuid="3dea7c12-4a68-496d-974d-1d8f1573439c"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

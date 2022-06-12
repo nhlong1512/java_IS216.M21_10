@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7b41ed9-12be-4985-a40d-65ce42b30d42">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT A.ngay , A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG
+FROM  (
+        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay , COUNT(KVL.MATHEKVL) SLXD, xe.tenloaixe 
+        FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
+            JOIN XE ON KVL.MAXE = XE.MAXE
+        WHERE XE.TENLOAIXE = 'Xe dap'
+        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        order by ngay
+        ) A
+        join
+        (
+        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay, COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe
+        FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
+            JOIN XE ON KVL.MAXE = XE.MAXE
+        WHERE XE.TENLOAIXE = 'Xe may'
+        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        order by ngay
+        ) B on A.ngay=B.ngay]]>
+	</queryString>
+	<field name="NGAY" class="java.lang.String"/>
+	<field name="SOLUONGXEDAP" class="java.math.BigDecimal"/>
+	<field name="SOLUONGXEMAY" class="java.math.BigDecimal"/>
+	<field name="TONG" class="java.math.BigDecimal"/>
+	<variable name="TONG_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_NGAYVL" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
+	</variable>
+	<variable name="TONG_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
+	</variable>
+	<variable name="TONG_3" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_NGAYVL" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
+	</variable>
+	<group name="GROUP_NGAYVL">
+		<groupExpression><![CDATA[$F{NGAY}]]></groupExpression>
+		<groupHeader>
+			<band height="1"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="dbfb181c-ed56-4865-896b-05900c7bdf6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH THU VÉ KHÁCH VÃNG LAI THEO THÁNG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="50" uuid="b2b47028-b073-4599-af72-588d375afb93"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="0" width="123" height="50" backcolor="#CCFFFF" uuid="c4cbf7ff-dbd3-4db8-a4c5-8fd92482847c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THỜI GIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="123" y="0" width="145" height="50" backcolor="#CCFFFF" uuid="218b0230-44dd-498f-8475-2fc3186c50a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng xe đạp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="268" y="0" width="143" height="50" backcolor="#CCFFFF" uuid="2cb1a45c-8eeb-4eb5-a3f3-8064643b6d20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng xe máy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="411" y="0" width="143" height="50" backcolor="#CCFFFF" uuid="9ddf91c8-3ecb-4230-8c9b-da854a976a0f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="123" y="0" width="1" height="50" uuid="64a33d1f-28ec-4e57-ae8b-e9b3642f4144"/>
+			</line>
+			<line>
+				<reportElement x="268" y="0" width="1" height="50" uuid="89570c9b-85e8-4ab7-bcd2-9c67c92f96cd"/>
+			</line>
+			<line>
+				<reportElement x="410" y="0" width="1" height="50" uuid="740f8304-1514-4ced-b412-e5cd528dbcda"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="124" height="50" uuid="1e7cd0fb-e6ca-493a-9d1a-bfd96c856418"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NGAY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="145" height="50" uuid="34533e97-6a37-400a-bcc2-75902c51710c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SOLUONGXEDAP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="143" height="50" uuid="3207d811-b5cd-4785-b3ed-712dd177da70"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SOLUONGXEMAY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="0" width="143" height="50" uuid="45f918b3-180d-4433-bb61-7b5ed776ff3e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TONG}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="ad7de7dc-3534-46b0-bdca-815c8671d7a7"/>
+			</line>
+			<line>
+				<reportElement x="124" y="0" width="1" height="50" uuid="1c7a5b41-43a1-41d9-9bd1-4bb40998c0c6"/>
+			</line>
+			<line>
+				<reportElement x="268" y="0" width="1" height="50" uuid="52bbbce5-8d94-4b55-a94f-5bca3d37083e"/>
+			</line>
+			<line>
+				<reportElement x="411" y="0" width="1" height="50" uuid="0f5c77ea-0f73-4241-afb8-28b45981d8f7"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="50" uuid="829c8ff3-f68b-4882-919e-c11a90cbb0f2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="49" width="555" height="1" uuid="b4a1e0a0-6285-4533-a908-9d314a030725"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="362" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="48" width="555" height="1" uuid="fb751039-87c5-43d3-b862-d14c7425942a"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="50" uuid="746c92b6-4c90-429d-8ffa-01f6aeb2b55a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="cf6d007b-238b-416b-815c-1ce42722b608"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="410" height="48" backcolor="#FFCCFF" uuid="1b864e1f-2bd8-4a8c-9a5f-0c51f041834a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doanh thu vé:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="411" y="0" width="1" height="50" uuid="76bd7928-9afc-4fa8-8310-2157ccf35805"/>
+			</line>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="142" height="48" backcolor="#FFCCFF" uuid="bcd06720-c30c-4148-ad9b-fe41d2b35010"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TONG_2}]]></textFieldExpression>
+			</textField>
+			<bar3DChart>
+				<chart>
+					<reportElement x="113" y="143" width="298" height="192" uuid="33a3dabe-b0a9-44a0-b8cb-7f3191e66370"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{NGAY}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{NGAY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TONG}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -6,8 +6,8 @@ package UITParking.GUI;
 
 import UITParking.BUS.NguoiDungBUS;
 import UITParking.DTO.NguoiDungDTO;
-import static UITParking.GUI.login.pMaND;
-import UITParking.GUI.Admin.MainForm;
+import static UITParking.GUI.DangNhap.pMaND;
+import UITParking.GUI.Admin.ManHinhMainAdmin;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -749,9 +749,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminQLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLKHMouseClicked
         // TODO add your handling code here:
         kindSelectedPublic = "QLKH";
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -762,9 +762,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void label_QLKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLKHMouseClicked
         // TODO add your handling code here:
         kindSelectedPublic = "QLKH";
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -775,9 +775,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminQLNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLNVMouseClicked
         kindSelectedPublic = "QLNV";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -788,9 +788,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminQLVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLVMouseClicked
         kindSelectedPublic = "QLV";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -802,9 +802,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLKVL";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -816,9 +816,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLHD";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -829,9 +829,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminQLXRVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXRVMouseClicked
         kindSelectedPublic = "QLXRV";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -842,9 +842,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminBCTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminBCTKMouseClicked
 //         TODO add your handling code here:
         kindSelectedPublic = "BCTK";
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
 
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -856,9 +856,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void panelAdminQLXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminQLXMouseClicked
         // TODO add your handling code here:
         kindSelectedPublic = "QLX";
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
 
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -869,7 +869,7 @@ public class HomepageAdmin extends javax.swing.JFrame {
 
     private void label_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_DangXuatMouseClicked
         // TODO add your handling code here:
-        login _login = new login();
+        DangNhap _login = new DangNhap();
         _login.show();
         dispose();
     }//GEN-LAST:event_label_DangXuatMouseClicked
@@ -878,9 +878,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLNV";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -892,9 +892,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLV";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -906,9 +906,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLKVL";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -920,9 +920,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         kindSelectedPublic = "QLHD";
 
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -933,9 +933,9 @@ public class HomepageAdmin extends javax.swing.JFrame {
     private void label_QLXEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_QLXEMouseClicked
         // TODO add your handling code here:
         kindSelectedPublic = "QLX";
-        MainForm _mainForm = null;
+        ManHinhMainAdmin _mainForm = null;
         try {
-            _mainForm = new MainForm();
+            _mainForm = new ManHinhMainAdmin();
 
         } catch (Exception ex) {
             Logger.getLogger(HomepageAdmin.class.getName()).log(Level.SEVERE, null, ex);

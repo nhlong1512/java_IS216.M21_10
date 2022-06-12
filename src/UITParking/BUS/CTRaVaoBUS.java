@@ -109,7 +109,6 @@ public class CTRaVaoBUS {
                 } else {
                     taikhoan.setDateThoiGianRa(null);
                 }
-                taikhoan.setStrMaNV(ctrv.getStrMaNV());
                 taikhoan.setStrMaKH(ctrv.getStrMaKH());
                 taikhoan.setStrMaXe(ctrv.getStrMaXe());
                 taikhoan.setStrMaTheKVL(ctrv.getStrMaTheKVL());

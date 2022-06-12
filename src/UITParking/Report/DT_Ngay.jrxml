@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dd2e51b-3c08-45f6-b396-f091f6478cac">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Ngay" class="java.lang.String"/>
+	<parameter name="Thang" class="java.lang.String"/>
+	<parameter name="Nam" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT to_char( NGAYHD, 'HH24' )  "Thoi gian(gio)", sum(tongtrigia) "Tong tien",'Ngày' || ' ' || EXTRACT(DAY FROM NGAYHD) || '/' || EXTRACT (MONTH FROM NGAYHD) || '/' || EXTRACT (YEAR FROM NGAYHD) NGAY
+FROM HOADONMUAVE
+WHERE extract(Day from NGAYHD) = $P{Ngay} 
+and extract(Month from NGAYHD) = $P{Thang}
+and extract(Year from NGAYHD) = $P{Nam}
+group by to_char( NGAYHD, 'HH24' ), 'Ngày' || ' ' || EXTRACT(DAY FROM NGAYHD) || '/' || EXTRACT (MONTH FROM NGAYHD) || '/' || EXTRACT (YEAR FROM NGAYHD)
+order by to_char( NGAYHD, 'HH24' )]]>
+	</queryString>
+	<field name="Thoi gian(gio)" class="java.lang.String"/>
+	<field name="Tong tien" class="java.math.BigDecimal"/>
+	<field name="NGAY" class="java.lang.String"/>
+	<variable name="Tong tien_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GroupThoiGian" calculation="Sum">
+		<variableExpression><![CDATA[$F{Tong tien}]]></variableExpression>
+	</variable>
+	<variable name="Tong tien_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Tong tien}]]></variableExpression>
+	</variable>
+	<group name="GroupThoiGian">
+		<groupExpression><![CDATA[$F{Thoi gian(gio)}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="1">
+				<line>
+					<reportElement x="0" y="0" width="555" height="1" uuid="e9584715-fc2f-48d9-af06-1a32ffce4ced"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="72" uuid="e9ece765-06fc-4270-a4b7-d77132072d00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH THU VÉ THEO NGÀY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="155" height="35" uuid="90ad38f1-0940-417c-93b0-5c17ea688131"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NGAY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="34" backcolor="#CCFFFF" uuid="34103d1e-deb6-447f-ba7f-a347dbd28bff"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="295" height="34" uuid="e4e54594-a8f6-4a41-bb16-075bdab1ed7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thời gian (giờ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="0" width="260" height="34" uuid="e874bada-663e-4f40-a0a7-4c01b07a92d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền]]></text>
+			</staticText>
+			<line>
+				<reportElement x="295" y="0" width="1" height="34" uuid="739aea0b-2866-46fe-ac49-75a184496c01"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="295" height="60" uuid="b3a1d5fe-f7e1-4539-9b4d-ec59eca0d663"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Thoi gian(gio)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="0" width="260" height="60" uuid="ed2af931-65a3-409b-82d1-b01d7eaad666"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tong tien}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="60" uuid="8ab95289-a76f-4fdb-9bdc-424ddc9af20d"/>
+			</line>
+			<line>
+				<reportElement x="295" y="0" width="1" height="60" uuid="4f7327db-b15d-43f5-a7f6-11101d664a6a"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="60" uuid="207fdc25-6eb9-4b58-950b-a73012642697"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="453" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="295" height="42" backcolor="#FFCCFF" uuid="6ccea6b4-eeb5-4e36-839f-759826f8f73b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doanh thu vé:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="4f5a4b82-457c-4607-9628-71ec3bdfe581"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="42" uuid="b449a66b-522b-439c-b543-25b5af437469"/>
+			</line>
+			<line>
+				<reportElement x="295" y="0" width="1" height="42" uuid="3756aa93-441a-4c96-b243-c0c36434fac4"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="42" uuid="26cf90c5-0bc3-4887-a65d-6e6ea33b1571"/>
+			</line>
+			<textField>
+				<reportElement mode="Opaque" x="296" y="0" width="259" height="41" backcolor="#FFCCFF" uuid="f4e9c97a-5071-483b-85a6-ff47557489ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Tong tien_2}]]></textFieldExpression>
+			</textField>
+			<bar3DChart>
+				<chart>
+					<reportElement x="111" y="151" width="337" height="229" uuid="e355a634-7b25-49d0-be57-58eb3c33d725"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{Thoi gian(gio)}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Thoi gian(gio)}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Tong tien}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

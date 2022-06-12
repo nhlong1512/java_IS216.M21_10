@@ -13,7 +13,7 @@ import java.util.Date;
 public class CTRaVaoDTO {
     String strMaCTRaVao;
     Date dateThoiGianVao, dateThoiGianRa;
-    String strMaNV, strMaKH, strMaXe, strMaTheKVL;
+    String strMaKH, strMaXe, strMaTheKVL;
 
     public CTRaVaoDTO() {
     }
@@ -24,7 +24,6 @@ public class CTRaVaoDTO {
         this.strMaCTRaVao = strMaCTRaVao;
         this.dateThoiGianVao = dateThoiGianVao;
         this.dateThoiGianRa = dateThoiGianRa;
-        this.strMaNV = strMaNV;
         this.strMaKH = strMaKH;
         this.strMaXe = strMaXe;
         this.strMaTheKVL = strMaTheKVL;
@@ -32,7 +31,7 @@ public class CTRaVaoDTO {
 
     @Override
     public String toString() {
-        return "CTRaVaoDTO{" + "strMaCTRaVao=" + strMaCTRaVao + ", dateThoiGianVao=" + dateThoiGianVao + ", dateThoiGianRa=" + dateThoiGianRa + ", strMaNV=" + strMaNV + ", strMaKH=" + strMaKH + ", strMaXe=" + strMaXe + ", strMaTheKVL=" + strMaTheKVL + '}';
+        return "CTRaVaoDTO{" + "strMaCTRaVao=" + strMaCTRaVao + ", dateThoiGianVao=" + dateThoiGianVao + ", dateThoiGianRa=" + dateThoiGianRa + ", strMaKH=" + strMaKH + ", strMaXe=" + strMaXe + ", strMaTheKVL=" + strMaTheKVL + '}';
     }
 
     public String getStrMaCTRaVao() {
@@ -57,14 +56,6 @@ public class CTRaVaoDTO {
 
     public void setDateThoiGianRa(Date dateThoiGianRa) {
         this.dateThoiGianRa = dateThoiGianRa;
-    }
-
-    public String getStrMaNV() {
-        return strMaNV;
-    }
-
-    public void setStrMaNV(String strMaNV) {
-        this.strMaNV = strMaNV;
     }
 
     public String getStrMaKH() {

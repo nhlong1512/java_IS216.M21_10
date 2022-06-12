@@ -20,7 +20,7 @@ import static UITParking.GUI.MuaVe.slVe25000Dong;
 import static UITParking.GUI.MuaVe.slVe95000Dong;
 import static UITParking.GUI.MuaVe.slVeGioHang;
 import static UITParking.GUI.NapTien.tempTien;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import static java.awt.GridBagConstraints.BOTH;
 import java.util.logging.Level;
@@ -52,9 +52,6 @@ public class GioHang extends javax.swing.JFrame {
         KhachHangBUS khachhangtbl = new KhachHangBUS();
         KhachHangDTO kh = khachhangtbl.getInfor(pMaND);
         tempTienGioHang = kh.getLongSoDu();
-
-        System.out.println("So tien" + tempTienGioHang);
-
         //Render giao diện giỏ hàng 
         renderGiaoDienGioHang();
         //Set số lượng ban đầu khi chọn mua vé
@@ -856,16 +853,10 @@ public class GioHang extends javax.swing.JFrame {
     private void btnThanhToanGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanGioHangMouseClicked
         // TODO add your handling code here:
         // TODO add your handling code here:
-        System.out.println("Tong tien thanh toan: " + pTongTienThanhToan);
-        System.out.println("Tong tien trong vi nguoi dung: " + tempTienGioHang);
         //Nếu tiền thanh toán bé hơn hoặc bằng số tiền mà người dùng có thì cho phép thanh toán
         if (pTongTienThanhToan <= tempTienGioHang) {
 
             tempTienGioHang = tempTienGioHang - pTongTienThanhToan;
-
-//            System.out.println("Tong tien thanh toan con lai: " + pTongTienThanhToan);
-//            System.out.println("Temp Tien Gio Hang con lai: " + tempTienGioHang);
-//            System.out.println("Thanh toan thanh cong");
             kh.setLongSoDu(tempTienGioHang);
             try {
                 //Cập nhật dữ liệu
@@ -880,12 +871,6 @@ public class GioHang extends javax.swing.JFrame {
                   Mã khách hàng, ngày hóa đơn(Ngày hiện tại, sysdate) tổng trị giá của hóa đơn
                  * 
                  */
-                System.out.println("Tổng số tiền cần thanh toán " + pTongTienThanhToan);
-                System.out.println("Số lượng vé của LVE01 - Vé lượt xe máy - 3000đ là: " + slVe3000Dong);
-                System.out.println("Số lượng vé của LVE02 - Vé lượt xe đạp - 2000đ là: " + slVe2000Dong);
-                System.out.println("Số lượng vé của LVE03 - Vé tuần - 25000đ là: " + slVe25000Dong);
-                System.out.println("Số lượng vé của LVE01 - Vé tháng - 95000đ là: " + slVe95000Dong);
-                System.out.println("Mã khách hàng hiện tại là: " + kh.getStrMaKH());
 
                 //Tạo mã hóa đơn mới cho bảng HOADONMUAVE
                 //Lấy ra người dùng có mã max để từ đó chèn người tiếp theo vào
@@ -901,7 +886,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe2000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE02", kh.getStrMaKH(),  null, null, "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE02", kh.getStrMaKH(),  null, null, "Chua kich hoat");
                         vetbl.them(ve);
                     }
                 }
@@ -910,7 +895,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe3000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE01", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE01", kh.getStrMaKH(), null, null, "Chua kich hoat");
                         vetbl.them(ve);
                     }
                 }
@@ -919,7 +904,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe25000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE03", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE03", kh.getStrMaKH(), null, null, "Chua kich hoat");
                         vetbl.them(ve);
                     }
                 }
@@ -928,7 +913,7 @@ public class GioHang extends javax.swing.JFrame {
                     cthdmuavetbl.them(cthd);
                     for (int i = 0; i < slVe95000Dong; i++) {
                         String maVe = vetbl.getMaxMaVe();
-                        VeDTO ve = new VeDTO(maVe, "LVE04", kh.getStrMaKH(), null, null, "Chưa kích hoạt");
+                        VeDTO ve = new VeDTO(maVe, "LVE04", kh.getStrMaKH(), null, null, "Chua kich hoat");
                         vetbl.them(ve);
                     }
                 }

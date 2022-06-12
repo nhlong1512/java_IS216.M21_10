@@ -6,7 +6,7 @@ package UITParking.GUI;
 
 import UITParking.BUS.KhachHangBUS;
 import UITParking.DTO.KhachHangDTO;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.logging.Level;

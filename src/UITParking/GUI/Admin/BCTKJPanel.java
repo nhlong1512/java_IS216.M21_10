@@ -4,6 +4,30 @@
  */
 package UITParking.GUI.Admin;
 
+import UITParking.DAO.Connect;
+import UITParking.DAO.SQLConnectUnit;
+import UITParking.DAO.SQLConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+//-------
+
+//-------
+
 /**
  *
  * @author ADMIN
@@ -28,19 +52,24 @@ public class BCTKJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cbbLoaiThongKe = new javax.swing.JComboBox<>();
+        btnTraCuu = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Loại thống kê");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doanh thu vé theo ngày", "Doanh thu vé theo tháng", "Doanh thu vé theo năm", "Doanh thu vé khách vãng lai theo ngày", "Doanh thu vé khách vãng lai theo tháng", "Doanh thu vé khách vãng lai theo năm", "Thống kê số lượng xe ra vào", "Hóa đơn mua vé" }));
+        cbbLoaiThongKe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doanh thu vé theo ngày", "Doanh thu vé theo tháng", "Doanh thu vé theo năm", "Doanh thu vé khách vãng lai theo ngày", "Doanh thu vé khách vãng lai theo tháng", "Doanh thu vé khách vãng lai theo năm", "Thống kê số lượng xe ra vào", "Hóa đơn mua vé" }));
 
-        jButton1.setText("Tra cứu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTraCuu.setText("Tra cứu");
+        btnTraCuu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTraCuuMouseClicked(evt);
+            }
+        });
+        btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTraCuuActionPerformed(evt);
             }
         });
 
@@ -54,10 +83,10 @@ public class BCTKJPanel extends javax.swing.JPanel {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(104, 104, 104)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbbLoaiThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTraCuu, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -66,9 +95,9 @@ public class BCTKJPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbLoaiThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTraCuu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(243, Short.MAX_VALUE))
         );
 
@@ -84,14 +113,47 @@ public class BCTKJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
+        
+    }//GEN-LAST:event_btnTraCuuActionPerformed
+
+    /**
+     *
+     * @param evt Thực hiện tra cứu với tham số là getSelectedItem()
+     */
+    private void btnTraCuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTraCuuMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+//        Connection conn = Connect.getConnect();
+//           
+        try {
+            System.out.println("Load Report.....");
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("HD001", "MAHD"); 
+         
+            System.out.println("Mapped....");
+            JasperReport rpt = JasperCompileManager.compileReport("src\\UITParking\\Report\\SLX_VaoRa.jrxml");
+            System.out.println("Report getted!");
+
+            Connection conn = Connect.getConnect();
+            System.out.println("Connected to database!");
+
+            try {
+                JasperPrint p = (JasperPrint) JasperFillManager.fillReport(rpt, map, conn);
+                System.out.println("Report mapped!");
+                JasperViewer.viewReport(p, false);
+            } catch (Exception e) {
+                System.out.println("BUG IS" + e);
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Err is " + ex);
+        }
+    }//GEN-LAST:event_btnTraCuuMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnTraCuu;
+    private javax.swing.JComboBox<String> cbbLoaiThongKe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

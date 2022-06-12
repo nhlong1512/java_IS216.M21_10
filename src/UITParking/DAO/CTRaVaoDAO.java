@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class CTRaVaoDAO {
 
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("hr", "hr", "orcl");
+    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "Ngocanh");
     public static PreparedStatement pst = null;
 
     public ArrayList<CTRaVaoDTO> docDB(String condition, String orderBy) throws Exception {
@@ -33,7 +33,6 @@ public class CTRaVaoDAO {
             CTRaVao.setStrMaCTRaVao(result.getString("MaCTRaVao"));
             CTRaVao.setDateThoiGianVao(result.getDate("ThoiGianVao"));
             CTRaVao.setDateThoiGianRa(result.getDate("ThoiGianRa"));
-            CTRaVao.setStrMaNV(result.getString("MaNV"));
             CTRaVao.setStrMaKH(result.getString("MaKH"));
             CTRaVao.setStrMaXe(result.getString("MaXe"));
             CTRaVao.setStrMaTheKVL(result.getString("MaTheKVL"));
@@ -57,7 +56,7 @@ public class CTRaVaoDAO {
      * @return true nếu thành công
      */
     public Boolean them(CTRaVaoDTO CTRaVao) throws Exception {
-        String sql = "INSERT INTO CHITIETRAVAO (MaCTRaVao, ThoiGianVao, ThoiGianRa, MaNV, MaKH, MaXe, MaTheKVL) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CHITIETRAVAO (MaCTRaVao, ThoiGianVao, ThoiGianRa, MaKH, MaXe, MaTheKVL) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             pst = this.connection.getConnect().prepareStatement(sql);
 
@@ -73,10 +72,9 @@ public class CTRaVaoDAO {
             } else {
                 pst.setDate(3, null);
             }
-            pst.setString(4, CTRaVao.getStrMaNV());
-            pst.setString(5, CTRaVao.getStrMaKH());
-            pst.setString(6, CTRaVao.getStrMaXe());
-            pst.setString(7, CTRaVao.getStrMaTheKVL());
+            pst.setString(4, CTRaVao.getStrMaKH());
+            pst.setString(5, CTRaVao.getStrMaXe());
+            pst.setString(6, CTRaVao.getStrMaTheKVL());
             return pst.executeUpdate() > 0;
         } catch (SQLException ex) {
             throw new ArithmeticException(ex.getMessage());
@@ -106,11 +104,11 @@ public class CTRaVaoDAO {
      * @return true nếu thành công
      */
     public Boolean sua(CTRaVaoDTO CTRaVao) throws Exception {
-        String sql = "UPDATE CHITIETRAVAO SET ThoiGianVao = ?, ThoiGianRa = ?, MaNV = ?, MaKH = ?, MaXe = ?, MaTheKVL = ? WHERE MaCTRaVao = ?";
+        String sql = "UPDATE CHITIETRAVAO SET ThoiGianVao = ?, ThoiGianRa = ?, MaKH = ?, MaXe = ?, MaTheKVL = ? WHERE MaCTRaVao = ?";
         try {
             pst = this.connection.getConnect().prepareStatement(sql);
 
-            pst.setString(7, CTRaVao.getStrMaCTRaVao());
+            pst.setString(6, CTRaVao.getStrMaCTRaVao());
             if (CTRaVao.getDateThoiGianVao() != null) {
                 pst.setDate(1, new java.sql.Date(CTRaVao.getDateThoiGianVao().getTime()));
             } else {
@@ -122,10 +120,9 @@ public class CTRaVaoDAO {
             } else {
                 pst.setDate(2, null);
             }
-            pst.setString(3, CTRaVao.getStrMaNV());
-            pst.setString(4, CTRaVao.getStrMaKH());
-            pst.setString(5, CTRaVao.getStrMaXe());
-            pst.setString(6, CTRaVao.getStrMaTheKVL());
+            pst.setString(3, CTRaVao.getStrMaKH());
+            pst.setString(4, CTRaVao.getStrMaXe());
+            pst.setString(5, CTRaVao.getStrMaTheKVL());
 
             return pst.executeUpdate() > 0;
         } catch (SQLException ex) {

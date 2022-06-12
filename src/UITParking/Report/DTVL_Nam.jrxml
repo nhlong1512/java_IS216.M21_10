@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="219ee13a-8b5b-408e-80ad-fd0d3720e69e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="10"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT A.nam , A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG
+FROM  (
+        SELECT EXTRACT(YEAR FROM THOIGIANRA) nam , COUNT(KVL.MATHEKVL) SLXD, xe.tenloaixe 
+        FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
+            JOIN XE ON KVL.MAXE = XE.MAXE
+        WHERE XE.TENLOAIXE = 'Xe dap'
+        GROUP BY EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        order by nam
+        ) A
+        join
+        (
+        SELECT EXTRACT(YEAR FROM THOIGIANRA) nam, COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe
+        FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
+            JOIN XE ON KVL.MAXE = XE.MAXE
+        WHERE XE.TENLOAIXE = 'Xe may'
+        GROUP BY EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        order by nam
+        ) B on A.nam=B.nam]]>
+	</queryString>
+	<field name="NAM" class="java.math.BigDecimal"/>
+	<field name="SOLUONGXEDAP" class="java.math.BigDecimal"/>
+	<field name="SOLUONGXEMAY" class="java.math.BigDecimal"/>
+	<field name="TONG" class="java.math.BigDecimal"/>
+	<variable name="TONG_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_NamVL" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
+	</variable>
+	<variable name="TONG_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
+	</variable>
+	<group name="GROUP_NamVL">
+		<groupExpression><![CDATA[$F{NAM}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<rectangle>
+					<reportElement x="0" y="0" width="555" height="50" uuid="63ef3ffc-c198-4d7e-be8c-7c4ae7c842ca"/>
+				</rectangle>
+				<staticText>
+					<reportElement mode="Opaque" x="1" y="0" width="123" height="50" backcolor="#CCFFFF" uuid="61410981-9bf8-4407-810f-33b52c730773"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Năm]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="124" y="0" width="145" height="50" backcolor="#CCFFFF" uuid="bb63c1eb-e178-45f6-95e7-acadaf8be3ef"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Số lượng xe đạp]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="269" y="0" width="143" height="50" backcolor="#CCFFFF" uuid="01066d21-4d9d-42f3-b227-e6294023f131"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Số lượng xe máy]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="412" y="0" width="143" height="50" backcolor="#CCFFFF" uuid="614d320c-5635-4943-b327-0f91cf92e5d2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tổng]]></text>
+				</staticText>
+				<line>
+					<reportElement x="124" y="0" width="1" height="50" uuid="234a5470-aabc-4f9d-8fa7-cfc6fbd60719"/>
+				</line>
+				<line>
+					<reportElement x="268" y="0" width="1" height="50" uuid="ffc4c0d0-ee5b-44e9-b0f5-6407b4900929"/>
+				</line>
+				<line>
+					<reportElement x="411" y="0" width="1" height="50" uuid="2d027acc-cad7-452c-8137-857fcce6222b"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="955aaa9c-cfd7-4242-9d9a-6dae2f956c7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH THU VÉ KHÁCH VÃNG LAI THEO NĂM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="124" height="50" uuid="25c89cc9-ebcd-4540-81c4-1918dfd7dbf5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="145" height="50" uuid="b9e2fcc1-5c7e-4671-9085-1bdb969c9e4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SOLUONGXEDAP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="143" height="50" uuid="acbfcb8e-25a6-45e1-8d78-95723a1a1ea7"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SOLUONGXEMAY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="0" width="143" height="50" uuid="4fe91d0b-3b99-4859-8967-70b091944d26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TONG}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="9290988b-289c-4799-b177-ff0a1d025005"/>
+			</line>
+			<line>
+				<reportElement x="124" y="0" width="1" height="50" uuid="c924083f-b0d9-489a-a646-6deaf3581c49"/>
+			</line>
+			<line>
+				<reportElement x="268" y="0" width="1" height="50" uuid="8f6ba4d5-79a5-40e3-a41b-d880ba85aca2"/>
+			</line>
+			<line>
+				<reportElement x="411" y="0" width="1" height="50" uuid="b35889f7-78a5-42ba-8daf-dc29687b4b00"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="50" uuid="01e581bc-f214-4c8c-b96c-9af9b18616e4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="49" width="555" height="1" uuid="41d07959-e44e-4654-8832-d1e615c83e2c"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="336" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="143" height="50" backcolor="#FFCCFF" uuid="193a6241-415c-40ad-9543-9f56eab6eff8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TONG_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="410" height="50" backcolor="#FFCCFF" uuid="2455bb33-00bf-4c2e-997d-00cc7c4f8654"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doanh thu vé:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="411" y="0" width="1" height="50" uuid="851f145f-c5b3-471e-a37f-a861af82329d"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="50" uuid="21153e29-febe-4674-a677-f255b4ee422b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="badb1bb4-2bad-41ae-b659-98e42a97255e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="50" width="555" height="1" uuid="e44f1320-dc0f-4391-a6a6-0cd839aae6ba"/>
+			</line>
+			<bar3DChart>
+				<chart>
+					<reportElement x="125" y="121" width="288" height="172" uuid="e7b4fcfd-7b6b-49e0-b157-e43e5aac8b9c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{NAM}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{NAM}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TONG}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -14,9 +14,9 @@ import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import UITParking.GUI.login;
-import static UITParking.GUI.login.pHoTen;
-import static UITParking.GUI.login.pMaND;
+import UITParking.GUI.DangNhap;
+import static UITParking.GUI.DangNhap.pHoTen;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -454,10 +454,10 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNapTienActionPerformed
 
     //Event onClick btnLogout
-    //Khi click btnLogout, Link đến giao diện login
+    //Khi click btnLogout, Link đến giao diện DangNhap
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         // TODO add your handling code here:
-        login _login = new login();
+        DangNhap _login = new DangNhap();
         _login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutMouseClicked
@@ -500,9 +500,9 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGioHangHomepageActionPerformed
 
     private void btnAccountCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccountCustomerMouseClicked
-        AccountCustomer _accountCustomer = null;
+        CapNhatThongTinKH _accountCustomer = null;
         try {
-            _accountCustomer = new AccountCustomer();
+            _accountCustomer = new CapNhatThongTinKH();
         } catch (Exception ex) {
             Logger.getLogger(Homepage.class.getName()).log(Level.SEVERE, null, ex);
         }

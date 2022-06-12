@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02af1e6f-8fa2-4ac6-937d-58149c3cfd29">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Thang" class="java.lang.String"/>
+	<parameter name="Nam" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT EXTRACT(DAY FROM NGAYHD) || '/' || EXTRACT(MONTH FROM NGAYHD) || '/' || EXTRACT(YEAR FROM NGAYHD) NGAY, SUM(TONGTRIGIA) "TONG TIEN", 'Tháng' || ' ' || EXTRACT(MONTH FROM NGAYHD) || '/' || EXTRACT(YEAR FROM NGAYHD)Thang
+FROM HOADONMUAVE
+where EXTRACT(MONTH FROM NGAYHD)= $P{Thang} and EXTRACT(YEAR FROM NGAYHD)= $P{Nam}
+group by EXTRACT(DAY FROM NGAYHD) || '/' || EXTRACT(MONTH FROM NGAYHD) || '/' || EXTRACT(YEAR FROM NGAYHD), 'Tháng' || ' ' ||EXTRACT(MONTH FROM NGAYHD) || '/' || EXTRACT(YEAR FROM NGAYHD)
+ORDER BY NGAY]]>
+	</queryString>
+	<field name="NGAY" class="java.lang.String"/>
+	<field name="TONG TIEN" class="java.math.BigDecimal"/>
+	<field name="THANG" class="java.lang.String"/>
+	<variable name="TONG TIEN_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TONG TIEN}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="50" uuid="f4a84d83-a4fa-44dd-bd01-4dbcfcc6eb19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH THU VÉ THEO THÁNG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="169" height="35" uuid="2bd4d9de-f309-4513-9347-ae5e56a591d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THANG}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="36" backcolor="#CCFFFF" uuid="0b8e9343-eb30-4406-bc79-dbfe66996d77"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="297" height="36" uuid="8274e1c0-84e0-4ccf-9138-227df275dbc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="0" width="258" height="36" uuid="934c26d6-1588-4b39-8bfe-782391cee340"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền]]></text>
+			</staticText>
+			<line>
+				<reportElement x="296" y="0" width="1" height="36" uuid="28276e74-265d-44b8-b4ba-f4b618eb335c"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="297" height="50" uuid="64f0bedb-1728-4dac-a982-94945cab7792"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NGAY}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="49" width="555" height="1" uuid="4d6efda4-fe96-44fa-b12e-69927d7d0caa"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="50" uuid="d57ca5aa-3cea-44eb-bc68-9cc0a34bf541"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="50" uuid="91bb69c3-2135-4dd9-984f-1606042605f7"/>
+			</line>
+			<line>
+				<reportElement x="296" y="0" width="1" height="50" uuid="46eaf45c-b2bc-4377-a626-30bc29c101f4"/>
+			</line>
+			<textField>
+				<reportElement x="296" y="0" width="258" height="50" uuid="aa9b4dca-8923-492a-ba56-41da097c2bf0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TONG TIEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="370" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="296" y="0" width="259" height="42" backcolor="#FFCCFF" uuid="75625e32-5551-4a6a-a0f4-3c4f650f5826"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TONG TIEN_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="297" height="42" backcolor="#FFCCFF" uuid="5af6c68f-b16d-4a4c-9215-8d6db59aaad7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doanh thu vé:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="296" y="0" width="1" height="42" uuid="6543423d-b51f-4451-b265-978396ce7deb"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="42" uuid="45e10060-7ea4-4d71-bd21-a344a7a2a480"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="42" uuid="6b9b6935-0b72-463d-9f9e-f1ef179bd720"/>
+			</line>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="db38215d-62ae-48f0-a0ef-4aee7a1c87d9"/>
+			</line>
+			<bar3DChart>
+				<chart>
+					<reportElement x="91" y="111" width="366" height="234" uuid="8070aa0c-d5ef-4576-8779-b7edfeedd103"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{NGAY}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{NGAY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TONG TIEN}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

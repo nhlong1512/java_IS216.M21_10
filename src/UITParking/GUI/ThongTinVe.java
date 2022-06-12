@@ -20,7 +20,7 @@ import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeThang;
 import static UITParking.GUI.InitPublic.getDateThoiGianVeTuan;
 import static UITParking.GUI.InitPublic.sysdate;
-import static UITParking.GUI.login.pMaND;
+import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.ParseException;
@@ -117,7 +117,7 @@ public class ThongTinVe extends javax.swing.JFrame {
                  * Sau đó sẽ cập nhật lại table
                  */ 
                 if(isHetHan){
-                    ve.setStrTrangThai("Đã hết hạn");
+                    ve.setStrTrangThai("Da het han");
                     vetbl.sua(ve);
                     capNhatLaiTable();
                 }
@@ -362,8 +362,7 @@ public class ThongTinVe extends javax.swing.JFrame {
         * ngược lại thì không làm gì cả.
         */
         if ((loaiVeHienTai.equals("Ve tuan") || loaiVeHienTai.equals("Ve thang"))
-            && trangThaiVeHienTai.equals("Chưa kích hoạt")) {
-            System.out.println("Long dep trai");
+            && trangThaiVeHienTai.equals("Chua kich hoat")) {
             try {
                 System.out.println(sysdate());
                 System.out.println(getDateThoiGianVeTuan());
@@ -383,7 +382,7 @@ public class ThongTinVe extends javax.swing.JFrame {
             System.out.println(ve);
             try {
                 ve.setDateNgayKichHoat(sysdate());
-                ve.setStrTrangThai("Đang sử dụng");
+                ve.setStrTrangThai("Dang su dung");
                 if (ve.getStrMaLoaiVe().equals("LVE03")) {
                     ve.setDateNgayHetHan(getDateThoiGianVeTuan());
                 }
@@ -448,7 +447,7 @@ public class ThongTinVe extends javax.swing.JFrame {
                 * Nếu trạng thái đang sử dụng hoặc đã hết hạn thì disable
                 * button kích hoạt
                 */
-                if (!tblVe.getValueAt(selectedRow, 5).equals("Chưa kích hoạt")) {
+                if (!tblVe.getValueAt(selectedRow, 5).equals("Chua kich hoat")) {
                     btnKichHoat.setEnabled(false);
                 }
             }

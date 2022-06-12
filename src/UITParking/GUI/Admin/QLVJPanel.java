@@ -87,14 +87,14 @@ public class QLVJPanel extends javax.swing.JPanel {
             txtMaLoaiVe.setText("LVE01");
             jdcNgayHetHan.setDate(null);
             jdcNgayKichHoat.setDate(null);
-            txtTrangThai.setText("Chưa kích hoạt");
+            txtTrangThai.setText("Chua kich hoat");
 
         }
         if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé lượt xe đạp")) {
             txtMaLoaiVe.setText("LVE02");
             jdcNgayHetHan.setDate(null);
             jdcNgayKichHoat.setDate(null);
-            txtTrangThai.setText("Chưa kích hoạt");
+            txtTrangThai.setText("Chua kich hoat");
         }
         if (cbbTenLoaiVe.getSelectedItem().toString().equals("Vé tuần")) {
             txtMaLoaiVe.setText("LVE03");

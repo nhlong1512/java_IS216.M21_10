@@ -59,7 +59,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * **Bước 3:** Thêm tất cả các thư viện cần thiết trong mục src/UITParking/Libs.
 > * **Bước 4:** Trong src/Database có file UITParking.sql và file Dữ_liệu.xlsx. Tiến hành vào oracle tạo user mới với username là UITParking và pass là uitparking, sau đó ta lần lượt import dữ liệu từ file Dữ_liệu.xlsx vào cơ sở dữ liệu.
 > * **Bước 5:** Tiến hành chạy run file src/UITParking/GUI/DangNhap để chạy chương trình
-> ***Note:** Xem file hướng dẫn dưới đây để hiểu rõ thêm: [File hướng dẫn chi tiết](https://docs.google.com/document/d/12nlbwelXyroU7zfoc4HSwkQ9vcOK0F14/edit?usp=sharing&ouid=110784418486414862850&rtpof=true&sd=true)*
+>* ***Lưu ý:** Xem file hướng dẫn dưới đây để hiểu rõ thêm: [File hướng dẫn chi tiết](https://docs.google.com/document/d/12nlbwelXyroU7zfoc4HSwkQ9vcOK0F14/edit?usp=sharing&ouid=110784418486414862850&rtpof=true&sd=true)*
 
 ## Tài liệu kèm theo 
 > * [Video Demo chức năng App UITParking](https://drive.google.com/drive/folders/1gOLhQ7nVdZ1-XEp0wkNsNTYG2l7ihB46?usp=sharing)

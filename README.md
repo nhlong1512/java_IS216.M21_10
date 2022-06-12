@@ -16,7 +16,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 ------------
 | MSSV | Họ tên | SĐT | Ghi chú |
 |--------------|-------|------|-------|
-| 20520811 | Trần Trọng Tín | 0836346035 |  | 
+| 20520811 | Trần Trọng Tín | 0836346035 | Trưởng nhóm | 
 | 20521569 | Nguyễn Hữu Long | 0775504619 |  | 
 | 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 |  | 
 | 20521083 | Trần Thị Ngọc Ánh | 0363961281 | | 
@@ -32,7 +32,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Mua Vé
 > * Nạp tiền
 > * Xem thông tin vé
-### Chức năng người quản Trị
+### Chức năng người quản trị
 > * Đăng nhập
 > * Quản lý khách hàng
 > * Quản lý khách vãng lai

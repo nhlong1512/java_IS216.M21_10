@@ -2,9 +2,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="219ee13a-8b5b-408e-80ad-fd0d3720e69e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="10"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT A.nam , A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG
+	<property name="ireport.y" value="0"/>
+	<parameter name="Nam" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT A.nam, A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG, 'Năm' || ' ' || A.nam Thoigian
 FROM  (
         SELECT EXTRACT(YEAR FROM THOIGIANRA) nam , COUNT(KVL.MATHEKVL) SLXD, xe.tenloaixe 
         FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
@@ -15,18 +16,20 @@ FROM  (
         ) A
         join
         (
-        SELECT EXTRACT(YEAR FROM THOIGIANRA) nam, COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe
+        SELECT EXTRACT(YEAR FROM THOIGIANRA) nam, COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe, EXTRACT(Month FROM THOIGIANRA) thang
         FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
             JOIN XE ON KVL.MAXE = XE.MAXE
         WHERE XE.TENLOAIXE = 'Xe may'
-        GROUP BY EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        GROUP BY EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe, EXTRACT(Month FROM THOIGIANRA)
         order by nam
-        ) B on A.nam=B.nam]]>
+        ) B on A.nam=B.nam
+where  A.nam = $P{Nam}]]>
 	</queryString>
 	<field name="NAM" class="java.math.BigDecimal"/>
 	<field name="SOLUONGXEDAP" class="java.math.BigDecimal"/>
 	<field name="SOLUONGXEMAY" class="java.math.BigDecimal"/>
 	<field name="TONG" class="java.math.BigDecimal"/>
+	<field name="THOIGIAN" class="java.lang.String"/>
 	<variable name="TONG_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_NamVL" calculation="Sum">
 		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
 	</variable>
@@ -97,6 +100,17 @@ FROM  (
 			</staticText>
 		</band>
 	</title>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement x="1" y="0" width="123" height="50" uuid="287b9bb1-b7c5-47cc-8c49-ff49f6814d39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THOIGIAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
 	<detail>
 		<band height="50" splitType="Stretch">
 			<textField>
@@ -115,7 +129,7 @@ FROM  (
 			</textField>
 			<textField>
 				<reportElement x="269" y="0" width="143" height="50" uuid="acbfcb8e-25a6-45e1-8d78-95723a1a1ea7"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SOLUONGXEMAY}]]></textFieldExpression>

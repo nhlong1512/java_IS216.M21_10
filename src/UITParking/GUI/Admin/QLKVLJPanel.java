@@ -226,6 +226,7 @@ public class QLKVLJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhachVangLai.setFillsViewportHeight(true);
         tblKhachVangLai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblKhachVangLaitblNhanVienMousePressed(evt);

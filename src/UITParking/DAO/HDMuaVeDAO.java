@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class HDMuaVeDAO {
 
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "Ngocanh");
+    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "orcl");
     public static PreparedStatement pst = null;
 
     /**

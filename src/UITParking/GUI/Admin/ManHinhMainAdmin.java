@@ -12,6 +12,14 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import java.awt.Color;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 
 /**
  *

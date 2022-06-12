@@ -500,6 +500,9 @@ public class QLNVJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
+        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật không?") == JOptionPane.NO_OPTION) {
+            return;
+        }
         try {
             NguoiDungDTO nd = new NguoiDungDTO();
             NhanVienDTO nv = new NhanVienDTO();

@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class CTRaVaoDAO {
 
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "Ngocanh");
+    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "orcl");
     public static PreparedStatement pst = null;
 
     public ArrayList<CTRaVaoDTO> docDB(String condition, String orderBy) throws Exception {

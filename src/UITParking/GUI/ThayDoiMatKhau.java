@@ -127,7 +127,7 @@ public class ThayDoiMatKhau extends javax.swing.JFrame {
     private void btnSubmitModifiedPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitModifiedPasswordMouseClicked
         // TODO add your handling code here:
           try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Ngocanh", "HR", "hr");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             String sql = "UPDATE NGUOIDUNG SET MatKhau =  ? WHERE Email = ?";
             ps = conn.prepareStatement(sql);
             StringBuilder sb = new StringBuilder();

@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class NguoiDungDAO {
 
     SQLConnectUnit connect;
-    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "Ngocanh");
+    public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "orcl");
     ;
     public static PreparedStatement pst = null;
 

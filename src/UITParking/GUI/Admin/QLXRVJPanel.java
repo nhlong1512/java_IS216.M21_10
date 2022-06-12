@@ -202,7 +202,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnXeTVRa.setText("Xe khàch thành viên _ Ra");
+        btnXeTVRa.setText("Xe khách thành viên _ Ra");
         btnXeTVRa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnXeTVRaMouseClicked(evt);
@@ -228,6 +228,7 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblChiTietRaVao.setFillsViewportHeight(true);
         tblChiTietRaVao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblChiTietRaVaoMousePressed(evt);
@@ -428,7 +429,8 @@ public class QLXRVJPanel extends javax.swing.JPanel {
                     try {
                         ctrvtbl.sua(ctrv);
                     } catch (Exception ex) {
-                        Logger.getLogger(QLXRVJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, "Thời gian ra phải lớn hơn thời gian vào ít nhất 30s");
+                        return;
                     }
                     capNhatLaiTable();
                     JOptionPane.showMessageDialog(this, "Xe ra bãi thành công");

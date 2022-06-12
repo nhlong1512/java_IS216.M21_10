@@ -17,9 +17,9 @@ public class Connect {
     private  static Connection conn=null;
     
     public static Connection getConnect(){
-        final String url = "jdbc:oracle:thin:@localhost:1521:Ngocanh";
-        final String username = "HR";
-        final String password = "hr";
+        final String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        final String username = "UITParking";
+        final String password = "uitparking";
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(url, username, password);

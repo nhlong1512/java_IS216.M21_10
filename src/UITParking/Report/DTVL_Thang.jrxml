@@ -3,30 +3,34 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="Thang" class="java.lang.String"/>
+	<parameter name="Nam" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT A.ngay , A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG
+		<![CDATA[SELECT A.ngay , A.SLXD  SOLUONGXEDAP, B.SLXM SOLUONGXEMAY, (A.SLXD*2000 + B.SLXM*3000) TONG, 'Tháng' || ' ' || A.thang|| '/' ||A.nam thoigian
 FROM  (
-        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay , COUNT(KVL.MATHEKVL) SLXD, xe.tenloaixe 
+        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay , EXTRACT(MONTH  FROM THOIGIANRA) thang,EXTRACT(YEAR FROM THOIGIANRA) nam ,COUNT(KVL.MATHEKVL) SLXD, xe.tenloaixe 
         FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
             JOIN XE ON KVL.MAXE = XE.MAXE
         WHERE XE.TENLOAIXE = 'Xe dap'
-        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe,  EXTRACT(MONTH  FROM THOIGIANRA),  EXTRACT(YEAR  FROM THOIGIANRA)
         order by ngay
         ) A
         join
         (
-        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay, COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe
+        SELECT EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA) ngay,EXTRACT(MONTH  FROM THOIGIANRA) thang,EXTRACT(YEAR FROM THOIGIANRA) nam ,COUNT(KVL.MATHEKVL) SLXM, xe.tenloaixe
         FROM CHITIETRAVAO CTRV JOIN KHACHVANGLAI KVL ON CTRV.MATHEKVL = KVL.MATHEKVL
             JOIN XE ON KVL.MAXE = XE.MAXE
         WHERE XE.TENLOAIXE = 'Xe may'
-        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe
+        GROUP BY EXTRACT(DAY FROM THOIGIANRA) || '/' || EXTRACT(MONTH FROM THOIGIANRA) || '/' || EXTRACT(YEAR FROM THOIGIANRA), xe.tenloaixe, EXTRACT(MONTH  FROM THOIGIANRA), EXTRACT(YEAR  FROM THOIGIANRA)
         order by ngay
-        ) B on A.ngay=B.ngay]]>
+        ) B on A.ngay=B.ngay
+Where A.thang = $P{Thang} and A.nam = $P{Nam}]]>
 	</queryString>
 	<field name="NGAY" class="java.lang.String"/>
 	<field name="SOLUONGXEDAP" class="java.math.BigDecimal"/>
 	<field name="SOLUONGXEMAY" class="java.math.BigDecimal"/>
 	<field name="TONG" class="java.math.BigDecimal"/>
+	<field name="THOIGIAN" class="java.lang.String"/>
 	<variable name="TONG_1" class="java.math.BigDecimal" resetType="Group" resetGroup="GROUP_NGAYVL" calculation="Sum">
 		<variableExpression><![CDATA[$F{TONG}]]></variableExpression>
 	</variable>
@@ -59,6 +63,17 @@ FROM  (
 			</staticText>
 		</band>
 	</title>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement x="1" y="0" width="100" height="50" uuid="b7ac9272-820c-414b-a04f-52229c4b92c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THOIGIAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
 	<columnHeader>
 		<band height="50">
 			<rectangle>

@@ -295,6 +295,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhachHang.setFillsViewportHeight(true);
         tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblKhachHangMousePressed(evt);
@@ -477,8 +478,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -515,9 +516,6 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
         if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại");
-        }
-        if (txtMaXe.getText().length() > 5) {
-            sb.append("Mã xe tối đa chỉ có 5 kí tự");
         }
 
         if (sb.length() > 0) {
@@ -558,8 +556,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
             }
             nd.setStrVaiTro("Khach hang");
             nd.setStrMatKhau(txtMatKhau.getText());
-            nguoidungtbl.them(nd);
             xetbl.them(xe);
+            nguoidungtbl.them(nd);
             khachhangtbl.them(kh);
 
             //Cập nhật lại Table

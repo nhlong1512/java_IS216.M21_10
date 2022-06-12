@@ -285,7 +285,7 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:Ngocanh", "UITParking", "uitparking");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "UITParking", "uitparking");
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtusername.getText());

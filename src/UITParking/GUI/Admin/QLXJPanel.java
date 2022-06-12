@@ -206,6 +206,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblXe.setFillsViewportHeight(true);
         tblXe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblXetblNhanVienMousePressed(evt);
@@ -282,7 +283,8 @@ public class QLXJPanel extends javax.swing.JPanel {
                     .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -320,7 +322,9 @@ public class QLXJPanel extends javax.swing.JPanel {
                 xe.setStrBienSoXe(null);
             } else {
                 xe.setStrTenLoaiXe("Xe may");
-                xe.setStrBienSoXe(txtBienSoXe.getText());
+                if(txtBienSoXe != null){
+                    xe.setStrBienSoXe(txtBienSoXe.getText());
+                }
             }
             xetbl.them(xe);
 

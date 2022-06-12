@@ -385,6 +385,7 @@ public class QLHDJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHoaDonMuaVe.setFillsViewportHeight(true);
         tblHoaDonMuaVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblHoaDonMuaVeMousePressed(evt);

@@ -2,7 +2,7 @@
 ------------
 ## Lời cảm ơn
 ------------
-Lời đầu tiên, SCD Team xin gửi lời cảm ơn đến Thầy Nguyễn Minh Nhựt – giảng viên môn Lập trình Java đã tận tình giúp đỡ, trực tiếp chỉ bảo, hướng dẫn và đóng góp những ý kiến quý báu giúp nhóm chúng em hoàn thành được đồ án môn học của mình.
+Lời đầu tiên, SCD Team xin gửi lời cảm ơn đến Thầy **Nguyễn Minh Nhựt** – giảng viên môn Lập trình Java đã tận tình giúp đỡ, trực tiếp chỉ bảo, hướng dẫn và đóng góp những ý kiến quý báu giúp nhóm chúng em hoàn thành được đồ án môn học của mình.
 
 
 ## Giới thiệu đồ án

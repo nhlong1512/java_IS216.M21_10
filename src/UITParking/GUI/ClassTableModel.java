@@ -38,10 +38,6 @@ public class ClassTableModel {
             obj[1] = (i + 1);
             obj[2] = kh.getStrMaXe();
             obj[3] = kh.getLongSoDu();
-//            obj[4] = hocVien.isGioi_tinh() == true ? "Nam" : "Nữ";
-//            obj[5] = hocVien.getSo_dien_thoai();
-//            obj[6] = hocVien.getDia_chi();
-//            obj[7] = hocVien.isTinh_trang();
             dtm.addRow(obj);
         }
         return dtm;

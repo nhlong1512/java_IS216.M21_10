@@ -320,17 +320,23 @@ public class QLXJPanel extends javax.swing.JPanel {
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
                 xe.setStrBienSoXe(null);
+                xetbl.them(xe);
+                JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
             } else {
                 xe.setStrTenLoaiXe("Xe may");
-                if(txtBienSoXe != null){
+                if(!txtBienSoXe.getText().equals("")){
                     xe.setStrBienSoXe(txtBienSoXe.getText());
+                    xetbl.them(xe);
+                    JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Biển sổ xe không được để trống!");
                 }
             }
-            xetbl.them(xe);
+            
 
             //Cập nhật lại Table
             capNhatLaiTable();
-            JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());

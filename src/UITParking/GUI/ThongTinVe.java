@@ -77,24 +77,34 @@ public class ThongTinVe extends javax.swing.JFrame {
     public ThongTinVe() throws Exception {
         initComponents();
         initTable();
+        capNhatTrangThai();
         hoTroTimKiem();
         setLocationRelativeTo(null);
-//        txtMaLoaiVe.setEditable(false);
-        capNhatTrangThai();
+        capNhatVeHetHan();
         setIconImage();
     }
 
     public void resetRender() {
-//        txtMaVe.setText("");
-//        txtMaLoaiVe.setText("");
-//        txtMaKH.setText("");
-//        txtTrangThai.setText("");
-//        txtMaLoaiVe.setText("");
-//        jdcNgayKichHoat.setDate(null);
-//        jdcNgayHetHan.setDate(null);
 
     }
+    
 
+    /**
+     * Update render sẽ cập nhật lại trạng thái vé mỗi lần render ra màn hình
+     */
+    public void updateRender() {
+    }
+
+    
+    /**
+     * Sẽ cập nhật trạng thái vé nếu sysdate lớn hơn ngày hết hạn thì sẽ chuyển
+     * trạng thái sang đã hết hạn
+     */
+    public void capNhatVeHetHan() throws Exception{
+        vetbl.checkVeHetHan();
+        capNhatLaiTable();
+    }
+    
     /**
      * Sẽ cập nhật trạng thái vé nếu sysdate lớn hơn ngày hết hạn thì sẽ chuyển
      * trạng thái sang đã hết hạn
@@ -121,18 +131,9 @@ public class ThongTinVe extends javax.swing.JFrame {
                     vetbl.sua(ve);
                     capNhatLaiTable();
                 }
-                
-
             }
         }
     }
-
-    /**
-     * Update render sẽ cập nhật lại trạng thái vé mỗi lần render ra màn hình
-     */
-    public void updateRender() {
-    }
-
     public void initTable() throws Exception {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columnHeaders);

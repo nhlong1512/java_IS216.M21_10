@@ -8,6 +8,7 @@ import static UITParking.DAO.HDMuaVeDAO.pst;
 import static UITParking.DAO.NguoiDungDAO.pst;
 import UITParking.DTO.VeDTO;
 import static UITParking.GUI.InitPublic.getID;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +23,7 @@ public class VeDAO {
     SQLConnectUnit connect;
     public static SQLConnection connection = new SQLConnection("UITParking", "uitparking", "orcl");
     public static PreparedStatement pst = null;
+    public static CallableStatement stmt = null ;
 
     /**
      * Lấy thông tin từ Database
@@ -147,5 +149,11 @@ public class VeDAO {
             id = getID(maxhd);
         }
         return "VE" + id;
+    }
+    
+    public Boolean checkVeHetHan() throws Exception{
+        String sql = "call check_Ve_HetHan()";
+        stmt = this.connection.getConnect().prepareCall(sql);
+        return stmt.executeUpdate()>0; 
     }
 }

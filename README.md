@@ -1,5 +1,6 @@
-# Quản lý bãi giữ xe trường UIT - UITParking
+# Quản lý bãi giữ xe UIT - UITParking
 ------------
+![Image1 of UITParking](./src/icon/backgroundForReadme2.webp "Back ground for Readme")
 ## Lời cảm ơn
 ------------
 Lời đầu tiên, SCD Team xin gửi lời cảm ơn đến Thầy **Nguyễn Minh Nhựt** – giảng viên môn Lập trình Java đã tận tình giúp đỡ, trực tiếp chỉ bảo, hướng dẫn và đóng góp những ý kiến quý báu giúp nhóm chúng em hoàn thành được đồ án môn học của mình.
@@ -15,7 +16,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 ------------
 | MSSV | Họ tên | SĐT | Ghi chú |
 |--------------|-------|------|-------|
-| 20520811 | Trần Trọng Tín | 0836346035 |  | 
+| 20520811 | Trần Trọng Tín | 0836346035 | Nhóm trưởng | 
 | 20521569 | Nguyễn Hữu Long | 0775504619 |  | 
 | 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 |  | 
 | 20521083 | Trần Thị Ngọc Ánh | 0363961281 | | 
@@ -31,7 +32,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * Mua Vé
 > * Nạp tiền
 > * Xem thông tin vé
-### Chức năng người quản Trị
+### Chức năng người quản trị
 > * Đăng nhập
 > * Quản lý khách hàng
 > * Quản lý khách vãng lai
@@ -59,7 +60,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 > * **Bước 3:** Thêm tất cả các thư viện cần thiết trong mục src/UITParking/Libs.
 > * **Bước 4:** Trong src/Database có file UITParking.sql và file Dữ_liệu.xlsx. Tiến hành vào oracle tạo user mới với username là UITParking và pass là uitparking, sau đó ta lần lượt import dữ liệu từ file Dữ_liệu.xlsx vào cơ sở dữ liệu.
 > * **Bước 5:** Tiến hành chạy run file src/UITParking/GUI/DangNhap để chạy chương trình
-> ***Note:** Xem file hướng dẫn dưới đây để hiểu rõ thêm: [File hướng dẫn chi tiết](https://docs.google.com/document/d/12nlbwelXyroU7zfoc4HSwkQ9vcOK0F14/edit?usp=sharing&ouid=110784418486414862850&rtpof=true&sd=true)*
+>* ***Note:** Xem file hướng dẫn dưới đây để hiểu rõ thêm: [File hướng dẫn chi tiết](https://docs.google.com/document/d/12nlbwelXyroU7zfoc4HSwkQ9vcOK0F14/edit?usp=sharing&ouid=110784418486414862850&rtpof=true&sd=true)*
 
 ## Tài liệu kèm theo 
 > * [Video Demo chức năng App UITParking](https://drive.google.com/drive/folders/1gOLhQ7nVdZ1-XEp0wkNsNTYG2l7ihB46?usp=sharing)

@@ -54,6 +54,7 @@ Nhận biết được sự cần thiết trong việc quản lý bãi giữ xe 
 ## Các chức năng, công nghệ mới (ngoài phạm vi môn học)
 > * Sử dụng Regex để kiểm tra các ràng buộc đối với các trường dữ liệu, tối ưu tìm kiếm.
 > * Sử dụng JavaMail để thực hiện việc gửi mail tự động khi người dùng có nhu cầu khôi phục lại mật khẩu.
+> * Đóng gói dự án thành file Jar với các thư viện đi cùng.
 ## Hướng dẫn cài đặt chương trình
 > * **Bước 1:** Clone project [java_IS216.M21_10](https://github.com/nhlong1512/java_IS216.M21_10.git)
 > * **Bước 2:** Vào Netbeans chọn Open project và mở project vừa clone về.

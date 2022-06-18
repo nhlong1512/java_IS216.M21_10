@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import UITParking.GUI.DangKy;
 import UITParking.GUI.EmailForm;
+import static UITParking.GUI.InitPublic.getHashPassword;
 import java.awt.Toolkit;
 import javax.swing.JPasswordField;
 
@@ -289,7 +290,7 @@ public class DangNhap extends javax.swing.JFrame {
             String sql = "SELECT * FROM NGUOIDUNG WHERE Email = ? AND MatKhau = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtusername.getText());
-            ps.setString(2, new String(txtpassword.getPassword()));
+            ps.setString(2, getHashPassword(new String(txtpassword.getPassword())));
             rs = ps.executeQuery();
 
             //Lưu email đăng nhập với biến pEmail

@@ -5,6 +5,7 @@
 package UITParking.DAO;
 
 import UITParking.DTO.NguoiDungDTO;
+import static UITParking.GUI.InitPublic.getHashPassword;
 import static UITParking.GUI.InitPublic.getID;
 import java.sql.Connection;
 import java.sql.Date;
@@ -99,7 +100,7 @@ public class NguoiDungDAO {
 
             pst.setString(1, nd.getStrMaND());
             pst.setString(2, nd.getStrEmail());
-            pst.setString(3, nd.getStrMatKhau());
+            pst.setString(3, getHashPassword(nd.getStrMatKhau()));
             pst.setString(4, nd.getStrHoTen());
             pst.setString(5, nd.getStrGioiTinh());
             if (nd.getDateNgSinh() != null) {
@@ -170,7 +171,7 @@ public class NguoiDungDAO {
 
             pst.setString(10, nd.getStrMaND());
             pst.setString(1, nd.getStrEmail());
-            pst.setString(2, nd.getStrMatKhau());
+            pst.setString(2, getHashPassword(nd.getStrMatKhau()));
             pst.setString(3, nd.getStrHoTen());
             pst.setString(4, nd.getStrGioiTinh());
             if (nd.getDateNgSinh() != null) {

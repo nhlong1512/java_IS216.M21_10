@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import static UITParking.GUI.EmailForm.pEmailSentEmail;
 import UITParking.GUI.DangNhap;
+import static UITParking.GUI.InitPublic.getHashPassword;
 import java.awt.Color;
 import java.awt.Toolkit;
 /**
@@ -138,7 +139,7 @@ public class ThayDoiMatKhau extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, sb);
                 return;
             }
-            ps.setString(1, new String(txtNewPasswordModified.getPassword()));
+            ps.setString(1, getHashPassword(new String(txtNewPasswordModified.getPassword())));
             ps.setString(2, pEmailSentEmail);
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(this, "Thay đổi mật khẩu thành công!");

@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
 import UITParking.GUI.DangNhap;
+import static UITParking.GUI.InitPublic.getHashPassword;
 import java.awt.Toolkit;
 
 /**
@@ -347,8 +348,9 @@ public class DangKy extends javax.swing.JFrame {
             ps.setString(1, "ND" + id + "");
 
             ps.setString(2, txtEmailSignUp.getText());
-
-            ps.setString(3, new String(txtConfirmPasswordSignUp.getPassword()));
+            
+            //Băm mật khẩu
+            ps.setString(3, getHashPassword(new String(txtConfirmPasswordSignUp.getPassword())));
 
             ps.setString(4, (txtLastNameSignUp.getText() + " " + txtFirstNameSignUp.getText()));
 

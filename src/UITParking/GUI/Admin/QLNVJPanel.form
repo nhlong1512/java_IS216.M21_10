@@ -52,7 +52,7 @@
                           <Component id="btnCapNhat" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -89,28 +89,23 @@
                           <Component id="txtSDT" min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel64" min="-2" pref="55" max="-2" attributes="0"/>
-                                  <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-                                  <Component id="txtDiaChi" min="-2" pref="190" max="-2" attributes="0"/>
-                                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                                  <Component id="jLabel65" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="txtQueQuan" min="-2" pref="220" max="-2" attributes="0"/>
-                                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                                  <Component id="jLabel70" min="-2" pref="55" max="-2" attributes="0"/>
-                                  <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnTimKiem" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMatKhau" pref="190" max="32767" attributes="0"/>
-                              <Component id="txtTimKiem" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel64" min="-2" pref="55" max="-2" attributes="0"/>
+                          <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+                          <Component id="txtDiaChi" min="-2" pref="190" max="-2" attributes="0"/>
+                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                          <Component id="jLabel65" min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="txtQueQuan" min="-2" pref="220" max="-2" attributes="0"/>
+                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                          <Component id="lblMatKhau" min="-2" pref="55" max="-2" attributes="0"/>
+                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                          <Component id="txtMatKhau" min="-2" pref="190" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnTimKiem" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtTimKiem" min="-2" pref="198" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="207" max="32767" attributes="0"/>
@@ -160,7 +155,7 @@
                       <Component id="txtDiaChi" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel65" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="txtQueQuan" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel70" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="lblMatKhau" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="txtMatKhau" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -333,7 +328,7 @@
         </Container>
         <Component class="com.toedter.calendar.JDateChooser" name="jdcNgaySinh">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel70">
+        <Component class="javax.swing.JLabel" name="lblMatKhau">
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
           </Properties>

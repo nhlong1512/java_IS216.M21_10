@@ -43,7 +43,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private DefaultTableModel model;
     private String[] columnHeaders = new String[]{"STT", "Mã KH", "Họ Tên", "Email", "Ngày Sinh",
-        "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại","Mật Khẩu"};
+        "Giới Tính", "Địa Chỉ", "Quê Quán", "Số Điện Thoại"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -53,6 +53,17 @@ public class QLNVJPanel extends javax.swing.JPanel {
         hoTroTimKiem();
         txtMaNV.setEnabled(false);
         txtEmail.setEnabled(false);
+        disablePassword();
+    }
+    
+    public void disablePassword() {
+        txtMatKhau.setVisible(false);
+        lblMatKhau.setVisible(false);
+    }
+    
+    public void enablePassword() {
+        txtMatKhau.setVisible(true);
+        lblMatKhau.setVisible(true);
     }
 
     public void resetRender() {
@@ -82,7 +93,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
                 nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), nd.getStrMatKhau()});
+                nd.getStrQueQuan(), nd.getStrSDT()});
             index++;
         }
 
@@ -134,7 +145,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
                 (nd.getDateNgSinh() != null ? formatDate(nd.getDateNgSinh()) : nd.getDateNgSinh()), 
                 nd.getStrGioiTinh(), nd.getStrDiaChi(),
-                nd.getStrQueQuan(), nd.getStrSDT(), nd.getStrMatKhau()});
+                nd.getStrQueQuan(), nd.getStrSDT()});
             index++;
         }
         model.fireTableDataChanged();
@@ -176,7 +187,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         jScrollPane7 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
         jdcNgaySinh = new com.toedter.calendar.JDateChooser();
-        jLabel70 = new javax.swing.JLabel();
+        lblMatKhau = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -262,7 +273,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(tblNhanVien);
 
-        jLabel70.setText("Mật khẩu");
+        lblMatKhau.setText("Mật khẩu");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -280,7 +291,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
                         .addComponent(btnCapNhat)
                         .addGap(30, 30, 30)
                         .addComponent(btnXoa)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, 0)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
@@ -312,24 +323,22 @@ public class QLNVJPanel extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(txtQueQuan, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnTimKiem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addComponent(txtTimKiem))))
+                        .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(txtQueQuan, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(lblMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnTimKiem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
                 .addContainerGap(207, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -368,7 +377,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtQueQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -419,6 +428,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
             }
             txtEmail.setEnabled(false);
+            disablePassword();
         }
     }//GEN-LAST:event_tblNhanVientblNhanVienMousePressed
 
@@ -575,11 +585,13 @@ public class QLNVJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
+        disablePassword();
     }//GEN-LAST:event_btnLuubtnLuuMouseClicked
 
     private void btnNhapMoibtnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoibtnNhapMoiMouseClicked
         resetRender();
         txtEmail.setEnabled(true);
+        enablePassword();
     }//GEN-LAST:event_btnNhapMoibtnNhapMoiMouseClicked
 
 
@@ -598,10 +610,10 @@ public class QLNVJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane7;
     private com.toedter.calendar.JDateChooser jdcNgaySinh;
+    private javax.swing.JLabel lblMatKhau;
     private javax.swing.JRadioButton rdbNam;
     private javax.swing.JRadioButton rdbNu;
     private javax.swing.JTable tblNhanVien;

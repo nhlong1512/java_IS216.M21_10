@@ -28,7 +28,7 @@ Quản lý doanh thu gửi xe trong 1 ngày/tháng/năm.
 |--------------|-------|------|-------|------|
 | 20520811 | Trần Trọng Tín | 0836346035 | [Trọng Tín](https://www.facebook.com/trongtin112)  | 25 |
 | 20521569 | Nguyễn Hữu Long | 0775504619 | [Long Nguyễn](https://www.facebook.com/nui.gaxuong)  | 25 |
-| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 | [Phạm Hoàng Ngọc Nấm](https://www.facebook.com/phamhoangngocanh0406) | | 25 |
+| 20520881 | Phạm Hoàng Ngọc Anh | 0327486284 | [Phạm Hoàng Ngọc Nấm](https://www.facebook.com/phamhoangngocanh0406) | 25 |
 | 20521083 | Trần Thị Ngọc Ánh | 0363961281 | [Ngọc Ánh](https://www.facebook.com/Yinggg.TTNA) | 25 |
 
 ## Các chức năng chính trong ứng dụng

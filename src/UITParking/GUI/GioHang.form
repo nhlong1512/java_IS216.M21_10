@@ -164,7 +164,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="Admin.PanelRound" name="panelChiTietVe3000Dong">
+        <Container class="UITParking.GUI.PanelRound" name="panelChiTietVe3000Dong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -321,7 +321,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelChiTietVe2000Dong">
+        <Container class="UITParking.GUI.PanelRound" name="panelChiTietVe2000Dong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -472,7 +472,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelChiTietVe25000Dong">
+        <Container class="UITParking.GUI.PanelRound" name="panelChiTietVe25000Dong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -623,7 +623,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelThanhToan">
+        <Container class="UITParking.GUI.PanelRound" name="panelThanhToan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -713,7 +713,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelTiTle">
+        <Container class="UITParking.GUI.PanelRound" name="panelTiTle">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="38" green="0" red="1" type="rgb"/>
@@ -763,7 +763,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelChiTietVe95000Dong">
+        <Container class="UITParking.GUI.PanelRound" name="panelChiTietVe95000Dong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

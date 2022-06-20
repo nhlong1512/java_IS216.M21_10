@@ -113,7 +113,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="Admin.PanelRound" name="jpnQLV">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLV">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -168,7 +168,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="Admin.PanelRound" name="jpnQLHD">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLHD">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -226,7 +226,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="Admin.PanelRound" name="jpnQLKH">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLKH">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -281,7 +281,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="Admin.PanelRound" name="jpnQLX">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLX">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -336,7 +336,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="Admin.PanelRound" name="jpnQLKVL">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLKVL">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -409,7 +409,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
               </Events>
             </Component>
-            <Container class="Admin.PanelRound" name="jpnQLNV">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLNV">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -568,7 +568,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="Admin.PanelRound" name="jpnQLXRV">
+            <Container class="UITParking.GUI.PanelRound" name="jpnQLXRV">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -623,7 +623,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="Admin.PanelRound" name="jpnBCTK">
+            <Container class="UITParking.GUI.PanelRound" name="jpnBCTK">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

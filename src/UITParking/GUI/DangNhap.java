@@ -58,7 +58,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        panelRound2 = new Admin.PanelRound();
+        panelRound2 = new UITParking.GUI.PanelRound();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
@@ -450,7 +450,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblForgetPassword;
     private javax.swing.JLabel lblSignUp;
-    private Admin.PanelRound panelRound2;
+    private UITParking.GUI.PanelRound panelRound2;
     private javax.swing.JLabel show;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;

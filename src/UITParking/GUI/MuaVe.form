@@ -42,7 +42,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="Admin.PanelRound" name="panelRound1">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -170,7 +170,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="Admin.PanelRound" name="panelRound2">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -272,7 +272,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelRound3">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -374,7 +374,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelRound4">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -520,7 +520,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="Admin.PanelRound" name="panelRound5">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

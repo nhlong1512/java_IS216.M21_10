@@ -45,7 +45,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="Admin.PanelRound" name="panelAdminQLKH">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLKH">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -129,7 +129,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLV">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -208,7 +208,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLNV">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLNV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -287,7 +287,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLHD">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLHD">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -368,7 +368,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLXRV">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLXRV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -448,7 +448,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminBCTK">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminBCTK">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -526,7 +526,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelRound1">
+        <Container class="UITParking.GUI.PanelRound" name="panelRound1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f9" green="f9" red="f9" type="rgb"/>
@@ -709,7 +709,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLKVL">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLKVL">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -788,7 +788,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Admin.PanelRound" name="panelAdminQLX">
+        <Container class="UITParking.GUI.PanelRound" name="panelAdminQLX">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -76,7 +76,7 @@ public class DangKy extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        panelRound1 = new Admin.PanelRound();
+        panelRound1 = new UITParking.GUI.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -495,7 +495,7 @@ public class DangKy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private Admin.PanelRound panelRound1;
+    private UITParking.GUI.PanelRound panelRound1;
     private javax.swing.JPasswordField txtConfirmPasswordSignUp;
     private javax.swing.JTextField txtEmailSignUp;
     private javax.swing.JTextField txtFirstNameSignUp;

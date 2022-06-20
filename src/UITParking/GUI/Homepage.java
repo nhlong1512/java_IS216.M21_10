@@ -78,7 +78,7 @@ public class Homepage extends javax.swing.JFrame {
         btnMuaVe = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        panelRound1 = new Admin.PanelRound();
+        panelRound1 = new UITParking.GUI.PanelRound();
         lblTienSoDu = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -614,6 +614,6 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JLabel lblHoVaTen;
     private javax.swing.JLabel lblTienSoDu;
     private javax.swing.JPanel menubar;
-    private Admin.PanelRound panelRound1;
+    private UITParking.GUI.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }

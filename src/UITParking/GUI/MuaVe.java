@@ -59,30 +59,30 @@ public class MuaVe extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel5 = new javax.swing.JPanel();
-        panelRound1 = new Admin.PanelRound();
+        panelRound1 = new UITParking.GUI.PanelRound();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnMuaVe3000Dong = new javax.swing.JButton();
         btnBackMuaVe = new javax.swing.JButton();
-        panelRound2 = new Admin.PanelRound();
+        panelRound2 = new UITParking.GUI.PanelRound();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnMuaVe2000Dong = new javax.swing.JButton();
-        panelRound3 = new Admin.PanelRound();
+        panelRound3 = new UITParking.GUI.PanelRound();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         btnMuaVe95000Dong = new javax.swing.JButton();
-        panelRound4 = new Admin.PanelRound();
+        panelRound4 = new UITParking.GUI.PanelRound();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         btnMuaVe25000Dong = new javax.swing.JButton();
         txtSoLuongVeGioHang = new javax.swing.JLabel();
         btnXemGioHang = new javax.swing.JButton();
-        panelRound5 = new Admin.PanelRound();
+        panelRound5 = new UITParking.GUI.PanelRound();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -606,11 +606,11 @@ public class MuaVe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel5;
-    private Admin.PanelRound panelRound1;
-    private Admin.PanelRound panelRound2;
-    private Admin.PanelRound panelRound3;
-    private Admin.PanelRound panelRound4;
-    private Admin.PanelRound panelRound5;
+    private UITParking.GUI.PanelRound panelRound1;
+    private UITParking.GUI.PanelRound panelRound2;
+    private UITParking.GUI.PanelRound panelRound3;
+    private UITParking.GUI.PanelRound panelRound4;
+    private UITParking.GUI.PanelRound panelRound5;
     private javax.swing.JLabel txtSoLuongVeGioHang;
     // End of variables declaration//GEN-END:variables
 

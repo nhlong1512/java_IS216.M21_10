@@ -26,6 +26,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ADMIN
@@ -35,14 +36,13 @@ public class QLKVLJPanel extends javax.swing.JPanel {
     /**
      * Creates new form QLKVLJPanel
      */
-    
     KhachVangLaiBUS kvltbl = new KhachVangLaiBUS();
     ArrayList<KhachVangLaiDTO> list_KVL = kvltbl.getlist_KVL();
     XeBUS xetbl = new XeBUS();
     ArrayList<XeDTO> list_XE = xetbl.getlist_XE();
-    
+
     private DefaultTableModel model;
-    private String[] columnHeaders = new String[]{"STT","Mã Khách Vãng Lai", "Mã Xe", "Tên Loại Xe", "Biển Số Xe"};
+    private String[] columnHeaders = new String[]{"STT", "Mã Khách Vãng Lai", "Mã Xe", "Tên Loại Xe", "Biển Số Xe"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -73,7 +73,7 @@ public class QLKVLJPanel extends javax.swing.JPanel {
             XeDTO xe = xetbl.getInfor(kvl.getStrMaXe());
             //Cập nhật bảng
             model.addRow(new Object[]{index, kvl.getStrMaTheKVL(), xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
+                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
             index++;
         }
 
@@ -120,12 +120,11 @@ public class QLKVLJPanel extends javax.swing.JPanel {
             XeDTO xe = xetbl.getInfor(kvl.getStrMaXe());
             //Cập nhật bảng
             model.addRow(new Object[]{index, kvl.getStrMaTheKVL(), xe.getStrMaXe(),
-                xe.getStrTenLoaiXe(),  xe.getStrBienSoXe()});
+                xe.getStrTenLoaiXe(), xe.getStrBienSoXe()});
             index++;
         }
         model.fireTableDataChanged();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -351,7 +350,7 @@ public class QLKVLJPanel extends javax.swing.JPanel {
         if (xetbl.getInfor(txtMaTheKVL.getText()) != null) {
             sb.append("Mã thẻ khách vãng lai đã tồn tại.");
         }
-        if(xetbl.getInfor(txtMaXe.getText()) != null){
+        if (xetbl.getInfor(txtMaXe.getText()) != null) {
             sb.append("Mã xe đã tồn tại.");
         }
 
@@ -370,18 +369,23 @@ public class QLKVLJPanel extends javax.swing.JPanel {
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
                 xe.setStrBienSoXe(null);
+                xetbl.them(xe);
+                kvltbl.them(kvl);
             } else {
                 xe.setStrTenLoaiXe("Xe may");
-                xe.setStrBienSoXe(txtBienSoXe.getText());
+                if (!txtBienSoXe.getText().equals("")) {
+                    xe.setStrBienSoXe(txtBienSoXe.getText());
+                    xetbl.them(xe);
+                    kvltbl.them(kvl);
+                    JOptionPane.showMessageDialog(this, "Khách vãng lai đã được thêm vào CSDL");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Biển số xe không được để trống!");
+                }
+
             }
-            xetbl.them(xe);
-            kvltbl.them(kvl);
-            
-            
 
             //Cập nhật lại Table
             capNhatLaiTable();
-            JOptionPane.showMessageDialog(this, "Khách vãng lai mới đã được thêm vào CSDL");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
@@ -429,7 +433,7 @@ public class QLKVLJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoabtnXoaMouseClicked
 
     private void btnTimKiembtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiembtnTimKiemMouseClicked
-       
+
     }//GEN-LAST:event_btnTimKiembtnTimKiemMouseClicked
 
     private void tblKhachVangLaitblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachVangLaitblNhanVienMousePressed
@@ -466,34 +470,34 @@ public class QLKVLJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         //        StringBuilder sb = new StringBuilder();
         //        if (txtMaTheKVL.getText().equals("")) {
-            //            sb.append("Mã thẻ khách vãng lai không được để trống.");
-            //            txtMaTheKVL.setBackground(Color.red);
-            //        } else {
-            //            txtMaTheKVL.setBackground(Color.white);
-            //        }
+        //            sb.append("Mã thẻ khách vãng lai không được để trống.");
+        //            txtMaTheKVL.setBackground(Color.red);
+        //        } else {
+        //            txtMaTheKVL.setBackground(Color.white);
+        //        }
         //        if (kvltbl.getInfor(txtMaTheKVL.getText()) == null) {
-            //            sb.append("Mã thẻ khách vãng lai không tồn tại.");
-            //        }
+        //            sb.append("Mã thẻ khách vãng lai không tồn tại.");
+        //        }
         //        if (sb.length() > 0) {
-            //            JOptionPane.showMessageDialog(this, sb);
-            //            return;
-            //        }
+        //            JOptionPane.showMessageDialog(this, sb);
+        //            return;
+        //        }
         //        try {
-            //            KhachHangDTO kvl = new KhachHangDTO();
-            //            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
-            //            xe.setStrMaXe(txtMaTheKVL.getText());
-            //            xe.setStrTenLoaiXe(txtMaXe.getText());
-            //            xe.setStrBienSoXe(txtTenLoaiXe.getText());
-            //            xetbl.sua(xe);
-            //            //Cập nhật lại Table
-            //            capNhatLaiTable();
-            //
-            //            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
-            //
-            //        } catch (Exception e) {
-            //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
-            //            e.printStackTrace();
-            //        }
+        //            KhachHangDTO kvl = new KhachHangDTO();
+        //            XeDTO xe = xetbl.getInfor(txtMaTheKVL.getText());
+        //            xe.setStrMaXe(txtMaTheKVL.getText());
+        //            xe.setStrTenLoaiXe(txtMaXe.getText());
+        //            xe.setStrBienSoXe(txtTenLoaiXe.getText());
+        //            xetbl.sua(xe);
+        //            //Cập nhật lại Table
+        //            capNhatLaiTable();
+        //
+        //            JOptionPane.showMessageDialog(this, "Xe đã được cập nhật vào CSDL");
+        //
+        //        } catch (Exception e) {
+        //            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+        //            e.printStackTrace();
+        //        }
     }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
 
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged

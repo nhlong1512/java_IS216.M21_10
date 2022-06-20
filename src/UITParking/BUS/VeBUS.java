@@ -128,11 +128,6 @@ public class VeBUS {
             }
             
         }
-        
-        return false;
-    }
-    public Boolean checkVeHetHan() throws Exception{
-        veDAO.checkVeHetHan();
         return false;
     }
     

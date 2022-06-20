@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7b41ed9-12be-4985-a40d-65ce42b30d42">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="Thang" class="java.lang.String"/>
 	<parameter name="Nam" class="java.lang.String"/>
 	<queryString>
@@ -135,8 +135,8 @@ Where A.thang = $P{Thang} and A.nam = $P{Nam}]]>
 				<textFieldExpression><![CDATA[$F{SOLUONGXEDAP}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="269" y="0" width="143" height="50" uuid="3207d811-b5cd-4785-b3ed-712dd177da70"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
+				<reportElement x="269" y="0" width="143" height="49" uuid="3207d811-b5cd-4785-b3ed-712dd177da70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SOLUONGXEMAY}]]></textFieldExpression>

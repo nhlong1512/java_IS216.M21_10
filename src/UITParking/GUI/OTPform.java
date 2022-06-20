@@ -18,7 +18,7 @@ import java.awt.Toolkit;
  *
  * @author Pham Hoang Ngoc Anh
  */
-public class OTPForm extends javax.swing.JFrame {
+ class OTPForm extends javax.swing.JFrame {
 
     /**
      * Creates new form OTPform

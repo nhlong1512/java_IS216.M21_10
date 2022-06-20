@@ -329,7 +329,7 @@ public class QLXJPanel extends javax.swing.JPanel {
                     xetbl.them(xe);
                     JOptionPane.showMessageDialog(this, "Xe mới đã được thêm vào CSDL");
                 }else{
-                    JOptionPane.showMessageDialog(this, "Biển sổ xe không được để trống!");
+                    JOptionPane.showMessageDialog(this, "Biển số xe không được để trống!");
                 }
             }
             

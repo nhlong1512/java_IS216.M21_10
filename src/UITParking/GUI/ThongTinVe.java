@@ -80,7 +80,6 @@ public class ThongTinVe extends javax.swing.JFrame {
         capNhatTrangThai();
         hoTroTimKiem();
         setLocationRelativeTo(null);
-        capNhatVeHetHan();
         setIconImage();
     }
 
@@ -100,10 +99,7 @@ public class ThongTinVe extends javax.swing.JFrame {
      * Sẽ cập nhật trạng thái vé nếu sysdate lớn hơn ngày hết hạn thì sẽ chuyển
      * trạng thái sang đã hết hạn
      */
-    public void capNhatVeHetHan() throws Exception{
-        vetbl.checkVeHetHan();
-        capNhatLaiTable();
-    }
+    
     
     /**
      * Sẽ cập nhật trạng thái vé nếu sysdate lớn hơn ngày hết hạn thì sẽ chuyển

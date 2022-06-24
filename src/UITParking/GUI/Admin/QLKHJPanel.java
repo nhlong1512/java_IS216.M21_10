@@ -500,6 +500,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
         resetRender();
         enablePassword();
         txtEmail.setEnabled(true);
+        txtMatKhau.setText("");
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked

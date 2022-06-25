@@ -15,8 +15,12 @@ import UITParking.DTO.XeDTO;
 import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -54,6 +58,29 @@ public class QLNVJPanel extends javax.swing.JPanel {
         txtMaNV.setEnabled(false);
         txtEmail.setEnabled(false);
         disablePassword();
+    }
+    
+    public class EmailExample {
+
+        private Pattern pattern, pattern1, pattern2;
+        private Matcher matcher, matcher1, matcher2;
+
+        private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX1 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX2 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+
+        public EmailExample() {
+            pattern = Pattern.compile(EMAIL_REGEX);
+            pattern1 = Pattern.compile(EMAIL_REGEX1);
+            pattern2 = Pattern.compile(EMAIL_REGEX2);
+        }
+
+        public boolean validate(String regex) {
+            matcher = pattern.matcher(regex);
+            matcher1 = pattern1.matcher(regex);
+            matcher2 = pattern2.matcher(regex);
+            return matcher.matches() || matcher1.matches() || matcher2.matches();
+        }
     }
     
     public void disablePassword() {
@@ -406,6 +433,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private void tblNhanVientblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVientblNhanVienMousePressed
         // TODO add your handling code here:
+        btnLuu.setEnabled(false);
         resetRender();
         int selectedRow = tblNhanVien.getSelectedRow();
         if (selectedRow >= 0) {
@@ -524,7 +552,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             nv.setStrMaNV(txtMaNV.getText());
-            nd.setStrMatKhau(txtMatKhau.getText());
+            nd.setStrMatKhau("long2002");
             if (jdcNgaySinh.getDate() != null) {
                 nd.setDateNgSinh(new java.sql.Date(jdcNgaySinh.getDate().getTime()));
             }
@@ -544,12 +572,48 @@ public class QLNVJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCapNhatbtnCapNhatMouseClicked
 
     private void btnLuubtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuubtnLuuMouseClicked
+
         StringBuilder sb = new StringBuilder();
         if (nguoidungtbl.getInfor(txtMaNV.getText()) != null) {
             sb.append("Mã nhân viên đã tồn tại.");
         }
         if (nhanvientbl.getInfor(txtMaNV.getText()) != null) {
             sb.append("Mã nhân viên đã tồn tại.");
+        }
+        
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.MONTH, 5);
+
+        // set Date
+        c1.set(Calendar.DATE, 26);
+
+        // set Year
+        c1.set(Calendar.YEAR, 2005);
+
+        Date dateToday = c1.getTime();
+        if (jdcNgaySinh.getDate().getTime() - dateToday.getTime() > 17*17*31536000) {
+            sb.append("Người dùng chưa đủ 17 tuổi");
+        }
+        
+        try {
+            if (Integer.parseInt(txtSDT.getText()) < 0) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
+            return;
+        }
+
+        if (txtMatKhau.getText().length() < 6) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu phải lớn hơn 6 kí tự");
+            return;
+        }
+
+        EmailExample emailExample = new EmailExample();
+        boolean isvalidEmail = emailExample.validate(txtEmail.getText());
+        if (!isvalidEmail) {
+            JOptionPane.showMessageDialog(this, "Email không hợp lệ");
+            return;
         }
 
         if (sb.length() > 0) {
@@ -592,6 +656,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         resetRender();
         txtEmail.setEnabled(true);
         enablePassword();
+        btnLuu.setEnabled(true);
     }//GEN-LAST:event_btnNhapMoibtnNhapMoiMouseClicked
 
 

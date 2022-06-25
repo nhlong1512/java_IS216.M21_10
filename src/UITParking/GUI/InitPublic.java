@@ -15,6 +15,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -113,10 +115,9 @@ public class InitPublic {
     }
 
     /**
-     * 
+     *
      * @param passwordToHash
-     * @return 
-     * Hàm thực thi băm mật khẩu và trả về chuỗi hex gồm 32 kí tự
+     * @return Hàm thực thi băm mật khẩu và trả về chuỗi hex gồm 32 kí tự
      */
     public static String getHashPassword(String passwordToHash) {
         String generatedPassword = null;
@@ -145,4 +146,21 @@ public class InitPublic {
         }
         return generatedPassword;
     }
+
+//    void checkNgaySinh() {
+//        Calendar c1 = Calendar.getInstance();
+//        c1.set(Calendar.MONTH, 5);
+//
+//        // set Date
+//        c1.set(Calendar.DATE, 26);
+//
+//        // set Year
+//        c1.set(Calendar.YEAR, 2005);
+//
+//        Date dateToday = c1.getTime();
+//        if (jdcNgaySinh.getDate().getTime() < dateToday.getTime()) {
+//            sb.append("Người dùng chưa đủ 17 tuổi");
+//        }
+//    }
+
 }

@@ -301,6 +301,7 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void btnNhapMoibtnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoibtnNhapMoiMouseClicked
         resetRender();
+        btnLuu.setEnabled(true);
     }//GEN-LAST:event_btnNhapMoibtnNhapMoiMouseClicked
 
     private void btnLuubtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuubtnLuuMouseClicked
@@ -437,6 +438,7 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void tblXetblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblXetblNhanVienMousePressed
         // TODO add your handling code here:
+        btnLuu.setEnabled(false);
         resetRender();
         int selectedRow = tblXe.getSelectedRow();
         if (selectedRow >= 0) {
@@ -458,6 +460,7 @@ public class QLXJPanel extends javax.swing.JPanel {
 
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
         // TODO add your handling code here:
+        txtBienSoXe.setText("");
         if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
             txtBienSoXe.setEnabled(false);
         } else {

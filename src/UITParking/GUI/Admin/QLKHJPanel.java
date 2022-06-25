@@ -10,11 +10,16 @@ import UITParking.BUS.XeBUS;
 import UITParking.DTO.KhachHangDTO;
 import UITParking.DTO.NguoiDungDTO;
 import UITParking.DTO.XeDTO;
+import UITParking.GUI.DangKy;
 import static UITParking.GUI.InitPublic.formatDate;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -59,7 +64,48 @@ public class QLKHJPanel extends javax.swing.JPanel {
         txtMaXe.setEnabled(false);
         txtEmail.setEnabled(false);
         disablePassword();
+        txtBienSoXe.setEnabled(false);
 
+    }
+
+    public class EmailExample {
+
+        private Pattern pattern, pattern1, pattern2;
+        private Matcher matcher, matcher1, matcher2;
+
+        private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX1 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+        private static final String EMAIL_REGEX2 = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)+(\\.[A-Za-z0-9]+)$";
+
+        public EmailExample() {
+            pattern = Pattern.compile(EMAIL_REGEX);
+            pattern1 = Pattern.compile(EMAIL_REGEX1);
+            pattern2 = Pattern.compile(EMAIL_REGEX2);
+        }
+
+        public boolean validate(String regex) {
+            matcher = pattern.matcher(regex);
+            matcher1 = pattern1.matcher(regex);
+            matcher2 = pattern2.matcher(regex);
+            return matcher.matches() || matcher1.matches() || matcher2.matches();
+        }
+    }
+
+    public class SDTExample {
+
+        private Pattern pattern;
+        private Matcher matcher;
+
+        private static final String SDT_REGEX = "/^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$/";
+
+        public SDTExample() {
+            pattern = Pattern.compile(SDT_REGEX);
+        }
+
+        public boolean validate(String regex) {
+            matcher = pattern.matcher(regex);
+            return matcher.matches();
+        }
     }
 
     public void disablePassword() {
@@ -104,6 +150,8 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 bienSoXe = xe.getStrBienSoXe();
             } else {
                 xeIsExists = false;
+                tenLoaiXe = null;
+                bienSoXe = null;
             }
             //Cập nhật bảng
             model.addRow(new Object[]{index, nd.getStrMaND(), nd.getStrHoTen(), nd.getStrEmail(),
@@ -499,8 +547,14 @@ public class QLKHJPanel extends javax.swing.JPanel {
     private void btnNhapMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapMoiMouseClicked
         resetRender();
         enablePassword();
+        btnLuu.setEnabled(true);
         txtEmail.setEnabled(true);
         txtMatKhau.setText("");
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
+            txtBienSoXe.setEnabled(false);
+        } else {
+            txtBienSoXe.setEnabled(true);
+        }
     }//GEN-LAST:event_btnNhapMoiMouseClicked
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
@@ -519,10 +573,63 @@ public class QLKHJPanel extends javax.swing.JPanel {
             sb.append("Mã xe đã tồn tại");
         }
 
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.MONTH, 5);
+
+        // set Date
+        c1.set(Calendar.DATE, 26);
+
+        // set Year
+        c1.set(Calendar.YEAR, 2005);
+
+        Date dateToday = c1.getTime();
+        if (jdcNgaySinh.getDate().getTime() - dateToday.getTime() > 17*17*31536000) {
+            sb.append("Người dùng chưa đủ 17 tuổi");
+        }
+
+        try {
+            if (Integer.parseInt(txtSoDu.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Số dư không được bé hơn 0");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Kiểu số dư không hợp lệ");
+            return;
+        }
+
+        try {
+            if (Integer.parseInt(txtSDT.getText()) < 0) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
+            return;
+        }
+
+        if (txtMatKhau.getText().length() < 6) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu phải lớn hơn 6 kí tự");
+            return;
+        }
+
+        EmailExample emailExample = new EmailExample();
+        boolean isvalidEmail = emailExample.validate(txtEmail.getText());
+        if (!isvalidEmail) {
+            JOptionPane.showMessageDialog(this, "Email không hợp lệ");
+            return;
+        }
+
+//        SDTExample sdtExample = new SDTExample();
+//        boolean isvalid = sdtExample.validate(txtSDT.getText());
+//        if (!isvalid) {
+//            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
+//            System.out.println(isvalid);
+//            return;
+//        }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb);
             return;
         }
+
         try {
             NguoiDungDTO nd = new NguoiDungDTO();
             KhachHangDTO kh = new KhachHangDTO();
@@ -537,6 +644,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             nd.setStrHoTen(txtHoTen.getText());
             nd.setStrDiaChi(txtDiaChi.getText());
             nd.setStrQueQuan(txtQueQuan.getText());
+
             nd.setStrSDT(txtSDT.getText());
             nd.setStrGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
             kh.setStrMaKH(tempMaKH);
@@ -557,6 +665,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
             }
             nd.setStrVaiTro("Khach hang");
             nd.setStrMatKhau(txtMatKhau.getText());
+
             xetbl.them(xe);
             nguoidungtbl.them(nd);
             khachhangtbl.them(kh);
@@ -742,6 +851,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
                 jdcNgaySinh.setDate(nd.getDateNgSinh());
             }
         }
+        btnLuu.setEnabled(false);
     }//GEN-LAST:event_tblKhachHangMousePressed
 
     private void txtMaXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaXeActionPerformed
@@ -750,6 +860,7 @@ public class QLKHJPanel extends javax.swing.JPanel {
 
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
         // TODO add your handling code here:
+        txtBienSoXe.setText("");
         if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
             txtBienSoXe.setEnabled(false);
         } else {

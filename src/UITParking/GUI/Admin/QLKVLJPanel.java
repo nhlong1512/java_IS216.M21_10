@@ -502,6 +502,7 @@ public class QLKVLJPanel extends javax.swing.JPanel {
 
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
         // TODO add your handling code here:
+        txtBienSoXe.setText("");
         if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
             txtBienSoXe.setEnabled(false);
         } else {

@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -193,6 +194,15 @@ public class NapTien extends javax.swing.JFrame {
     //Event click chuột vào button thực thi nạp tiền
     private void btnNapTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNapTienMouseClicked
         // TODO add your handling code here:
+        try {
+            if (Integer.parseInt(txtfldNapTien.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Số tiền nạp không được bé hơn 0");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Tiền nạp không hợp lệ");
+            return;
+        }
         tempTien = kh.getLongSoDu();
         System.out.println("Truoc khi nap " + tempTien);
         tempTien += Integer.parseInt(txtfldNapTien.getText());

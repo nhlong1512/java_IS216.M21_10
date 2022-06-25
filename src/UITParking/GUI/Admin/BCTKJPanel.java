@@ -381,6 +381,10 @@ public class BCTKJPanel extends javax.swing.JPanel {
      */
     private void cbbLoaiThongKeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiThongKeItemStateChanged
         // TODO add your handling code here:
+        txtMaHD.setText("");
+        txtNam.setText("");
+        txtNgay.setText("");
+        txtThang.setText("");
         selectedItemStr = cbbLoaiThongKe.getSelectedItem().toString();
         if (cbbLoaiThongKe.getSelectedItem().toString().equals("Doanh thu vé theo ngày")) {
             txtMaHD.setEnabled(false);

@@ -17,6 +17,8 @@ import static UITParking.GUI.DangNhap.pMaND;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -460,12 +462,36 @@ public class CapNhatThongTinKH extends javax.swing.JFrame {
     //event click CapNhatAccount
     private void btnCapNhatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatAccountMouseClicked
         // TODO add your handling code here:
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.MONTH, 5);
 
+        // set Date
+        c1.set(Calendar.DATE, 26);
+
+        // set Year
+        c1.set(Calendar.YEAR, 2005);
+
+        Date dateToday = c1.getTime();
+        if (jdcNgaySinh.getDate().getTime() - dateToday.getTime() > 17 * 17 * 31536000) {
+            JOptionPane.showMessageDialog(this, "Người dùng chưa đủ 17 tuổi");
+            return;
+        }
+        
+        try {
+            if (Integer.parseInt(tfdSDTAccount.getText()) < 0) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
+            return;
+        }
+        
         nd.setStrHoTen(tfdHoTenAccount.getText());
         nd.setStrEmail(tfdEmailAccount.getText());
         nd.setStrDiaChi(tfdDiachiAccount.getText());
         nd.setStrQueQuan(tfdQueQuanAccount.getText());
         nd.setStrSDT(tfdSDTAccount.getText());
+        nd.setStrMatKhau("long2002");
         if (cbbGioiTinh.getSelectedItem().toString().equals("Nữ")) {
             nd.setStrGioiTinh("Nu");
         }
@@ -476,7 +502,7 @@ public class CapNhatThongTinKH extends javax.swing.JFrame {
 
         //Nếu là xe đạp hoặc xe máy có biển số thì thêm trường xe vào bảng XE
         if ((cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")
-            || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe() == null) {
+                || !tfdBienSoXe.getText().equals("")) && kh.getStrMaXe() == null) {
             XeDTO xe = new XeDTO();
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
@@ -491,7 +517,7 @@ public class CapNhatThongTinKH extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             xe.setStrMaXe(maxMaXe);
             try {
                 xetbl.them(xe);
@@ -505,11 +531,11 @@ public class CapNhatThongTinKH extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(CapNhatThongTinKH.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
-        
+
         //Nếu khách hàng đã có xe rồi
-        if(kh.getStrMaXe() != null){
+        if (kh.getStrMaXe() != null) {
             XeDTO xe = xetbl.getInfor(kh.getStrMaXe());
             if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
                 xe.setStrTenLoaiXe("Xe dap");
@@ -574,11 +600,11 @@ public class CapNhatThongTinKH extends javax.swing.JFrame {
     //Nếu là xe đạp thì sẽ không cho nhập biển số
     private void cbbLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiXeItemStateChanged
         // TODO add your handling code here:
-        if(cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")){
+        if (cbbLoaiXe.getSelectedItem().toString().equals("Xe đạp")) {
             tfdBienSoXe.setText("");
             tfdBienSoXe.setEnabled(false);
-            
-        }else{
+
+        } else {
             tfdBienSoXe.setEnabled(true);
         }
     }//GEN-LAST:event_cbbLoaiXeItemStateChanged

@@ -15,6 +15,8 @@ import UITParking.DTO.LoaiVeDTO;
 import UITParking.DTO.NhanVienDTO;
 import UITParking.DTO.VeDTO;
 import UITParking.DTO.XeDTO;
+import UITParking.GUI.Admin.QLKHJPanel;
+import UITParking.GUI.Admin.QLKHJPanel.SDTExample;
 import static UITParking.GUI.InitPublic.formatDate;
 import static UITParking.GUI.InitPublic.getConvertYYYYMMDD;
 import static UITParking.GUI.InitPublic.getDateThoiGianThuc;
@@ -31,6 +33,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -232,6 +237,15 @@ public class main {
           System.out.println(getHashPassword("long2002"));
           System.out.println("New: " + getHashPassword("long2002"));
           System.out.println("So sanh temp1 va temp2: " + temp1.equals(temp2));
-
+        
+//    }
+//        String txtSDT = "";
+//        SDTExample sdtExample = new SDTExample();
+//        boolean isvalid = sdtExample.validate(txtSDT);
+//        if (!isvalid) {
+//            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ");
+//            System.out.println(isvalid);
+//        }
+//
     }
 }
